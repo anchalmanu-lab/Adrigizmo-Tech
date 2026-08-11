@@ -1,18 +1,12 @@
-// Adrigizmo AI Chatbot with Multi-Language Selection
+// Adrigizmo AI Chatbot Multi-Language Script
 const API_KEY = "AQ.Ab8RN6JQbBPqfjiBTwcz39Pw-kgOApNVME6NlA6gPeZtoU3_ng"; 
-let userSelectedLanguage = ""; // നിലവിൽ യൂസർ തിരഞ്ഞെടുത്ത ഭാഷ സേവ് ചെയ്യാൻ
 
-async function askChatbot(userQuery) {
+async function askChatbot(userQuery, selectedLang = "English") {
     const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
     
-    // യൂസർ തിരഞ്ഞെടുത്ത ഭാഷ അനുസരിച്ച് മറുപടി നൽകാൻ AI-യോട് നിർദ്ദേശിക്കുന്നു
-    let languageInstruction = userSelectedLanguage 
-        ? `Please reply strictly in this language: ${userSelectedLanguage}.` 
-        : `Please reply in English.`;
-
-    const systemPrompt = `You are the AI assistant for Adrigizmo Tech, founded and led by Manukumar (Manu). 
-    ${languageInstruction}
-    User Query: `;
+    const promptText = `You are the AI assistant for Adrigizmo Tech, founded and led by Manukumar (Manu). 
+    Please answer the user query strictly in this language: ${selectedLang}.
+    User Query: ${userQuery}`;
 
     try {
         const response = await fetch(endpoint, {
@@ -20,23 +14,23 @@ async function askChatbot(userQuery) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 contents: [{
-                    parts: [{ text: systemPrompt + userQuery }]
+                    parts: [{ text: promptText }]
                 }]
             })
         });
         
         if (!response.ok) {
-            return "Connection error / കണക്ഷൻ തടസ്സപ്പെട്ടു.";
+            return "Connection error. Please try again.";
         }
         
         const data = await response.json();
         if (data.candidates && data.candidates[0].content) {
             return data.candidates[0].content.parts[0].text;
         } else {
-            return "No response available.";
+            return "No response received.";
         }
     } catch (error) {
         console.error("Error:", error);
-        return "Network connection error.";
+        return "Network connection failed.";
     }
 }
