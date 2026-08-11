@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADRIGIZMO TECH TECHNIC - 3D Escape Room Challenge</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0b0f19;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('https://i.pinimg.com/736x/a4/52/eb/a452eb31c39335b6d5b39fe9a8e0989e.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background-image 0.5s ease-in-out;
+            perspective: 1200px;
+        }
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(11, 15, 25, 0.85);
+            z-index: 1;
+        }
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 92%;
+            max-width: 720px;
+            background: rgba(17, 24, 39, 0.95);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.85);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #374151;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .brand-title { color: #60a5fa; font-size: 17px; font-weight: bold; text-decoration: none; }
+        .back-web-btn {
+            background: #1f2937;
+            border: 1px solid #4b5563;
+            color: #d1d5db;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-web-btn:hover { background: #374151; color: #fff; }
+        .stats { display: flex; gap: 12px; align-items: center; font-weight: bold; font-size: 14px; }
+        .timer-badge { background: #ef4444; color: white; padding: 5px 10px; border-radius: 15px; }
+        .lives { color: #f87171; font-size: 16px; }
+        
+        .field-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .field-btn {
+            background: #1f2937;
+            border: 2px solid #4b5563;
+            color: #e5e7eb;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.2s;
+        }
+        .field-btn:hover {
+            border-color: #60a5fa;
+            background: #374151;
+            transform: translateY(-2px);
+        }
+        .level-box {
+            background: #1f2937;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: 1px solid #4b5563;
+        }
+        .level-title { color: #f59e0b; font-size: 17px; margin-bottom: 10px; font-weight: bold; }
+        .question-text { font-size: 15px; line-height: 1.5; margin-bottom: 15px; color: #d1d5db; }
+        
+        .options-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 15px; }
+        .option-btn {
+            background: #111827;
+            border: 1px solid #4b5563;
+            color: white;
+            padding: 12px 15px;
+            border-radius: 6px;
+            text-align: left;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+        .option-btn:hover { background: #374151; border-color: #60a5fa; }
+        
+        #feedback { margin-top: 10px; font-weight: bold; text-align: center; font-size: 14px; }
+        .hidden { display: none !important; }
+        
+        .progress-bar { width: 100%; height: 6px; background: #374151; border-radius: 3px; margin-bottom: 15px; overflow: hidden; }
+        .progress-fill { height: 100%; background: #10b981; width: 20%; transition: width 0.4s ease; }
+        
+        .share-container { display: flex; gap: 8px; justify-content: center; margin-top: 15px; flex-wrap: wrap; }
+        .share-btn {
+            padding: 8px 12px; border-radius: 6px; color: white; border: none; font-weight: bold; cursor: pointer; font-size: 12px;
+        }
+        .wa { background: #25d366; }
+        .fb { background: #1877f2; }
+        .tw { background: #000000; }
+        .li { background: #0a66c2; }
+        .th { background: #1f1f1f; border: 1px solid #444; }
+        .ig { background: #e1306c; }
+
+        .action-btn { background: #3b82f6; width: 100%; margin-top: 15px; padding: 12px; border: none; border-radius: 6px; color: white; font-weight: bold; cursor: pointer; }
+        .action-btn:hover { background: #2563eb; }
+    </style>
+</head>
+<body>
+
+<div class="overlay"></div>
+
+<div class="container" id="game-card">
+    <div class="header">
+        <a href="https://www.adrigizmo.com" class="brand-title" target="_blank">🌐 ADRIGIZMO TECH TECHNIC</a>
+        <div style="display: flex; gap: 8px; align-items: center;">
+            <a href="https://www.adrigizmo.com" class="back-web-btn" target="_blank">Back to Website</a>
+            <div class="stats">
+                <div class="lives" id="lives-display">❤️❤️❤️</div>
+                <div class="timer-badge" id="timer">Time: 05:00</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Field Selection Screen -->
+    <div id="selection-screen">
+        <p class="question-text" style="text-align: center;">Select your professional field to initialize the Challenge:</p>
+        <div class="field-grid">
+            <button class="field-btn" onclick="selectField('IT')">💻 IT & Programming</button>
+            <button class="field-btn" onclick="selectField('Marketing')">📈 Marketing & Growth</button>
+            <button class="field-btn" onclick="selectField('Safety')">🛡️ Industrial Safety</button>
+            <button class="field-btn" onclick="selectField('Mechanic')">⚙️ Mechanic & Asset</button>
+            <button class="field-btn" onclick="selectField('Electronics')">⚡ Electronics & Electrical</button>
+            <button class="field-btn" onclick="selectField('Management')">📊 Management & Leadership</button>
+        </div>
+    </div>
+
+    <!-- Game Play Screen -->
+    <div id="game-screen" class="hidden">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+        </div>
+        <div class="level-box">
+            <div class="level-title" id="lvl-title">Level 1</div>
+            <div class="question-text" id="lvl-desc">Loading question...</div>
+            <div class="options-grid" id="options-container"></div>
+        </div>
+        <div id="feedback"></div>
+    </div>
+</div>
+
+<script>
+    let currentField = '';
+    let currentLevel = 0;
+    let activeQuestions = [];
+    let lives = 3;
+    let timeLeft = 300;
+    let timerInterval;
+    let startTime;
+
+    const fieldBackgrounds = {
+        IT: "https://i.pinimg.com/1200x/61/cf/19/61cf194ce3154d95fd694e192bbd2e50.jpg",
+        Marketing: "https://i.pinimg.com/1200x/95/30/ce/9530ce5a394d26c2154be5edd6b5be95.jpg",
+        Safety: "https://i.pinimg.com/736x/35/b6/67/35b667a4082809c4af5fe38a7e035b52.jpg",
+        Mechanic: "https://i.pinimg.com/736x/5c/88/24/5c882491d695d2e57bb9f30d10210898.jpg",
+        Electronics: "https://i.pinimg.com/1200x/57/83/ef/5783ef9f6f1a029141610baba1641178.jpg",
+        Management: "https://i.pinimg.com/736x/3c/8b/28/3c8b2838f8863e7103f07447d0231cd6.jpg"
+    };
+
+    const masterGameData = {
+        IT: [
+            { q: "What HTTP status code represents 'Not Found'?", options: ["200 OK", "404 Not Found", "500 Server Error", "301 Moved"], answer: 1 },
+            { q: "Which command is used in Git to save changes locally?", options: ["git push", "git commit", "git pull", "git clone"], answer: 1 },
+            { q: "Which protocol provides secure encrypted web traffic?", options: ["HTTP", "FTP", "HTTPS", "SMTP"], answer: 2 },
+            { q: "What is the standard file extension for JavaScript files?", options: [".html", ".css", ".js", ".java"], answer: 2 },
+            { q: "What does SQL stand for in database management?", options: ["Simple Query", "Structured Query Language", "Standard Logic", "System Quality"], answer: 1 },
+            { q: "Which programming language is known as the backbone of web pages?", options: ["Python", "C++", "JavaScript", "Java"], answer: 2 },
+            { q: "What does CSS stand for?", options: ["Cascading Style Sheets", "Computer Style System", "Creative Sheet Style", "Colorful Style Sheet"], answer: 0 },
+            { q: "Which company developed the React framework?", options: ["Google", "Meta (Facebook)", "Microsoft", "Apple"], answer: 1 },
+            { q: "What port does standard HTTP traffic run on by default?", options: ["443", "80", "8080", "21"], answer: 1 },
+            { q: "What is the main function of an operating system?", options: ["Manage hardware & software", "Browse internet", "Design graphics", "Compile code"], answer: 0 }
+        ],
+        Marketing: [
+            { q: "What does SEO stand for in digital marketing?", options: ["Site Execution", "Search Engine Optimization", "Social Operation", "Sales Output"], answer: 1 },
+            { q: "What metric tracks visitors leaving a site without action?", options: ["Bounce Rate", "Conversion Rate", "Click-Through", "Impressions"], answer: 0 },
+            { q: "PPC advertising stands for Pay Per...", options: ["Customer", "Click", "Conversion", "Campaign"], answer: 1 },
+            { q: "Creating and distributing valuable content is known as...", options: ["PPC Marketing", "Content Marketing", "Affiliate", "Direct"], answer: 1 },
+            { q: "What framework consists of Product, Price, Place, Promotion?", options: ["4Cs", "SWOT", "4Ps Marketing Mix", "STP"], answer: 2 },
+            { q: "What is CRM primarily used for?", options: ["Customer Relationship Management", "Cost Revenue Monitor", "Campaign Risk Model", "Content Reach Metric"], answer: 0 },
+            { q: "What does CTA stand for in marketing campaigns?", options: ["Call to Action", "Cost to Acquire", "Click Through Analytics", "Campaign Target Audience"], answer: 0 },
+            { q: "Which social platform is primarily used for B2B professional networking?", options: ["Instagram", "TikTok", "LinkedIn", "Snapchat"], answer: 2 },
+            { q: "What is organic reach in social media?", options: ["Paid advertisements", "Free views/engagement without ads", "Bot traffic", "Sponsored posts"], answer: 1 },
+            { q: "What does ROI stand for in business and marketing?", options: ["Rate of Investment", "Return on Investment", "Revenue Over Income", "Risk on Innovation"], answer: 1 }
+        ],
+        Safety: [
+            { q: "What safety device protects against electrical shocks by breaking circuits?", options: ["MCB", "GFCI", "Transformer", "Inverter"], answer: 1 },
+            { q: "What does PPE stand for?", options: ["Personal Protective Equipment", "Primary Plant Engine", "Public Process", "Proactive Entity"], answer: 0 },
+            { q: "What permit is mandatory before entering a confined vessel?", options: ["Hot Work Permit", "Confined Space Entry Permit", "Height Permit", "Electrical Permit"], answer: 1 },
+            { q: "What color is universally used for emergency stops?", options: ["Green", "Blue", "Yellow", "Red"], answer: 3 },
+            { q: "LOTO procedures are used to control hazardous what?", options: ["Thermal Energy", "Electrical & Mechanical Energy", "Chemical Pressure", "Noise"], answer: 1 },
+            { q: "What class of fire extinguisher is used for electrical fires?", options: ["Class A", "Class B", "Class C", "Class D"], answer: 2 },
+            { q: "What does MSDS stand for in industrial chemistry and safety?", options: ["Material Safety Data Sheet", "Mechanical System Design Standard", "Main Safety Directive System", "Manual Safety Deployment Step"], answer: 0 },
+            { q: "Why is regular ear protection necessary in high-noise industrial zones?", options: ["To prevent hearing loss", "To hear better", "To look professional", "To block wind"], answer: 0 },
+            { q: "What is the primary goal of a 5S workplace organization methodology?", options: ["Increase clutter", "Enhance safety, efficiency, and order", "Reduce employee count", "Increase machinery speed"], answer: 1 },
+            { q: "What does OSHA stand for internationally?", options: ["Occupational Safety and Health Administration", "Operational Security and Hazard Agency", "Office of Safety and Health Authority", "Overhead System Handling Association"], answer: 0 }
+        ],
+        Mechanic: [
+            { q: "What maintenance uses vibration analysis to predict machinery failures?", options: ["Reactive", "Predictive Maintenance", "Corrective", "Run-to-Failure"], answer: 1 },
+            { q: "Misalignment in rotating shafts causes extreme wear on which component?", options: ["Bearing", "Bolt", "Gasket", "Housing"], answer: 0 },
+            { q: "Fluid power systems utilizing compressed air are called...", options: ["Hydraulic", "Pneumatic", "Thermal", "Magnetic"], answer: 1 },
+            { q: "In maintenance reliability, what does 'MTBF' stand for?", options: ["Mean Time Between Failures", "Maximum Time", "Minimum Tool", "Maintenance Formula"], answer: 0 },
+            { q: "What precision instrument measures internal diameters down to microns?", options: ["Tape Measure", "Vernier Caliper", "Torque Wrench", "Feeler Gauge"], answer: 1 },
+            { q: "What type of lubrication is commonly used in high-load gearboxes?", options: ["Water", "Heavy Industrial Oil/Grease", "Diesel", "Air"], answer: 1 },
+            { q: "What is Cavitation in centrifugal pumps?", options: ["Bubble formation and collapse causing damage", "High speed rotation", "Normal cooling flow", "Electrical short"], answer: 0 },
+            { q: "What tool is used to tighten bolts to a precise specified limit?", options: ["Hammer", "Torque Wrench", "Spanner", "Pliers"], answer: 1 },
+            { q: "What does CMMS stand for in facility and asset management?", options: ["Computerized Maintenance Management System", "Central Mechanic Monitoring Standard", "Certified Material Management Service", "Core Mechanical Maintenance Software"], answer: 0 },
+            { q: "What is the main purpose of a coupling in power transmission?", options: ["To connect two shafts and transmit torque", "To stop rotation", "To generate power", "To cool the motor"], answer: 0 }
+        ],
+        Electronics: [
+            { q: "According to Ohm's Law, Voltage equals Current multiplied by what?", options: ["Capacitance", "Resistance", "Inductance", "Frequency"], answer: 1 },
+            { q: "What component stores electrical energy in an electrostatic field?", options: ["Resistor", "Diode", "Capacitor", "Transistor"], answer: 2 },
+            { q: "What semiconductor device permits current flow in only one direction?", options: ["Diode", "Transformer", "Relay", "Inductor"], answer: 0 },
+            { q: "What is the standard SI unit of electrical capacitance?", options: ["Ohm", "Volt", "Farad", "Ampere"], answer: 2 },
+            { q: "A circuit with an interruption where current cannot flow is a(n)...", options: ["Closed Circuit", "Short Circuit", "Open Circuit", "Parallel"], answer: 2 },
+            { q: "What device steps up or steps down AC voltage?", options: ["Transformer", "Capacitor", "Diode", "Resistor"], answer: 0 },
+            { q: "What unit is used to measure electrical resistance?", options: ["Watt", "Ohm", "Ampere", "Joule"], answer: 1 },
+            { q: "What is a multimeter used for?", options: ["Measuring voltage, current, and resistance", "Soldering wires", "Generating power", "Storing energy"], answer: 0 },
+            { q: "What is the function of a fuse in an electrical circuit?", options: ["To protect against overcurrent by melting", "To increase voltage", "To store charge", "To amplify signals"], answer: 0 },
+            { q: "What material is most commonly used as an electrical conductor in household wiring?", options: ["Plastic", "Copper", "Wood", "Glass"], answer: 1 }
+        ],
+        Management: [
+            { q: "What management framework uses the DMAIC cycle for quality control?", options: ["Agile", "Lean Six Sigma", "Scrum", "Waterfall"], answer: 1 },
+            { q: "SWOT analysis evaluates Strengths, Weaknesses, Opportunities, and...", options: ["Targets", "Threats", "Trends", "Tasks"], answer: 1 },
+            { q: "In project management, what does 'CPM' stand for?", options: ["Critical Path Method", "Cost Matrix", "Control Process", "Core Milestone"], answer: 0 },
+            { q: "Setting clear, measurable objectives is commonly known by which acronym?", options: ["SMART", "FAST", "AGILE", "LEAN"], answer: 0 },
+            { q: "Allocating tasks and authority to team members is called...", options: ["Leadership", "Delegation", "Supervision", "Negotiation"], answer: 1 },
+            { q: "What is Agile project management best known for?", options: ["Rigid long plans", "Iterative flexibility and teamwork", "Single person control", "Zero documentation"], answer: 1 },
+            { q: "What does KPI stand for in performance management?", options: ["Key Performance Indicator", "Key Project Investment", "Known Process Item", "Kernel Program Interface"], answer: 0 },
+            { q: "What is the primary role of a project manager?", options: ["Planning, executing, and closing projects", "Writing all code alone", "Fixing physical machines", "Selling products directly"], answer: 0 },
+            { q: "What does Root Cause Analysis (RCA) aim to achieve?", options: ["Find the underlying cause of a problem", "Blame employees", "Ignore minor faults", "Increase production speed"], answer: 0 },
+            { q: "What is Benchmarking in business strategy?", options: ["Comparing performance against industry best practices", "Sitting on a bench", "Fixing bench tools", "Writing manual logs"], answer: 0 }
+        ]
+    };
+
+    function selectField(field) {
+        currentField = field;
+        document.body.style.backgroundImage = `url('${fieldBackgrounds[field]}')`;
+        document.getElementById('selection-screen').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        
+        let pool = [...masterGameData[field]];
+        activeQuestions = pool.sort(() => 0.5 - Math.random()).slice(0, 5);
+
+        currentLevel = 0;
+        lives = 3;
+        timeLeft = 300;
+        updateLivesDisplay();
+        
+        if(timerInterval) clearInterval(timerInterval);
+        startTime = Date.now();
+        startTimer();
+        loadLevel();
+    }
+
+    function startTimer() {
+        timerInterval = setInterval(() => {
+            let mins = Math.floor(timeLeft / 60);
+            let secs = timeLeft % 60;
+            document.getElementById('timer').textContent = `Time: ${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                gameOver("⏰ Time's Up! Security system locked down.");
+            }
+            timeLeft--;
+        }, 1000);
+    }
+
+    function loadLevel() {
+        if (currentLevel >= 5) {
+            clearInterval(timerInterval);
+            let totalSeconds = Math.floor((Date.now() - startTime) / 1000);
+            let finalMins = Math.floor(totalSeconds / 60);
+            let finalSecs = totalSeconds % 60;
+            let timeTakenStr = `${finalMins}m ${finalSecs}s`;
+
+            document.getElementById('game-card').innerHTML = `
+                <h1 style="color: #34d399; text-align: center; font-size: 24px;">🎉 Congratulations!</h1>
+                <p style="text-align: center; color: #d1d5db; margin-top: 15px; font-size: 15px;">
+                    You successfully escaped the facility in <strong>${currentField}</strong>!<br><br>
+                    ⏱️ <strong>Total Time Taken: ${timeTakenStr}</strong>
+                </p>
+                <div class="share-container">
+                    <button class="share-btn wa" onclick="shareSocial('whatsapp', '${timeTakenStr}')">WhatsApp</button>
+                    <button class="share-btn fb" onclick="shareSocial('facebook', '${timeTakenStr}')">Facebook</button>
+                    <button class="share-btn tw" onclick="shareSocial('twitter', '${timeTakenStr}')">X (Twitter)</button>
+                    <button class="share-btn li" onclick="shareSocial('linkedin', '${timeTakenStr}')">LinkedIn</button>
+                    <button class="share-btn th" onclick="shareSocial('threads', '${timeTakenStr}')">Threads</button>
+                    <button class="share-btn ig" onclick="shareSocial('instagram', '${timeTakenStr}')">Instagram</button>
+                </div>
+                <button class="action-btn" onclick="location.reload()">Play Again</button>
+            `;
+            return;
+        }
+
+        let levelData = activeQuestions[currentLevel];
+        document.getElementById('lvl-title').textContent = `Level ${currentLevel + 1} of 5 - ${currentField}`;
+        document.getElementById('lvl-desc').textContent = levelData.q;
+        
+        let optionsHtml = '';
+        levelData.options.forEach((opt, index) => {
+            optionsHtml += `<button class="option-btn" onclick="checkAnswer(${index})">${String.fromCharCode(65 + index)}. ${opt}</button>`;
+        });
+        document.getElementById('options-container').innerHTML = optionsHtml;
+        document.getElementById('feedback').textContent = '';
+        document.getElementById('progress').style.width = ((currentLevel + 1) * 20) + '%';
+    }
+
+    function checkAnswer(selectedIndex) {
+        let levelData = activeQuestions[currentLevel];
+        let feedback = document.getElementById('feedback');
+
+        if (selectedIndex === levelData.answer) {
+            feedback.style.color = '#34d399';
+            feedback.textContent = "✅ Correct! Security gate unlocked.";
+            currentLevel++;
+            setTimeout(loadLevel, 1000);
+        } else {
+            lives--;
+            updateLivesDisplay();
+            if (lives <= 0) {
+                clearInterval(timerInterval);
+                gameOver("❌ Out of Lives! Security lockdown activated.");
+                return;
+            }
+            feedback.style.color = '#ef4444';
+            feedback.textContent = `❌ Incorrect answer! Lives remaining: ${lives}`;
+        }
+    }
+
+    function updateLivesDisplay() {
+        let hearts = "";
+        for(let i=0; i<lives; i++) hearts += "❤️";
+        document.getElementById('lives-display').textContent = hearts;
+    }
+
+    function gameOver(message) {
+        document.getElementById('game-card').innerHTML = `
+            <h1 style="color: #ef4444; text-align: center; font-size: 22px;">🚨 Mission Failed</h1>
+            <p style="text-align: center; color: #d1d5db; margin-top: 15px; font-size: 14px;">${message}</p>
+            <div style="background: rgba(31, 41, 55, 0.8); padding: 15px; border-radius: 8px; margin-top: 15px; text-align: center; border: 1px solid #4b5563;">
+                <p style="color: #f3f4f6; margin-bottom: 10px; font-size: 14px;">Take a rest in our website and return back!</p>
+                <a href="https://www.adrigizmo.com" target="_blank" style="display: inline-block; background: #2563eb; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 14px;">Visit ADRIGIZMO Website</a>
+            </div>
+            <button class="action-btn" onclick="location.reload()" style="margin-top: 15px;">Try Again</button>
+        `;
+    }
+
+    function shareSocial(platform, timeStr) {
+        let websiteName = "ADRIGIZMO TECH TECHNIC";
+        let mainWebsiteUrl = "https://www.adrigizmo.com";
+        let gameUrl = window.location.href;
+        
+        let message = `🏆 I successfully completed the 3D Escape Room Challenge in ${currentField} within ${timeStr} on ${websiteName}!\n\n🎮 Play here: ${gameUrl}\n🌐 Visit: ${mainWebsiteUrl}`;
+
+        if(platform === 'whatsapp') {
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`, '_blank');
+        } else if(platform === 'facebook') {
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(gameUrl)}`, '_blank');
+        } else if(platform === 'twitter') {
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}`, '_blank');
+        } else if(platform === 'linkedin') {
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(gameUrl)}`, '_blank');
+        } else {
+            navigator.clipboard.writeText(message);
+            alert("Result copied to clipboard! You can share it on " + platform.toUpperCase() + ".");
+        }
+    }
+</script>
+
+</body>
+</html>
