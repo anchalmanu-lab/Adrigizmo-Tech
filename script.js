@@ -1,4 +1,4 @@
-// Adrigizmo AI Chatbot Integration Script
+// Adrigizmo AI Chatbot Integration Script with Fixed Proxy
 const API_KEY = "AQ.Ab8RN6JQbBPqfjiBTwcz39Pw-kgOApNVME6NlA6gPeZtoU3_ng"; 
 
 async function askChatbot(userQuery) {
@@ -14,10 +14,19 @@ async function askChatbot(userQuery) {
                 }]
             })
         });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const data = await response.json();
-        return data.candidates[0].content.parts[0].text;
+        if (data.candidates && data.candidates[0].content) {
+            return data.candidates[0].content.parts[0].text;
+        } else {
+            return "മറുപടി ലഭ്യമാക്കുന്നതിൽ ചെറിയ തടസ്സമുണ്ട്.";
+        }
     } catch (error) {
         console.error("Error connecting to AI:", error);
-        return "ക്ഷമിക്കണം, ഇപ്പോൾ കണക്ഷൻ ലഭ്യമല്ല.";
+        return "ക്ഷമിക്കണം, ഇപ്പോൾ കണക്ഷൻ ലഭ്യമല്ല. ദയവായി കുറച്ചു കഴിഞ്ഞ് ശ്രമിക്കുക.";
     }
 }
