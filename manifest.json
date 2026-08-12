@@ -1,0 +1,20 @@
+{
+  "name": "ADRIGIZMO TECH TECHNICS",
+  "short_name": "Adrigizmo",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0a0c10",
+  "theme_color": "#10b981",
+  "icons": [
+    {
+      "src": "https://i.pinimg.com/736x/09/7f/72/097f72bb502f991b333d5f71d2dbcdf0.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "https://i.pinimg.com/736x/09/7f/72/097f72bb502f991b333d5f71d2dbcdf0.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
