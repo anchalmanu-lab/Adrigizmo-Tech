@@ -1569,12 +1569,17 @@ async function sendMessage() {
     messages.innerHTML += `<div id="loading" style="text-align: left; color: gray; font-style: italic; font-size: 13px; padding: 5px;">Ask to Manu is typing...</div>`;
     messages.scrollTop = messages.scrollHeight;
 
-    // script.js-ൽ ഉള്ള askChatbot ഫംഗ്ഷൻ വഴി ഡാറ്റ എടുക്കുന്നു
-    const reply = typeof askChatbot === 'function' ? await askChatbot(text, currentLanguage) : "Response received.";
+    // ഇതാണ് മാറ്റേണ്ട വരി (askChatbot വിളിക്കുന്നത്)
+    let reply = "I am here to help!";
+    try {
+        reply = askChatbot(text, currentLanguage);
+    } catch(e) {
+        reply = "Please ask again.";
+    }
     
     document.getElementById('loading').remove();
     
-    // ബോട്ടിന്റെ മറുപടി (വാട്സാപ്പ് സ്റ്റൈൽ പ്രൊഫൈൽ പിക്കിനൊപ്പം)
+    // ബോട്ടിന്റെ മറുപടി
     messages.innerHTML += `
         <div style="display: flex; align-items: flex-start; gap: 8px; max-width: 90%;">
             <img src="https://i.postimg.cc/FKXjY7Bx/Screenshot-2026-08-12-083039.png" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex-shrink: 0; margin-top: 2px;" alt="Manu">
