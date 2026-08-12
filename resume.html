@@ -123,10 +123,10 @@
             width: 100%; 
             max-width: 720px; 
             min-height: 1020px;
-            padding: 45px 50px; 
+            padding: 30px 45px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
             font-family: 'Times New Roman', Times, serif; 
-            line-height: 1.5; 
+            line-height: 1.4; 
             border-radius: 2px; 
             transition: 0.3s;
         }
@@ -150,7 +150,7 @@
         .theme-executive .cv-contact { font-size: 11px; color: #1e293b; margin-top: 4px; }
         .theme-executive .cv-section-heading { font-size: 12.5px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; color: #0f172a; border-bottom: 1px solid #94a3b8; padding-bottom: 3px; margin-top: 18px; margin-bottom: 6px; text-align: left; }
 
-        .theme-corporate .cv-top { background: #0f172a; color: #fff; padding: 18px; margin: -45px -50px 18px -50px; text-align: center; }
+        .theme-corporate .cv-top { background: #0f172a; color: #fff; padding: 15px; margin: -30px -45px 15px -45px; text-align: center; }
         .theme-corporate .cv-name { font-size: 24px; font-weight: bold; text-transform: uppercase; color: #fff; letter-spacing: 1px; white-space: nowrap; }
         .theme-corporate .cv-title-sub { font-size: 13px; color: #38bdf8; margin-top: 3px; }
         .theme-corporate .cv-contact { font-size: 11px; color: #e2e8f0; margin-top: 5px; }
@@ -707,10 +707,10 @@
 
             const element = document.getElementById('resume-paper');
             const opt = {
-                margin: 0.1,
+                margin: [0.2, 0.2, 0.2, 0.2], /* പേജ് പെർഫെക്റ്റ് അലൈൻമെന്റിൽ കിട്ടാൻ ചെറിയ മാർജിൻ നൽകിയിരിക്കുന്നു */
                 filename: fileName,
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
+                html2canvas: { scale: 2, useCORS: true, scrollY: 0 },
                 jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
             };
             html2pdf().set(opt).from(element).save();
