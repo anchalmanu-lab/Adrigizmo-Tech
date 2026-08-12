@@ -1,6 +1,6 @@
 // ADRIGIZMO TECH TECHNICS - Click-Based Interactive Menu Chatbot Code
 const adrigizmoBotData = {
-    greeting: "Hi, I am Manu. How can I help you?",
+    greeting: "Hi, its me Manu, welcome to Adrigizmo! How can I help you?",
     languages: [
         { code: "en", label: "English" },
         { code: "ml", label: "മലയാളം" },
@@ -21,7 +21,7 @@ const adrigizmoBotData = {
                 },
                 {
                     q: { en: "Do I get a certificate after completion?", ml: "കോഴ്സ് പൂർത്തിയാക്കിയാൽ സർട്ടിഫിക്കറ്റ് ലഭിക്കുമോ?", hi: "क्या कोर्स पूरा होने पर सर्टिफिकेट मिलेगा?", ta: "படிப்பை முடித்தவுடன் சான்றிதழ் கிடைக்குமா?" },
-                    a: { en: "Yes, you can purchase or download official digital/printed certificates from Alison after passing.", ml: "അതെ, പാസ്സായ ശേഷം അലിസണിൽ നിന്ന് ഔദ്യോഗിക ഡിജിറ്റൽ/പ്രിന്റഡ് സർട്ടിഫിക്കറ്റുകൾ ഡൗൺലോഡ് ചെയ്യാം.", hi: "हाँ, आप उत्तीर्ण होने के बाद आधिकारिक डिजिटल/प्रिंटेड सर्टिफिकेट प्राप्त कर सकते हैं.", ta: "ஆம், தேர்ச்சி பெற்ற பிறகு உத்தியோகபூர்வ டிஜிட்டல்/அச்சிடப்பட்ட சான்றிதண்களைப் பெறலாம்." }
+                    a: { en: "Yes, you can purchase or download official digital/printed certificates from Alison after passing.", ml: "അതെ, പാസ്സായ ശേഷം അലിസണിൽ നിന്ന് ഔദ്യോഗിക ഡിജിറ്റൽ/പ്രിന്റഡ് സർട്ടിഫിക്കറ്റുകൾ ഡൗൺലോഡ് ചെയ്യാം.", hi: "हाँ, आप उत्तीर्ण होने के बाद आधिकारिक डिजिटल/प्रिंटेड सर्टिफिकेट प्राप्त कर सकते हैं.", ta: "ஆம், தேர்ச்சி பெற்ற பிறகு உத்தியோகபூர்வ டிஜிட்டல்/அச்சிட்டப்பட்ட சான்றிதண்களைப் பெறலாம்." }
                 },
                 {
                     q: { en: "Is there any time limit to complete a course?", ml: "കോഴ്സ് തീർക്കാൻ സമയപരിധി ഉണ്ടോ?", hi: "क्या कोर्स पूरा करने की कोई समय सीमा है?", ta: "படிப்பை முடிக்க காலக்கெடு உள்ளதா?" },
@@ -42,27 +42,27 @@ const adrigizmoBotData = {
             qa: [
                 {
                     q: { en: "What types of courses are available?", ml: "ഏതൊക്കെ തരം കോഴ്സുകൾ ലഭ്യമാണ്?", hi: "किस प्रकार के कोर्सेज उपलब्ध हैं?", ta: "என்ன வகையான படிப்புகள் உள்ளன?" },
-                    a: { en: "Mechanical, HSE, IT, Business, Management, and English communication courses.", ml: "മെക്കാനിക്കൽ, എച്ച്.എസ്.ഇ, ഐ.ടി, ബിസിനസ്സ്, മാനേജ്‌മെന്റ്, ഇംഗ്ലീഷ് കമ്മ്യൂണിക്കേഷൻ കോഴ്സുകൾ.", hi: "मैकेनिकल, एचएसई, आईटी, बिजनेस, मैनेजमेंट और अंग्रेजी संचार पाठ्यक्रम।", ta: "மெக்கானிக்கல், HSE, IT, வணிகம், மேலாண்மை மற்றும் ஆங்கிலத் தொடர்புப் படிப்புகள்." }
+                    a: { en: "Mechanical, HSE, IT, Business, Management, and English communication courses.", ml: "മെക്കാനിക്കൽ, എച്ച്.എസ്.ഇ, ഐ.ടി, ബിസിനസ്സ്, മാനേജ്‌മെന്റ്, ഇംഗ്ലീഷ് കമ്മ്യൂണിക്കേഷൻ കോഴ്സുകൾ.", hi: "मैकेनिकल, एचएसई, आईटी, बिजनेस, मैनेजमेंट और अंग्रेजी संचार पाठ्यक्रम।" }
                 },
                 {
                     q: { en: "How to enroll in a course?", ml: "കോഴ്സിൽ എങ്ങനെ ജോയിൻ ചെയ്യാം?", hi: "कोर्स में कैसे नामांकन करें?", ta: "படிப்பில் எவ்வாறு இணைவது?" },
-                    a: { en: "Visit our website, select your preferred category, and click the link to start learning.", ml: "ഞങ്ങളുടെ വെബ്‌സൈറ്റ് സന്ദർശಿಸಿ, പ്രിഫേർഡ് കാറ്റഗറി തിരഞ്ഞെടുത്ത് പഠനം ആരംഭിക്കാം.", hi: "हमारी वेबसाइट पर जाएं, अपनी पसंदीदा श्रेणी चुनें और सीखना शुरू करें।", ta: "எங்கள் வலைத்தளத்தைப் பார்வையிடவும், விருப்பமான வகையைத் தேர்ந்தெடுத்து கற்கத் தொடங்கவும்." }
+                    a: { en: "Visit our website, select your preferred category, and click the link to start learning.", ml: "ഞങ്ങളുടെ വെബ്‌സൈറ്റ് സന്ദർശಿಸಿ, പ്രിഫേർഡ് കാറ്റഗറി തിരഞ്ഞെടുത്ത് പഠനം ആരംഭിക്കാം." }
                 },
                 {
                     q: { en: "Are these courses beginner-friendly?", ml: "തുടക്കക്കാർക്ക് പഠിക്കാൻ പറ്റിയതാണോ?", hi: "क्या ये कोर्सेज शुरुआती लोगों के लिए हैं?", ta: "ஆரம்பநிலையாளர்களுக்கு இது ஏற்றதா?" },
-                    a: { en: "Yes, we have courses ranging from basic to advanced levels.", ml: "അതെ, അടിസ്ഥാന തലം മുതൽ അഡ്വാൻസ്ഡ് തലം വരെയുള്ള കോഴ്സുകൾ ലഭ്യമാണ്.", hi: "हाँ, हमारे पास बुनियादी से उन्नत स्तर तक के पाठ्यक्रम हैं.", ta: "ஆம், அடிப்படை முதல் மேம்பட்ட நிலை வரை படிப்புகள் உள்ளன." }
+                    a: { en: "Yes, we have courses ranging from basic to advanced levels.", ml: "അതെ, അടിസ്ഥാന തലം മുതൽ അഡ്വാൻസ്ഡ് തലം വരെയുള്ള കോഴ്സുകൾ ലഭ്യമാണ്." }
                 },
                 {
                     q: { en: "Do I need prior experience?", ml: "മുൻപരിചയം വേണോ?", hi: "क्या पहले से अनुभव होना जरूरी है?", ta: "முன்னனுபவம் தேவையா?" },
-                    a: { en: "No prior experience is required for most foundational courses.", ml: "ഭൂരിഭാഗം അടിസ്ഥാന കോഴ്സുകൾക്കും മുൻപരിചയം ആവശ്യമില്ല.", hi: "अधिकांश बुनियादी पाठ्यक्रमों के लिए किसी पूर्व अनुभव की आवश्यकता नहीं है.", ta: "பெரும்பாலான அடிப்படைப் படிப்புகளுக்கு முன்னனுபவம் தேவையில்லை." }
+                    a: { en: "No prior experience is required for most foundational courses.", ml: "ഭൂരിഭാഗം അടിസ്ഥാന കോഴ്സുകൾക്കും മുൻപരിചയം ആവശ്യമില്ല." }
                 },
                 {
                     q: { en: "Can I study using a mobile phone?", ml: "മൊബൈൽ വഴി പഠിക്കാൻ പറ്റുമോ?", hi: "क्या मोबाइल से पढ़ाई की जा सकती है?", ta: "மொபைல் மூலம் படிக்கலாமா?" },
-                    a: { en: "Yes, the platform is fully mobile-friendly.", ml: "അതെ, പ്ലാറ്റ്‌ഫോം പൂർണ്ണമായും മൊബൈൽ ഫ്രണ്ട്‌ലി ആണ്.", hi: "हाँ, प्लेटफॉर्म पूरी तरह से मोबाइल-अनुकूल है.", ta: "ஆம், தளம் முழுமையாக மொபைல் நட்பு கொண்டது." }
+                    a: { en: "Yes, the platform is fully mobile-friendly.", ml: "അതെ, പ്ലാറ്റ്‌ഫോം പൂർണ്ണമായും മൊബൈൽ ഫ്രണ്ട്‌ലി ആണ്." }
                 },
                 {
                     q: { en: "Are the certificates globally recognized?", ml: "സർട്ടിഫിക്കറ്റുകൾക്ക് അന്താരാഷ്ട്ര അംഗീകാരമുണ്ടോ?", hi: "क्या इन सर्टिफिकेट्स की عالمی मान्यता है?", ta: "சான்றிதழ்களுக்கு சர்வதேச அங்கீகாரம் உள்ளதா?" },
-                    a: { en: "Yes, Alison certificates are recognized by employers worldwide.", ml: "അതെ, അലിസൺ സർട്ടിഫിക്കറ്റുകൾ ലോകമെമ്പാടുമുള്ള തൊഴിലുടമകൾ അംഗീകരിച്ചവയാണ്.", hi: "हाँ, अलिज़न प्रमाणपत्रों को दुनिया भर के नियोक्ताओं द्वारा मान्यता प्राप्त है.", ta: "ஆம், அலிசன் சான்றித்கள் உலகளாவிய வேலை வழங்குநர்களால் அங்கீகரிக்கப்பட்டுள்ளன." }
+                    a: { en: "Yes, Alison certificates are recognized by employers worldwide.", ml: "അതെ, അലിസൺ സർട്ടിഫിക്കറ്റുകൾ ലോകമെമ്പാടുമുള്ള തൊഴിലുടമകൾ അംഗീകരിച്ചവയാണ്." }
                 }
             ]
         },
@@ -71,27 +71,27 @@ const adrigizmoBotData = {
             qa: [
                 {
                     q: { en: "What is an ATS Resume?", ml: "ATS റെസ്യൂമെ എന്നാൽ എന്ത്?", hi: "ATS रिज्यूमे क्या है?", ta: "ATS ரெஸ்யூமே என்றால் என்ன?" },
-                    a: { en: "Applicant Tracking System (ATS) resumes pass automated employer screening software.", ml: "ഓട്ടോമേറ്റഡ് സോഫ്റ്റ്‌വെയറുകൾക്ക് എളുപ്പത്തിൽ റീഡ് ചെയ്യാൻ പാകത്തിലുള്ള റെസ്യൂമെയാണ് ATS റെസ്യൂമെ.", hi: "Applicant Tracking System (ATS) रिज्यूमे स्वचालित सॉफ़्टवेयर को आसानी से पार कर लेते हैं.", ta: "ATS ரெஸ்யூமே என்பது தானியங்கு மென்பொருளால் எளிதில் வாசிக்கத்தக்க வகையில் வடிவமைக்கப்பட்டவை." }
+                    a: { en: "Applicant Tracking System (ATS) resumes pass automated employer screening software.", ml: "ഓട്ടോമേറ്റഡ് സോഫ്റ്റ്‌വെയറുകൾക്ക് എളുപ്പത്തിൽ റീഡ് ചെയ്യാൻ പാകത്തിലുള്ള റെസ്യൂമെയാണ് ATS റെസ്യൂമെ." }
                 },
                 {
                     q: { en: "Is the Resume Builder free?", ml: "റെസ്യൂമെ ബിൽഡർ സൗജന്യമാണോ?", hi: "क्या रिज्यूमे बिल्डर मुफ्त है?", ta: "ரெஸ்யூமே பில்டர் இலவசமா?" },
-                    a: { en: "Yes, our AI-powered ATS resume builder is completely free to use.", ml: "അതെ, ഞങ്ങളുടെ AI-പവേർഡ് ATS റെസ്യൂമെ ബിൽഡർ പൂർണ്ണമായും സൗജന്യമാണ്.", hi: "हाँ, हमारा AI-संचालित ATS रिज्यूमे बिल्डर उपयोग करने के लिए पूरी तरह से निःशुल्क है.", ta: "ஆம், எங்கள் AI-இயங்கும் ATS ரெஸ்யூமே பில்டர் முற்றிலும் இலவசமானது." }
+                    a: { en: "Yes, our AI-powered ATS resume builder is completely free to use.", ml: "അതെ, ഞങ്ങളുടെ AI-പവേർഡ് ATS റെസ്യൂമെ ബിൽഡർ പൂർണ്ണമായും സൗജന്യമാണ്." }
                 },
                 {
                     q: { en: "How to create a resume here?", ml: "ഇവിടെ എങ്ങനെ റെസ്യൂമെ ഉണ്ടാക്കാം?", hi: "यहां रिज्यूमे कैसे बनाएं?", ta: "இங்கு எப்படி ரெஸ்யூமே உருவாக்குவது?" },
-                    a: { en: "Fill in your details into our template and generate the PDF instantly.", ml: "ടെംപ്ലേറ്റിൽ നിങ്ങളുടെ വിവരങ്ങൾ നൽകി ഇൻസ്റ്റന്റ് ആയി പിഡിഎഫ് ജനറേറ്റ് ചെയ്യാം.", hi: "अपने विवरण भरें और तुरंत पीडीएफ जनरेट करें.", ta: "உங்கள் விவரங்களை நிரப்பி உடனடியாக PDF ஐ உருவாக்கலாம்." }
+                    a: { en: "Fill in your details into our template and generate the PDF instantly.", ml: "ടെംപ്ലേറ്റിൽ നിങ്ങളുടെ വിവരങ്ങൾ നൽകി ഇൻസ്റ്റന്റ് ആയി പിഡിഎഫ് ജനറേറ്റ് ചെയ്യാം." }
                 },
                 {
                     q: { en: "Why is ATS important for jobs?", ml: "ജോലിക്ക് ATS എന്തിനാണ് പ്രധാനം?", hi: "नौकरी के लिए ATS क्यों महत्वपूर्ण है?", ta: "வேலைக்கு ATS ஏன் முக்கியம்?" },
-                    a: { en: "Most companies use ATS software to filter resumes before human review.", ml: "ഹ്യൂമൻ റിവ്യൂവിന് മുൻപ് റെസ്യൂമെകൾ ഫിൽട്ടർ ചെയ്യാൻ കമ്പനികൾ ATS സോഫ്റ്റ്‌വെയർ ഉപയോഗിക്കുന്നു.", hi: "अधिकांश कंपनियां मानव समीक्षा से पहले रिज्यूमे को फ़िल्टर करने के लिए ATS का उपयोग करती हैं.", ta: "பெரும்பாலான நிறுவனங்கள் மனித மதிப்பாய்வுக்கு முன் ரெஸ்யூமேக்களை வடிகட்ட இதைப் பயன்படுத்துகின்றன." }
+                    a: { en: "Most companies use ATS software to filter resumes before human review.", ml: "ഹ്യൂമൻ റിവ്യൂവിന് മുൻപ് റെസ്യൂമെകൾ ഫിൽട്ടർ ചെയ്യാൻ കമ്പനികൾ ATS സോഫ്റ്റ്‌വെയർ ഉപയോഗിക്കുന്നു." }
                 },
                 {
                     q: { en: "Can I download it as PDF?", ml: "പിഡിഎഫ് ആയി ഡൗൺലോഡ് ചെയ്യാൻ പറ്റുമോ?", hi: "क्या इसे पीडीएफ के रूप में डाउनलोड किया जा सकता है?", ta: "PDF ஆக பதிவிறக்கம் செய்யலாமா?" },
-                    a: { en: "Yes, you can instantly download your professional resume in PDF format.", ml: "അതെ, പ്രൊഫഷണൽ റെസ്യൂമെ PDF ഫോർമാറ്റിൽ ഡൗൺലോഡ് ചെയ്യാം.", hi: "हाँ, आप अपना पेशेवर रिज्यूमे पीडीएफ प्रारूप में डाउनलोड कर सकते हैं.", ta: "ஆம், உங்கள் தொழில்முறை ரெஸ்யூமேவை PDF வடிவில் பதிவிறக்கம் செய்யலாம்." }
+                    a: { en: "Yes, you can instantly download your professional resume in PDF format.", ml: "അതെ, പ്രൊഫഷണൽ റെസ്യൂമെ PDF ഫോർമാറ്റിൽ ഡൗൺലോഡ് ചെയ്യാം." }
                 },
                 {
                     q: { en: "Can I update my resume later?", ml: "റെസ്യൂമെ പിന്നീട് എഡിറ്റ് ചെയ്യാൻ പറ്റുമോ?", hi: "क्या मैं बाद में अपना रिज्यूमे अपडेट कर सकता हूँ?", ta: "ரெஸ்யூமேவை பிறகு மாற்றியமைக்க முடியுமா?" },
-                    a: { en: "Yes, you can modify and update your details anytime.", ml: "അതെ, എപ്പോൾ വേണമെങ്കിലും നിങ്ങളുടെ വിവരങ്ങൾ മാറ്റാം.", hi: "हाँ, आप कभी भी अपने विवरण संशोधित और अपडेट कर सकते हैं.", ta: "ஆம், எப்போது வேண்டுமானாலும் உங்கள் விவரங்களை மாற்றியமைக்கலாம்." }
+                    a: { en: "Yes, you can modify and update your details anytime.", ml: "അതെ, എപ്പോൾ വേണമെങ്കിലും നിങ്ങളുടെ വിവരങ്ങൾ മാറ്റാം." }
                 }
             ]
         },
@@ -100,27 +100,27 @@ const adrigizmoBotData = {
             qa: [
                 {
                     q: { en: "What is Skill Zone?", ml: "സ്കിൽ സോൺ എന്നാൽ എന്ത്?", hi: "स्किल ज़ोन क्या है?", ta: "ஸ்கில் சோன் என்றால் என்ன?" },
-                    a: { en: "A dedicated section to enhance practical technical and industrial skills.", ml: "പ്രായോഗിക സാങ്കേതിക, വ്യാവസായിക സ്കില്ലുകൾ മെച്ചപ്പെടുത്താനുള്ള പ്രത്യേക വിഭാഗം.", hi: "व्यावहारिक तकनीकी और औद्योगिक कौशल को बढ़ाने के लिए एक समर्पित अनुभाग।", ta: "நடைமுறை தொழில்நுட்ப மற்றும் தொழில்துறை திறன்களை மேம்படுத்துவதற்கான ஒரு பிரிவு." }
+                    a: { en: "A dedicated section to enhance practical technical and industrial skills.", ml: "പ്രായോഗിക സാങ്കേതിക, വ്യാവസായിക സ്കില്ലുകൾ മെച്ചപ്പെടുത്താനുള്ള പ്രത്യേക വിഭാഗം." }
                 },
                 {
                     q: { en: "Who is this designed for?", ml: "ഇത് ആർക്കുവേണ്ടിയാണ്?", hi: "यह किसके लिए डिज़ाइन किया गया है?", ta: "இது யாருக்காக வடிவமைக்கப்பட்டுள்ளது?" },
-                    a: { en: "Technicians, engineers, students, and industrial workers.", ml: "ടെക്നീഷ്യന്മാർ, എൻജിനീയർമാർ, വിദ്യാർത്ഥികൾ, വ്യാവസായിക ജീവനക്കാർ എന്നിവർക്കായി.", hi: "तकनीशियन, इंजीनियर, छात्र और औद्योगिक श्रमिक।", ta: "தொழில்நுட்ப வல்லுநர்கள், பொறியாளர்கள், மாணவர்கள் மற்றும் தொழில்துறை பணியாளர்கள்." }
+                    a: { en: "Technicians, engineers, students, and industrial workers.", ml: "ടെക്നീഷ്യന്മാർ, എൻജിനീയർമാർ, വിദ്യാർത്ഥികൾ, വ്യാവസായിക ജീവനക്കാർ എന്നിവർക്കായി." }
                 },
                 {
                     q: { en: "Are there practical modules?", ml: "പ്രായോഗിക പരിശീലന പാഠങ്ങളുണ്ടോ?", hi: "क्या इसमें व्यावहारिक मॉड्यूल हैं?", ta: "நடைமுறை பாடங்கள் உள்ளதா?" },
-                    a: { en: "Yes, focused on industry-standard engineering and technical concepts.", ml: "അതെ, ഇൻഡസ്ട്രി സ്റ്റാൻഡേർഡ് എൻജിനീയറിങ് കൺസെപ്റ്റുകൾ ഉൾക്കൊള്ളുന്നു.", hi: "हाँ, उद्योग-मानक इंजीनियरिंग अवधारणाओं पर केंद्रित है.", ta: "ஆம், தொழில் தரநிலை பொறியியல் கருத்துகளில் கவனம் செலுத்துகிறது." }
+                    a: { en: "Yes, focused on industry-standard engineering and technical concepts.", ml: "അതെ, ഇൻഡസ്ട്രി സ്റ്റാൻഡേർഡ് എൻജിനീയറിങ് കൺസെപ്റ്റുകൾ ഉൾക്കൊള്ളുന്നു." }
                 },
                 {
                     q: { en: "Can I learn safety standards (HSE)?", ml: "സുരക്ഷാ മാനദണ്ഡങ്ങൾ (HSE) പഠിക്കാമോ?", hi: "क्या सुरक्षा मानक (HSE) सीख सकते हैं?", ta: "பாதுகாப்பு தரநிலைகளை (HSE) கற்றுக்கொள்ளலாமா?" },
-                    a: { en: "Yes, dedicated HSE and workplace safety modules are available.", ml: "അതെ, പ്രത്യേക HSE, വർക്ക്പ്ലേസ് സേഫ്റ്റി മോഡ്യൂളുകൾ ലഭ്യമാണ്.", hi: "हाँ, समर्पित HSE और कार्यस्थल सुरक्षा मॉड्यूल उपलब्ध हैं.", ta: "ஆம், பிரத்யேக HSE மற்றும் பணிபுரியும் இட பாதுகாப்பு தொகுதிகள் உள்ளன." }
+                    a: { en: "Yes, dedicated HSE and workplace safety modules are available.", ml: "അതെ, പ്രത്യേക HSE, വർക്ക്പ്ലേസ് സേഫ്റ്റി മോഡ്യൂളുകൾ ലഭ്യമാണ്." }
                 },
                 {
                     q: { en: "Is there any assessment?", ml: "ടെസ്റ്റുകളും വിലയിരുത്തലുകളും ഉണ്ടോ?", hi: "क्या कोई मूल्यांकन है?", ta: "சோதனைகள் உள்ளதா?" },
-                    a: { en: "Yes, quizzes and module tests help verify your learning progress.", ml: "അതെ, ക്വിസുകളും ടെസ്റ്റുകളും വഴി പഠനനിലവാരം പരിശോധിക്കാം.", hi: "हाँ, क्विज़ और मॉड्यूल परीक्षण आपकी प्रगति को सत्यापित करने में मदद करते हैं.", ta: "ஆம், வினாடி வினாக்கள் உங்கள் கற்றல் முன்னேற்றத்தைச் சரிபார்க்க உதவுகின்றன." }
+                    a: { en: "Yes, quizzes and module tests help verify your learning progress.", ml: "അതെ, ക്വിസുകളും ടെസ്റ്റുകളും വഴി പഠനനിലവാരം പരിശോധിക്കാം." }
                 },
                 {
                     q: { en: "How does it help in career growth?", ml: "കരിയർ വളർച്ചയ്ക്ക് ഇത് എങ്ങനെ സഹായിക്കും?", hi: "यह करियर विकास में कैसे मदद करता है?", ta: "இது எப்படி கரியர் வளர்ச்சிக்கு உதவும்?" },
-                    a: { en: "It bridges the gap between basic education and industrial skill requirements.", ml: "അടിസ്ഥാന വിദ്യാഭ്യാസവും ഇൻഡസ്ട്രി ആവശ്യങ്ങളും തമ്മിലുള്ള അന്തരം ഇത് കുറയ്ക്കുന്നു.", hi: "यह बुनियादी शिक्षा और औद्योगिक कौशल आवश्यकताओं के बीच की खाई को पाटता है.", ta: "இது அடிப்படை கல்விக்கும் தொழில்துறை தேவைக்கும் உள்ள இடைவெளியைக் குறைக்கிறது." }
+                    a: { en: "It bridges the gap between basic education and industrial skill requirements.", ml: "അടിസ്ഥാന വിദ്യാഭ്യാസവും ഇൻഡസ്ട്രി ആവശ്യങ്ങളും തമ്മിലുള്ള അന്തരം ഇത് കുറയ്ക്കുന്നു." }
                 }
             ]
         },
@@ -129,7 +129,7 @@ const adrigizmoBotData = {
             qa: [
                 {
                     q: { en: "Do you provide job placement?", ml: "ജോലി സാധ്യതകൾ (പ്ലേസ്മെന്റ്) ലഭ്യമാണോ?", hi: "क्या आप जॉब प्लेसमेंट प्रदान करते हैं?", ta: "வேலை வாய்ப்பு கிடைக்கிறதா?" },
-                    a: { en: "We provide career guidance, skill enhancement, and placement support resources.", ml: "കരിയർ ഗൈഡൻസും സ്കിൽ സപ്പോർട്ടുമാണ് ഞങ്ങൾ നൽകുന്നത്.", hi: "हम करियर मार्गदर्शन और प्लेसमेंट सहायता संसाधन प्रदान करते हैं.", ta: "நாங்கள் தொழில் வழிகாட்டுதல் மற்றும் வேலைவாய்ப்பு ஆதரவை வழங்குகிறோம்." }
+                    a: { en: "We provide career guidance, skill enhancement, and placement support resources.", ml: "കരിയർ ഗൈഡൻസും സ്കിൽ സപ്പോർട്ടുമാണ് ഞങ്ങൾ നൽകുന്നത്." }
                 },
                 {
                     q: { en: "How to improve interview chances?", ml: "അഭിമുഖങ്ങളിൽ വിജയിക്കാൻ എന്ത് ചെയ്യണം?", hi: "इंटरव्यू में सफलता कैसे पाएं?" },
@@ -191,3 +191,166 @@ const adrigizmoBotData = {
         whatsappUrl: "https://wa.me/918921818932"
     }
 };
+
+// --- ചാറ്റ് ഇന്ററാക്ഷൻ ലോജിക് ---
+let currentLang = 'en';
+
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('manu-chat-toggle');
+    const closeBtn = document.getElementById('manu-chat-close');
+    const chatWindow = document.getElementById('manu-chat-window');
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+            if (chatWindow.style.display === 'flex') {
+                startChatFlow();
+            }
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            chatWindow.style.display = 'none';
+        });
+    }
+});
+
+// ചാറ്റ് ഫ്ലോ സ്റ്റാർട്ട് ചെയ്യുന്ന ഫംഗ്ഷൻ (ഫുൾ ബോഡി ഇമേജ് & ഗ്രീറ്റിംഗ് സഹിതം)
+function startChatFlow() {
+    const chatBody = document.getElementById('manu-chat-body');
+    if (!chatBody) return;
+    chatBody.innerHTML = '';
+    
+    // പ്രൊഫഷണൽ ഫുൾ-ബോഡി ഇമേജ് ഹെഡ്‌ടാഗ് ആയി ചേർക്കുന്നു
+    let imgDiv = document.createElement('div');
+    imgDiv.style.cssText = "text-align: center; margin-bottom: 8px;";
+    imgDiv.innerHTML = `<img src="https://i.postimg.cc/tTtnZkxp/55af0393-50a5-46c0-b427-5708a6ef4859-removebg-preview.png" alt="Manu" style="max-width: 120px; height: auto; object-fit: contain;">`;
+    chatBody.appendChild(imgDiv);
+
+    // ഗ്രീറ്റിംഗ് മെസ്സേജ്
+    appendMessage(adrigizmoBotData.greeting);
+    
+    // ഭാഷ തിരഞ്ഞെടുക്കാനുള്ള ബട്ടണുകൾ
+    let langDiv = document.createElement('div');
+    langDiv.style.cssText = "display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-top: 5px;";
+
+    adrigizmoBotData.languages.forEach(lang => {
+        let btn = document.createElement('button');
+        btn.innerText = lang.label;
+        btn.style.cssText = "background: #007bff; color: white; border: none; padding: 8px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: bold;";
+        btn.onclick = () => {
+            currentLang = lang.code;
+            appendMessage(lang.label, true);
+            showCategories();
+        };
+        langDiv.appendChild(btn);
+    });
+    chatBody.appendChild(langDiv);
+}
+
+// പ്രധാന കാറ്റഗറികൾ കാണിക്കുന്ന ഫംഗ്ഷൻ
+function showCategories() {
+    const chatBody = document.getElementById('manu-chat-body');
+    appendMessage(currentLang === 'ml' ? "ഒരു വിഭാഗം തിരഞ്ഞെടുക്കൂ:" : "Select a category:");
+
+    let catDiv = document.createElement('div');
+    catDiv.style.cssText = "display: flex; flex-direction: column; gap: 5px; margin-top: 5px;";
+
+    for (let key in adrigizmoBotData.categories) {
+        let cat = adrigizmoBotData.categories[key];
+        let btn = document.createElement('button');
+        btn.innerText = cat.title[currentLang] || cat.title['en'];
+        btn.style.cssText = "background: #28a745; color: white; border: none; padding: 8px; border-radius: 6px; cursor: pointer; text-align: left; font-size: 13px; font-weight: bold;";
+        btn.onclick = () => {
+            appendMessage(btn.innerText, true);
+            showQuestions(key);
+        };
+        catDiv.appendChild(btn);
+    }
+    chatBody.appendChild(catDiv);
+}
+
+// ആ കാറ്റഗറിയിലെ ചോദ്യങ്ങൾ കാണിക്കുന്ന ഫംഗ്ഷൻ
+function showQuestions(catKey) {
+    const chatBody = document.getElementById('manu-chat-body');
+    let category = adrigizmoBotData.categories[catKey];
+    
+    appendMessage(currentLang === 'ml' ? "നിങ്ങളുടെ സംശയം തിരഞ്ഞെടുക്കൂ:" : "Select your question:");
+
+    let qDiv = document.createElement('div');
+    qDiv.style.cssText = "display: flex; flex-direction: column; gap: 5px; margin-top: 5px;";
+
+    category.qa.forEach(item => {
+        let qText = item.q[currentLang] || item.q['en'];
+        let aText = item.a[currentLang] || item.a['en'];
+
+        let btn = document.createElement('button');
+        btn.innerText = qText;
+        btn.style.cssText = "background: #f1f1f1; color: #333; border: 1px solid #ccc; padding: 8px; border-radius: 6px; cursor: pointer; text-align: left; font-size: 12px;";
+        btn.onclick = () => {
+            appendMessage(qText, true);
+            appendMessage(aText);
+            showFeedback();
+        };
+        qDiv.appendChild(btn);
+    });
+    chatBody.appendChild(qDiv);
+}
+
+// ഫീഡ്‌ബാക്ക് (Yes / No) കാണിക്കുന്ന ഫംഗ്ഷൻ
+function showFeedback() {
+    const chatBody = document.getElementById('manu-chat-body');
+    let fb = adrigizmoBotData.feedback;
+    
+    appendMessage(fb.question[currentLang] || fb.question['en']);
+
+    let fbDiv = document.createElement('div');
+    fbDiv.style.cssText = "display: flex; gap: 10px; margin-top: 5px;";
+
+    let yesBtn = document.createElement('button');
+    yesBtn.innerText = fb.yes[currentLang] || fb.yes['en'];
+    yesBtn.style.cssText = "background: #28a745; color: white; border: none; padding: 6px 15px; border-radius: 6px; cursor: pointer; font-size: 12px;";
+    yesBtn.onclick = () => {
+        appendMessage(yesBtn.innerText, true);
+        appendMessage(currentLang === 'ml' ? "നന്ദി! സന്തോഷം." : "Thank you! Glad I could help.");
+        setTimeout(startChatFlow, 2000);
+    };
+
+    let noBtn = document.createElement('button');
+    noBtn.innerText = fb.no[currentLang] || fb.no['en'];
+    noBtn.style.cssText = "background: #dc3545; color: white; border: none; padding: 6px 15px; border-radius: 6px; cursor: pointer; font-size: 12px;";
+    noBtn.onclick = () => {
+        appendMessage(noBtn.innerText, true);
+        let waLink = document.createElement('a');
+        waLink.href = fb.whatsappUrl;
+        waLink.target = "_blank";
+        waLink.innerText = fb.whatsappText[currentLang] || fb.whatsappText['en'];
+        waLink.style.cssText = "display: inline-block; background: #25D366; color: white; padding: 8px 12px; border-radius: 6px; text-decoration: none; margin-top: 5px; font-weight: bold; font-size: 12px;";
+        chatBody.appendChild(waLink);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    };
+
+    fbDiv.appendChild(yesBtn);
+    fbDiv.appendChild(noBtn);
+    chatBody.appendChild(fbDiv);
+}
+
+// മെസ്സേജുകൾ ചാറ്റിലേക്ക് ചേർക്കാനും ഓട്ടോ-സ്ക്രോൾ വർക്ക് ചെയ്യാനുമുള്ള ഫംഗ്ഷൻ
+function appendMessage(text, isUser = false) {
+    const chatBody = document.getElementById('manu-chat-body');
+    if (!chatBody) return;
+    
+    let msgDiv = document.createElement('div');
+    msgDiv.innerHTML = text;
+    msgDiv.style.cssText = isUser ? 
+        "background: #007bff; color: white; padding: 8px 12px; border-radius: 8px; max-width: 80%; align-self: flex-end; word-break: break-word; font-size: 13px;" : 
+        "background: #e4e6eb; color: #333; padding: 8px 12px; border-radius: 8px; max-width: 80%; align-self: flex-start; word-break: break-word; font-size: 13px;";
+    
+    chatBody.appendChild(msgDiv);
+    
+    // പുതിയ മെസ്സേജുകൾ വരുമ്പോൾ വിൻഡോ താഴേക്ക് ഓട്ടോമാറ്റിക് ആയി സ്ക്രോൾ ആകും
+    setTimeout(() => {
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }, 50);
+}
