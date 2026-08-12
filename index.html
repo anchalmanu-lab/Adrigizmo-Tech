@@ -1530,26 +1530,132 @@
 </div>
 
 <script>
-let currentLanguage = "English";
+let currentLanguage = "en";
+
+// മുഴുവൻ ഡാറ്റാബേസും (4 ഭാഷകളിൽ)
+const botData = {
+    categories: {
+        about_alison: {
+            title: { en: "About Alison", ml: "അബൗട്ട് അലിസൺ", hi: "अलिज़न के बारे में", ta: "அலிசன் பற்றி" },
+            qa: [
+                { q: { en: "What is Alison?", ml: "അലിസൺ എന്നാൽ എന്ത്?", hi: "अलिज़न क्या है?", ta: "அலிசன் என்றால் என்ன?" }, a: { en: "Alison is a global online learning platform providing free, certified courses. We are its official affiliate partner.", ml: "സൗജന്യ സർട്ടിഫൈഡ് കോഴ്സുകൾ നൽകുന്ന ആഗോള ഓൺലൈൻ ലേണിംഗ് പ്ലാറ്റ്‌ഫോമാണ് അലിസൺ.", hi: "अलिज़न एक वैश्विक ऑनलाइन शिक्षण मंच है जो मुफ्त, प्रमाणित पाठ्यक्रम प्रदान करता है।", ta: "அலிசன் என்பது இலவச, சான்றளிக்கப்பட்ட படிப்புகளை வழங்கும் ஒரு உலகளாவிய ஆன்லைன் கற்றல் தளமாகும்." } },
+                { q: { en: "Are these courses completely free?", ml: "കോഴ്സുകൾ പൂർണ്ണമായും സൗജന്യമാണോ?", hi: "क्या ये कोर्सेज पूरी तरह से मुफ्त हैं?", ta: "படிப்புகள் முற்றிலும் இலவசமா?" }, a: { en: "Yes, learning and completing the courses are 100% free.", ml: "അതെ, കോഴ്സുകൾ പഠിക്കുന്നതും പൂർത്തിയാക്കുന്നതും 100% സൗജന്യമാണ്.", hi: "हाँ, पाठ्यक्रम सीखना और पूरा करना 100% निःशुल्क है.", ta: "ஆம், படிப்புகளைக் கற்றுக்கொள்வதும் முடிப்பதும் 100% இலவசம்." } },
+                { q: { en: "Do I get a certificate after completion?", ml: "കോഴ്സ് പൂർത്തിയാക്കിയാൽ സർട്ടിഫിക്കറ്റ് ലഭിക്കുമോ?", hi: "क्या कोर्स पूरा होने पर सर्टिफिकेट मिलेगा?", ta: "படிப்பை முடித்தவுடன் சான்றிதழ் கிடைக்குமா?" }, a: { en: "Yes, you can purchase or download official certificates after passing.", ml: "അതെ, പാസ്സായ ശേഷം ഔദ്യോഗിക സർട്ടിഫിക്കറ്റുകൾ ഡൗൺലോഡ് ചെയ്യാം.", hi: "हाँ, आप उत्तीर्ण होने के बाद आधिकारिक सर्टिफिकेट प्राप्त कर सकते हैं.", ta: "ஆம், தேர்ச்சி பெற்ற பிறகு சான்றிதண்களைப் பெறலாம்." } },
+                { q: { en: "Is there any time limit to complete a course?", ml: "കോഴ്സ് തീർക്കാൻ സമയപരിധി ഉണ്ടോ?", hi: "क्या कोर्स पूरा करने की कोई समय सीमा है?", ta: "படிப்பை முடிக்க காலக்கெடு உள்ளதா?" }, a: { en: "No, all courses are self-paced; you can learn anytime, anywhere.", ml: "ഇല്ല, എല്ലാ കോഴ്സുകളും സെൽഫ് പേസ്ഡ് ആണ്; എപ്പോൾ വേണമെങ്കിലും പഠിക്കാം.", hi: "नहीं, सभी पाठ्यक्रम स्व-गति से चलते हैं; आप कभी भी सीख सकते हैं.", ta: "இல்லை, அனைத்து படிப்புகளும் சுய வேகத்தில் கற்கக்கூடியவை." } },
+                { q: { en: "How does Adrigizmo's partnership work?", ml: "അഡ്രിഗിസ്മോയുടെ പങ്കാളിത്തം എങ്ങനെയാണ്?", hi: "एड्रिजिस्मों की साझेदारी कैसे काम करती है?", ta: "அட்ரிஜிஸ்மோவின் கூட்டாண்மை எப்படி வேலை செய்கிறது?" }, a: { en: "We guide learners to access the best free global courses easily.", ml: "മികച്ച സൗജന്യ ആഗോള കോഴ്സുകൾ എളുപ്പത്തിൽ ആക്‌സസ് ചെയ്യാൻ ഞങ്ങൾ സഹായിക്കുന്നു.", hi: "हम शिक्षार्थियों को सर्वश्रेष्ठ मुफ्त वैश्विक पाठ्यक्रमों तक पहुंचने में मार्गदर्शन करते हैं.", ta: "சிறந்த இலவச உலகளாவிய படிப்புகளை அணுக வழிகாட்டுகிறோம்." } },
+                { q: { en: "Who can join these courses?", ml: "ആർക്കൊക്കെ ഈ കോഴ്സുകൾ പഠിക്കാം?", hi: "इन कोर्सेज में कौन शामिल हो सकता है?", ta: "யார் வேண்டுமானாலும் இந்த படிப்புகளில் சேரலாமா?" }, a: { en: "Students, job seekers, and working professionals—anyone can join.", ml: "വിദ്യാർത്ഥികൾ, ജോലി അന്വേഷിക്കുന്നവർ, പ്രൊഫഷണലുകൾ - ആർക്കും പഠിക്കാം.", hi: "छात्र, नौकरी चाहने वाले और कामकाजी पेशेवर - कोई भी शामिल हो सकता है.", ta: "மாணவர்கள், வேலை தேடுபவர்கள் மற்றும் வல்லுநர்கள் சேரலாம்." } }
+            ]
+        },
+        adrigizmo_courses: {
+            title: { en: "Adrigizmo Courses", ml: "അഡ്രിഗിസ്മോ കോഴ്സുകൾ", hi: "एड्रिजिस्मो कोर्सेज", ta: "அட்ரிஜிஸ்மோ படிப்புகள்" },
+            qa: [
+                { q: { en: "What types of courses are available?", ml: "ഏതൊക്കെ തരം കോഴ്സുകൾ ലഭ്യമാണ്?", hi: "किस प्रकार के कोर्सेज उपलब्ध हैं?", ta: "என்ன வகையான படிப்புகள் உள்ளன?" }, a: { en: "Mechanical, HSE, IT, Business, Management, and English communication.", ml: "മെക്കാനിക്കൽ, എച്ച്.എസ്.ഇ, ഐ.ടി, ബിസിനസ്സ്, മാനേജ്‌മെന്റ് കോഴ്സുകൾ.", hi: "मैकेनिकल, एचएसई, आईटी, बिजनेस, मैनेजमेंट पाठ्यक्रम।", ta: "மெக்கானிக்கல், HSE, IT, வணிகம் மற்றும் மேலாண்மை படிப்புகள்." } },
+                { q: { en: "How to enroll in a course?", ml: "കോഴ്സിൽ എങ്ങനെ ജോയിൻ ചെയ്യാം?", hi: "कोर्स में कैसे नामांकन करें?", ta: "படிப்பில் எவ்வாறு இணைவது?" }, a: { en: "Visit our website, select your category, and click the link to start.", ml: "വെബ്‌സൈറ്റ് സന്ദർശಿಸಿ കാറ്റഗറി തിരഞ്ഞെടുത്ത് പഠനം ആരംഭിക്കാം.", hi: "वेबसाइट पर जाएं और श्रेणी चुनकर सीखना शुरू करें.", ta: "வலைத்தளத்தைப் பார்வையிட்டு வகையைத் தேர்ந்தெடுத்து தொடங்கவும்." } },
+                { q: { en: "Are these courses beginner-friendly?", ml: "തുടക്കക്കാർക്ക് പഠിക്കാൻ പറ്റിയതാണോ?", hi: "क्या ये कोर्सेज शुरुआती लोगों के लिए हैं?", ta: "ஆரம்பநிலையாளர்களுக்கு ஏற்றதா?" }, a: { en: "Yes, we have courses ranging from basic to advanced levels.", ml: "അതെ, അടിസ്ഥാന തലം മുതൽ അഡ്വാൻസ്ഡ് തലം വരെ ലഭ്യമാണ്.", hi: "हाँ, बुनियादी से उन्नत स्तर तक उपलब्ध हैं.", ta: "அടി அடிப்படை முதல் மேம்பட்ட நிலை வரை உள்ளன." } },
+                { q: { en: "Do I need prior experience?", ml: "മുൻപരിചയം വേണോ?", hi: "क्या पहले से अनुभव होना जरूरी है?", ta: "முன்னனுபவம் தேவையா?" }, a: { en: "No prior experience is required for most foundational courses.", ml: "ഭൂരിഭാഗം കോഴ്സുകൾക്കും മുൻപരിചയം ആവശ്യമില്ല.", hi: "अधिकांश पाठ्यक्रमों के लिए पूर्व अनुभव की आवश्यकता नहीं है.", ta: "பெரும்பாலான படிப்புகளுக்கு முன்னனுபவம் தேவையில்லை." } },
+                { q: { en: "Can I study using a mobile phone?", ml: "മൊബൈൽ വഴി പഠിക്കാൻ പറ്റുമോ?", hi: "क्या मोबाइल से पढ़ाई की जा सकती है?", ta: "மொபைல் மூலம் படிக்கலாமா?" }, a: { en: "Yes, the platform is fully mobile-friendly.", ml: "അതെ, പ്ലാറ്റ്‌ഫോം പൂർണ്ണമായും മൊബൈൽ ഫ്രണ്ട്‌ലി ആണ്.", hi: "हाँ, प्लेटफॉर्म पूरी तरह से मोबाइल-अनुकूल है.", ta: "ஆம், தளம் முழுமையாக மொபைல் நட்பு கொண்டது." } },
+                { q: { en: "Are the certificates globally recognized?", ml: "സർട്ടിഫിക്കറ്റുകൾക്ക് അന്താരാഷ്ട്ര അംഗീകാരമുണ്ടോ?", hi: "क्या सर्टिफिकेट्स की वैश्विक मान्यता है?", ta: "சான்றிதழ்களுக்கு சர்வதேச அங்கீகாரம் உள்ளதா?" }, a: { en: "Yes, Alison certificates are recognized worldwide.", ml: "അതെ, അലിസൺ സർട്ടിഫിക്കറ്റുകൾ ലോകമെമ്പാടും അംഗീകരിച്ചവയാണ്.", hi: "हाँ, अलिज़न प्रमाणपत्रों को दुनिया भर में मान्यता प्राप्त है.", ta: "ஆம், அலிசன் சான்றிதழ்கள் உலகளவில் அங்கீகரிக்கப்பட்டுள்ளன." } }
+            ]
+        },
+        resume_builder: {
+            title: { en: "Adrigizmo Resume Builder", ml: "അഡ്രിഗിസ്മോ റെസ്യൂമെ ബിൽഡർ", hi: "एड्रिजिस्मो रिज्यूमे बिल्डर", ta: "அட்ரிஜிஸ்மோ ரெஸ்யூமே பில்டர்" },
+            qa: [
+                { q: { en: "What is an ATS Resume?", ml: "ATS റെസ്യൂമെ എന്നാൽ എന്ത്?", hi: "ATS रिज्यूमे क्या है?", ta: "ATS ரெஸ்யூமே என்றால் என்ன?" }, a: { en: "Applicant Tracking System resumes pass automated screening software.", ml: "ഓട്ടോമേറ്റഡ് സോഫ്റ്റ്‌വെയറുകൾക്ക് റീഡ് ചെയ്യാൻ പാകത്തിലുള്ള റെസ്യൂമെ.", hi: "ATS रिज्यूमे स्वचालित सॉफ़्टवेयर को आसानी से पार कर लेते हैं.", ta: "ATS ரெஸ்யூமே என்பது தானியங்கு மென்பொருளால் வாசிக்கத்தக்கவை." } },
+                { q: { en: "Is the Resume Builder free?", ml: "റെസ്യൂമെ ബിൽഡർ സൗജന്യമാണോ?", hi: "क्या रिज्यूमे बिल्डर मुफ्त है?", ta: "ரெஸ்யூமே பில்டர் இலவசமா?" }, a: { en: "Yes, our AI-powered ATS resume builder is completely free.", ml: "അതെ, ഞങ്ങളുടെ AI-പവേർഡ് ATS റെസ്യൂമെ ബിൽഡർ സൗജന്യമാണ്.", hi: "हाँ, हमारा AI-संचालित ATS रिज्यूमे बिल्डर मुफ्त है.", ta: "ஆம், எங்கள் AI-இயங்கும் ATS ரெஸ்யூமே பில்டர் இலவசமானது." } },
+                { q: { en: "How to create a resume here?", ml: "ഇവിടെ എങ്ങനെ റെസ്യൂമെ ഉണ്ടാക്കാം?", hi: "यहां रिज्यूमे कैसे बनाएं?", ta: "இங்கு எப்படி ரெஸ்யூமே உருவாக்குவது?" }, a: { en: "Fill in your details into our template and generate PDF instantly.", ml: "വിവരങ്ങൾ നൽകി ഇൻസ്റ്റന്റ് ആയി പിഡിഎഫ് ജനറേറ്റ് ചെയ്യാം.", hi: "विवरण भरें और तुरंत पीडीएफ जनरेट करें.", ta: "விவரங்களை நிரப்பி உடனடியாக PDF ஐ உருவாக்கலாம்." } },
+                { q: { en: "Why is ATS important for jobs?", ml: "ജോലിക്ക് ATS എന്തിനാണ് പ്രധാനം?", hi: "नौकरी के लिए ATS क्यों महत्वपूर्ण है?", ta: "வேலைக்கு ATS ஏன் முக்கியம்?" }, a: { en: "Companies use ATS software to filter resumes before human review.", ml: "റെസ്യൂമെകൾ ഫിൽട്ടർ ചെയ്യാൻ കമ്പനികൾ ATS സോഫ്റ്റ്‌വെയർ ഉപയോഗിക്കുന്നു.", hi: "कंपनियां समीक्षा से पहले रिज्यूमे को फ़िल्टर करने के लिए ATS उपयोग करती हैं.", ta: "நிறுவனங்கள் ரெஸ்யூமேக்களை வடிகட்ட இதைப் பயன்படுத்துகின்றன." } },
+                { q: { en: "Can I download it as PDF?", ml: "പിഡിഎഫ് ആയി ഡൗൺലോഡ് ചെയ്യാൻ പറ്റുമോ?", hi: "क्या इसे पीडीएफ के रूप में डाउनलोड किया जा सकता है?", ta: "PDF ஆக பதிவிறக்கம் செய்யலாமா?" }, a: { en: "Yes, download your professional resume in PDF format.", ml: "അതെ, പ്രൊഫഷണൽ റെസ്യൂമെ PDF ആയി ഡൗൺലോഡ് ചെയ്യാം.", hi: "हाँ, अपना पेशेवर रिज्यूमे पीडीएफ में डाउनलोड करें.", ta: "ஆம், உங்கள் தொழில்முறை ரெஸ்யூமேவை PDF ஆக பதிவிறக்கலாம்." } },
+                { q: { en: "Can I update my resume later?", ml: "റെസ്യൂമെ പിന്നീട് എഡിറ്റ് ചെയ്യാൻ പറ്റുമോ?", hi: "क्या मैं बाद में अपना रिज्यूमे अपडेट कर सकता हूँ?", ta: "ரெஸ்யூமேவை பிறகு மாற்றியமைக்க முடியுமா?" }, a: { en: "Yes, you can modify and update your details anytime.", ml: "അതെ, എപ്പോൾ വേണമെങ്കിലും വിവരങ്ങൾ മാറ്റാം.", hi: "हाँ, आप कभी भी विवरण अपडेट कर सकते हैं.", ta: "ஆம், எப்போது வேண்டுமானாலும் விவரங்களை மாற்றலாம்." } }
+            ]
+        },
+        skill_zone: {
+            title: { en: "Adrigizmo Skill Zone", ml: "അഡ്രിഗിസ്മോ സ്കിൽ സോൺ", hi: "एड्रिजिस्मो स्किल ज़ोन", ta: "அட்ரிஜிஸ்மோ ஸ்கில் சோன்" },
+            qa: [
+                { q: { en: "What is Skill Zone?", ml: "സ്കിൽ സോൺ എന്നാൽ എന്ത്?", hi: "स्किल ज़ोन क्या है?", ta: "ஸ்கில் சோன் என்றால் என்ன?" }, a: { en: "A dedicated section to enhance practical technical and industrial skills.", ml: "പ്രായോഗിക സാങ്കേതിക സ്കില്ലുകൾ മെച്ചപ്പെടുത്താനുള്ള പ്രത്യേക വിഭാഗം.", hi: "तकनीकी और औद्योगिक कौशल को बढ़ाने के लिए अनुभाग.", ta: "தொழில்நுட்ப திறன்களை மேம்படுத்துவதற்கான பிரிவு." } },
+                { q: { en: "Who is this designed for?", ml: "ഇത് ആർക്കുവേണ്ടിയാണ്?", hi: "यह किसके लिए डिज़ाइन किया गया है?", ta: "இது யாருக்காக வடிவமைக்கப்பட்டுள்ளது?" }, a: { en: "Technicians, engineers, students, and industrial workers.", ml: "ടെക്നീഷ്യന്മാർ, എൻജിനീയർമാർ, വിദ്യാർത്ഥികൾക്കായി.", hi: "तकनीशियन, इंजीनियर और छात्रों के लिए.", ta: "தொழில்நுட்ப வல்லுநர்கள் மற்றும் மாணவர்களுக்காக." } },
+                { q: { en: "Are there practical modules?", ml: "പ്രായോഗിക പരിശീലന പാഠങ്ങളുണ്ടോ?", hi: "क्या इसमें व्यावहारिक मॉड्यूल हैं?", ta: "நடைமுறை பாடங்கள் உள்ளதா?" }, a: { en: "Yes, focused on industry-standard engineering concepts.", ml: "അതെ, ഇൻഡസ്ട്രി സ്റ്റാൻഡേർഡ് കൺസെപ്റ്റുകൾ ഉൾക്കൊള്ളുന്നു.", hi: "हाँ, उद्योग-मानक अवधारणाओं पर केंद्रित है.", ta: "ஆம், தொழில் தரநிலை கருத்துகளில் கவனம் செலுத்துகிறது." } },
+                { q: { en: "Can I learn safety standards (HSE)?", ml: "സുരക്ഷാ മാനദണ്ഡങ്ങൾ (HSE) പഠിക്കാമോ?", hi: "क्या सुरक्षा मानक (HSE) सीख सकते हैं?", ta: "பாதுகாப்பு தரநிலைகளை (HSE) கற்றுக்கொள்ளலாமா?" }, a: { en: "Yes, dedicated HSE and workplace safety modules are available.", ml: "അതെ, പ്രത്യേക HSE സേഫ്റ്റി മോഡ്യൂളുകൾ ലഭ്യമാണ്.", hi: "हाँ, HSE और सुरक्षा मॉड्यूल उपलब्ध हैं.", ta: "ஆம், பிரத்யேக HSE பாதுகாப்பு தொகுதிகள் உள்ளன." } },
+                { q: { en: "Is there any assessment?", ml: "ടെസ്റ്റുകളും വിലയിരുത്തലുകളും ഉണ്ടോ?", hi: "क्या कोई मूल्यांकन है?", ta: "சோதனைகள் உள்ளதா?" }, a: { en: "Yes, quizzes and module tests help verify progress.", ml: "അതെ, ക്വിസുകൾ വഴി പഠനനിലവാരം പരിശോധിക്കാം.", hi: "हाँ, क्विज़ आपकी प्रगति को सत्यापित करते हैं.", ta: "ஆம், வினாடி வினாக்கள் முன்னேற்றத்தைச் சரிபார்க்க உதவுகின்றன." } },
+                { q: { en: "How does it help in career growth?", ml: "കരിയർ വളർച്ചയ്ക്ക് ഇത് എങ്ങനെ സഹായിക്കും?", hi: "यह करियर विकास में कैसे मदद करता है?", ta: "இது எப்படி கரியർ வளர்ச்சிக்கு உதவும்?" }, a: { en: "It bridges the gap between basic education and industrial skill requirements.", ml: "അടിസ്ഥാന വിദ്യാഭ്യാസവും ഇൻഡസ്ട്രി ആവശ്യങ്ങളും തമ്മിലുള്ള അന്തരം കുറയ്ക്കുന്നു.", hi: "यह शिक्षा और औद्योगिक कौशल के बीच की खाई को पाटता है.", ta: "இது கல்விக்கும் தொழில்துறை தேவைக்கும் உள்ள இடைவெளியைக் குறைக்கிறது." } }
+            ]
+        },
+        career_placement: {
+            title: { en: "Adrigizmo Career & Placement", ml: "കരിയർ & പ്ലേസ്മെന്റ്", hi: "करियर और प्लेसमेंट", ta: "வேலைவாய்ப்பு & இடம்" },
+            qa: [
+                { q: { en: "Do you provide job placement?", ml: "ജോലി സാധ്യതകൾ ലഭ്യമാണോ?", hi: "क्या आप जॉब प्लेसमेंट प्रदान करते हैं?", ta: "வேலை வாய்ப்பு கிடைக்கிறதா?" }, a: { en: "We provide career guidance and placement support resources.", ml: "കരിയർ ഗൈഡൻസും പ്ലേസ്മെന്റ് സപ്പോർട്ടും നൽകുന്നു.", hi: "हम करियर मार्गदर्शन और प्लेसमेंट सहायता प्रदान करते हैं.", ta: "நாங்கள் தொழில் வழிகாட்டுதல் மற்றும் ஆதரவை வழங்குகிறோம்." } },
+                { q: { en: "How to improve interview chances?", ml: "അഭിമുഖങ്ങളിൽ വിജയിക്കാൻ എന്ത് ചെയ്യണം?", hi: "इंटरव्यू में सफलता कैसे पाएं?", ta: "நேர்காணல்களில் வெற்றிபெற என்ன செய்ய வேண்டும்?" }, a: { en: "Use our ATS resume builder and complete relevant skill courses.", ml: "ATS റെസ്യൂമെ ബിൽഡറും കോഴ്സുകളും ഉപയോഗിച്ച് പ്രൊഫൈൽ മെച്ചപ്പെടുത്താം.", hi: "ATS रिज्यूमे बिल्डर का उपयोग करें और पाठ्यक्रम पूरे करें.", ta: "ATS ரெஸ்யூமே பில்டரைப் பயன்படுத்தவும்." } },
+                { q: { en: "Are career consultation sessions available?", ml: "കരിയർ കൺസൾട്ടേഷൻ ലഭ്യമാണോ?", hi: "क्या करियर परामर्श सत्र उपलब्ध हैं?", ta: "கரியர் ஆலோசனை உள்ளதா?" }, a: { en: "Yes, contact us directly via WhatsApp for guidance.", ml: "അതെ, ഗൈഡൻസിനായി വാട്സാപ്പ് വഴി ബന്ധപ്പെടാം.", hi: "हाँ, मार्गदर्शन के लिए व्हाट्सएप के जरिए संपर्क करें.", ta: "ஆம், வழிகாட்டுதலுக்கு வாட்ஸ்அப் மூலம் தொடர்பு கொள்ளலாம்." } },
+                { q: { en: "Which industries have high demand?", ml: "ഏതൊക്കെ മേഖലകളിലാണ് തൊഴിൽ സാധ്യത കൂടുതൽ?", hi: "किन उद्योगों में अधिक मांग है?", ta: "எந்தத் துறைகளில் வேலை வாய்ப்புகள் அதிகம்?" }, a: { en: "Mechanical, Oil & Gas, IT, HSE, and Management sectors.", ml: "മെക്കാനിക്കൽ, ഓയിൽ & ഗ്യാസ്, ഐ.ടി, എച്ച്.എസ്.ഇ, മാനേജ്‌മെന്റ്.", hi: "मैकेनिकल, ऑयल एंड गैस, आईटी और मैनेजमेंट सेक्टर.", ta: "மெக்கானிக்கல், ஆயில் & க্যাস, ஐடி மற்றும் மேலாண்மை துறைகள்." } },
+                { q: { en: "Do you help freshers?", ml: "ഫ്രെഷേഴ്സിന് സഹായം ലഭിക്കുമോ?", hi: "क्या फ्रेशर्स को मदद मिलती है?", ta: "புதியவர்களுக்கு உதவி கிடைக்குமா?" }, a: { en: "Yes, we guide freshers on building their initial profile and resume.", ml: "അതെ, ഫ്രെഷേഴ്സിന് പ്രൊഫൈൽ ഉണ്ടാക്കാൻ ഗൈഡ് ചെയ്യുന്നു.", hi: "हाँ, हम फ्रेशर्स को प्रोफाइल बनाने में मार्गदर्शन करते हैं.", ta: "ஆம், புதியவர்கள் சுயவிவரம் உருவாக்க வழிகாட்டுகிறோம்." } },
+                { q: { en: "How to contact for career support?", ml: "കരിയർ സപ്പോർട്ടിന് എങ്ങനെ ബന്ധപ്പെടാം?", hi: "करियर सपोर्ट के लिए कैसे संपर्क करें?", ta: "கரியர் உதவிக்கு எப்படி தொடர்பு கொள்வது?" }, a: { en: "Reach out via our official WhatsApp: +91 8921818932.", ml: "വാട്സാപ്പ് നമ്പറിൽ ബന്ധപ്പെടുക: +91 8921818932.", hi: "हमारे आधिकारिक व्हाट्सएप पर संपर्क करें: +91 8921818932.", ta: "எங்கள் அதிகாரப்பூர்வ வாட்ஸ்அப்பில் தொடர்பு கொள்ளவும்: +91 8921818932." } }
+            ]
+        },
+        contacts: {
+            title: { en: "Contacts", ml: "കോൺടാക്ട്സ്", hi: "संपर्क", ta: "தொடர்புகள்" },
+            qa: [
+                { q: { en: "How can I contact Adrigizmo?", ml: "അഡ്രിഗിസ്മോയെ എങ്ങനെ ബന്ധപ്പെടാം?", hi: "एड्रिजिस्मों से कैसे संपर्क करें?", ta: "அட்ரிஜிஸ்மோவை எப்படி தொடர்பு கொள்வது?" }, a: { en: "You can contact us via WhatsApp or email anytime.", ml: "വാട്സാപ്പ് വഴിയോ ഇമെയിൽ വഴിയോ ബന്ധപ്പെടാം.", hi: "आप व्हाट्सएप या ईमेल के माध्यम से संपर्क कर सकते हैं.", ta: "வாட்ஸ்அப் அல்லது மின்னஞ்சல் மூலம் தொடர்பு கொள்ளலாம்." } },
+                { q: { en: "What is the WhatsApp number?", ml: "വാട്സാപ്പ് നമ്പർ ഏതാണ്?", hi: "व्हाट्सएप नंबर क्या है?", ta: "வாட்ஸ்அப் எண் என்ன?" }, a: { en: "Our official WhatsApp contact is +91 8921818932.", ml: "വാട്സാപ്പ് നമ്പർ: +91 8921818932.", hi: "हमारा व्हाट्सएप संपर्क +91 8921818932 है.", ta: "வாட்ஸ்அப் எண் +91 8921818932 ஆகும்." } },
+                { q: { en: "What is the email address?", ml: "ഇമെയിൽ വിലാസം എന്താണ്?", hi: "ईमेल पता क्या है?", ta: "மின்னஞ்சல் முகவரி என்ன?" }, a: { en: "adrigizmouniverse@gmail.com", ml: "adrigizmouniverse@gmail.com", hi: "adrigizmouniverse@gmail.com", ta: "adrigizmouniverse@gmail.com" } },
+                { q: { en: "Where is the office located?", ml: "ഓഫീസ് എവിടെയാണ് സ്ഥിതി ചെയ്യുന്നത്?", hi: "कार्यालय कहां स्थित है?", ta: "அலுவலகம் எங்குள்ளது?" }, a: { en: "Kazhakuttom, Thiruvananthapuram, Kerala - 695582.", ml: "കഴക്കൂട്ടം, തിരുവനന്തപുരം, കേരളം - 695582.", hi: "काझाकोट्टम, तिरुवनंतपुरम, केरल - 695582.", ta: "கஜகட்டம், திருவனந்தபுரம், கேரளா - 695582." } },
+                { q: { en: "What is the response time?", ml: "മറുപടി ലഭിക്കാൻ എത്ര സമയം എടുക്കും?", hi: "जवाब मिलने में कितना समय लगता है?", ta: "பதில் கிடைக்க எவ்வளவு நேரம் ஆகும்?" }, a: { en: "We usually respond within 24 hours.", ml: "24 മണിക്കൂറിനുള്ളിൽ മറുപടി നൽകും.", hi: "हम आमतौर पर 24 घंटे के भीतर जवाब देते हैं.", ta: "நாங்கள் பொதுவாக 24 மணி நேரத்திற்குள் பதிலளிப்போம்." } },
+                { q: { en: "Can I get direct support?", ml: "നേരിട്ട് സംസാരിക്കാൻ സഹായം കിട്ടുമോ?", hi: "क्या सीधी सहायता मिल सकती है?", ta: "நேரடி உதவி பெற முடியுமா?" }, a: { en: "Yes, click WhatsApp for instant assistance at +91 8921818932.", ml: "വാട്സാപ്പ് വഴി ഇൻസ്റ്റന്റ് സപ്പോർട്ട് ലഭിക്കും (+91 8921818932).", hi: "तुरंत सहायता के लिए व्हाट्सएप पर क्लिक करें (+91 8921818932).", ta: "உடனடி உதவிக்கு வாட்ஸ்அப்பைக் கிளிக் செய்யவும் (+91 8921818932)." } }
+            ]
+        }
+    }
+};
+
+// നിങ്ങൾ ചോദിച്ച askChatbot ഫങ്ഷൻ
+function askChatbot(text, lang) {
+    const query = text.toLowerCase();
+    let matchedAnswer = "";
+
+    // യൂസർ ചോദിക്കുന്ന ചോദ്യം ഡാറ്റാബേസിൽ തിരയുന്നു
+    for (let catKey in botData.categories) {
+        let cat = botData.categories[catKey];
+        for (let item of cat.qa) {
+            // ചോദ്യമോ ഉത്തരമോ ഒത്തുനോക്കുന്നു
+            if (item.q.en.toLowerCase().includes(query) || 
+                item.a.en.toLowerCase().includes(query) || 
+                query.includes(item.q.en.toLowerCase().substring(0, 5))) {
+                matchedAnswer = item.a[lang] || item.a.en;
+                break;
+            }
+        }
+        if (matchedAnswer) break;
+    }
+
+    // കൃത്യമായ മാച്ച് കിട്ടിയില്ലെങ്കിൽ ഡിഫോൾട്ട് മറുപടിയും വാട്സാപ്പ് ലിങ്കും നൽകും
+    if (!matchedAnswer) {
+        if (lang === 'ml') {
+            return "ക്ഷമിക്കണം, എനിക്ക് ഇത് മനസ്സിലായില്ല. കൂടുതൽ സഹായത്തിന് താഴെ കാണുന്ന വാട്സാപ്പ് നമ്പറിൽ ബന്ധപ്പെടുക: <br><a href='https://wa.me/918921818932' target='_blank' style='color: #007bff; font-weight: bold;'>Chat with WhatsApp (+91 8921818932)</a>";
+        } else if (lang === 'hi') {
+            return "क्षमा करें, मुझे यह समझ नहीं आया। अधिक सहायता के लिए व्हाट्सएप पर संपर्क करें: <br><a href='https://wa.me/918921818932' target='_blank' style='color: #007bff; font-weight: bold;'>Chat with WhatsApp (+91 8921818932)</a>";
+        } else if (lang === 'ta') {
+            return "மன்னிக்கவும், எனக்கு இது புரியவில்லை. மேலும் உதவிக்கு வாட்ஸ்அப்பில் தொடர்பு கொள்ளவும்: <br><a href='https://wa.me/918921818932' target='_blank' style='color: #007bff; font-weight: bold;'>Chat with WhatsApp (+91 8921818932)</a>";
+        } else {
+            return "I'm sorry, I couldn't find an answer. For further assistance, please chat with us on WhatsApp: <br><a href='https://wa.me/918921818932' target='_blank' style='color: #007bff; font-weight: bold;'>Chat with WhatsApp (+91 8921818932)</a>";
+        }
+    }
+
+    return matchedAnswer;
+}
 
 function toggleChat() {
     const box = document.getElementById('chat-box');
     box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
 }
 
-function setLanguage(lang) {
-    currentLanguage = lang;
+function setLanguage(langCode, langName) {
+    currentLanguage = langCode;
     const messages = document.getElementById('chat-messages');
     
-    // യൂസർ സെലക്റ്റ് ചെയ്ത മെസ്സേജ്
-    messages.innerHTML += `<div style="text-align: right; background: #007bff; color: white; padding: 8px 12px; border-radius: 8px; align-self: flex-end; max-width: 80%; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"><b>Selected:</b> ${lang}</div>`;
+    messages.innerHTML += `<div style="text-align: right; background: #007bff; color: white; padding: 8px 12px; border-radius: 8px; align-self: flex-end; max-width: 80%; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"><b>Selected:</b> ${langName}</div>`;
     
-    // ബോട്ടിന്റെ മറുപടി (വാട്സാപ്പ് സ്റ്റൈൽ പ്രൊഫൈൽ പിക്കിനൊപ്പം)
     messages.innerHTML += `
-        <div style="display: flex; align-items: flex-start; gap: 8px; max-width: 90%;">
+        <div style="display: flex; align-items: flex-start; gap: 8px; max-width: 90%; margin-bottom: 10px;">
             <img src="https://i.postimg.cc/FKXjY7Bx/Screenshot-2026-08-12-083039.png" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex-shrink: 0; margin-top: 2px;" alt="Manu">
             <div style="background: white; color: #333; padding: 8px 12px; border-radius: 8px; border: 1px solid #e0e0e0; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                <b>Ask to Manu:</b> Language set to ${lang}. How can I assist you?
+                <b>Ask to Manu:</b> Language set to ${langName}. How can I assist you?
             </div>
         </div>`;
     messages.scrollTop = messages.scrollHeight;
@@ -1561,15 +1667,12 @@ async function sendMessage() {
     const text = input.value.trim();
     if (!text) return;
 
-    // യൂസർ അയക്കുന്ന മെസ്സേജ്
-    messages.innerHTML += `<div style="text-align: right; background: #007bff; color: white; padding: 8px 12px; border-radius: 8px; align-self: flex-end; max-width: 80%; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"><b>You:</b> ${text}</div>`;
+    messages.innerHTML += `<div style="text-align: right; background: #007bff; color: white; padding: 8px 12px; border-radius: 8px; align-self: flex-end; max-width: 80%; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 10px;"><b>You:</b> ${text}</div>`;
     input.value = '';
     
-    // ടൈപ്പിംഗ് ഇൻഡിക്കേറ്റർ
     messages.innerHTML += `<div id="loading" style="text-align: left; color: gray; font-style: italic; font-size: 13px; padding: 5px;">Ask to Manu is typing...</div>`;
     messages.scrollTop = messages.scrollHeight;
 
-    // ഇതാണ് മാറ്റേണ്ട വരി (askChatbot വിളിക്കുന്നത്)
     let reply = "I am here to help!";
     try {
         reply = askChatbot(text, currentLanguage);
@@ -1577,11 +1680,11 @@ async function sendMessage() {
         reply = "Please ask again.";
     }
     
-    document.getElementById('loading').remove();
-    
-    // ബോട്ടിന്റെ മറുപടി
+    const loadingEl = document.getElementById('loading');
+    if (loadingEl) loadingEl.remove();
+
     messages.innerHTML += `
-        <div style="display: flex; align-items: flex-start; gap: 8px; max-width: 90%;">
+        <div style="display: flex; align-items: flex-start; gap: 8px; max-width: 90%; margin-bottom: 10px;">
             <img src="https://i.postimg.cc/FKXjY7Bx/Screenshot-2026-08-12-083039.png" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex-shrink: 0; margin-top: 2px;" alt="Manu">
             <div style="background: white; color: #333; padding: 8px 12px; border-radius: 8px; border: 1px solid #e0e0e0; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
                 <b>Ask to Manu:</b> ${reply}
@@ -1594,6 +1697,5 @@ function handleKeyPress(e) {
     if (e.key === 'Enter') sendMessage();
 }
 </script>
-<script src="script.js"></script>
 </body>
 </html>
