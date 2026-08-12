@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- PWA Manifest Link -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#10b981">
+
+<!-- Service Worker Register Script -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(() => console.log("PWA Service Worker Registered Successfully"))
+      .catch((err) => console.log("PWA Registration Failed", err));
+  }
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2819095694260103"
      crossorigin="anonymous"></script>
 <!-- Google Analytics Tag (gtag.js) -->
