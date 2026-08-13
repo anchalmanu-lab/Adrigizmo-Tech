@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<link rel="icon" type="image/png" href="/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADRIGIZMO TECH TECHNIC - 3D Escape Room Challenge</title>
+    <title>ADRIGIZMO TECH TECHNICS - Skill Test Challenge</title>
+    <!-- HTML2Canvas Library to generate certificate image -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -20,7 +21,6 @@
             background-position: center;
             background-repeat: no-repeat;
             transition: background-image 0.5s ease-in-out;
-            perspective: 1200px;
         }
         .overlay {
             position: absolute;
@@ -118,19 +118,143 @@
         .progress-bar { width: 100%; height: 6px; background: #374151; border-radius: 3px; margin-bottom: 15px; overflow: hidden; }
         .progress-fill { height: 100%; background: #10b981; width: 20%; transition: width 0.4s ease; }
         
-        .share-container { display: flex; gap: 8px; justify-content: center; margin-top: 15px; flex-wrap: wrap; }
+        .action-btn { background: #3b82f6; width: 100%; margin-top: 10px; padding: 12px; border: none; border-radius: 6px; color: white; font-weight: bold; cursor: pointer; font-size: 14px; }
+        .action-btn:hover { background: #2563eb; }
+
+        .name-input-box {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .name-input-box input {
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid #4b5563;
+            background: #111827;
+            color: white;
+            font-size: 16px;
+        }
+
+        /* Professional Certificate Layout matching reference image */
+        #certificate-preview {
+            width: 100%;
+            max-width: 680px;
+            background: #ffffff;
+            color: #1f2937;
+            border: 6px solid #d97706;
+            padding: 30px;
+            box-sizing: border-box;
+            text-align: center;
+            margin: 0 auto 15px auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        /* Top Blue Banner Design */
+        .cert-top-banner {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            padding: 25px 20px;
+            margin: -30px -30px 20px -30px;
+            border-bottom: 4px solid #d97706;
+            position: relative;
+        }
+        .cert-title {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+        .cert-subtitle {
+            font-size: 13px;
+            letter-spacing: 3px;
+            color: #fbbf24;
+            margin-top: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        /* Emblem / Favicon Container */
+        .cert-emblem {
+            width: 65px;
+            height: 65px;
+            background: #ffffff;
+            border: 3px solid #d97706;
+            border-radius: 50%;
+            margin: -45px auto 10px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 3;
+        }
+        .cert-emblem img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+        .cert-presented {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #6b7280;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .cert-name {
+            font-size: 26px;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            color: #1e3a8a;
+            font-weight: bold;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #e5e7eb;
+            display: inline-block;
+            padding: 0 20px 5px 20px;
+        }
+        .cert-desc {
+            font-size: 14px;
+            color: #4b5563;
+            line-height: 1.6;
+            padding: 0 15px;
+            margin-bottom: 25px;
+        }
+        .cert-footer-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 20px;
+            padding: 0 10px;
+        }
+        .cert-team {
+            text-align: left;
+            font-size: 13px;
+            font-weight: bold;
+            color: #111827;
+        }
+        .cert-website-box {
+            text-align: right;
+            font-size: 12px;
+            color: #4b5563;
+        }
+
+        /* Share buttons container */
+        .share-container { display: flex; gap: 8px; justify-content: center; margin-top: 10px; flex-wrap: wrap; }
         .share-btn {
-            padding: 8px 12px; border-radius: 6px; color: white; border: none; font-weight: bold; cursor: pointer; font-size: 12px;
+            padding: 10px 14px; border-radius: 6px; color: white; border: none; font-weight: bold; cursor: pointer; font-size: 12px; flex: 1; min-width: 90px; text-align: center; text-decoration: none;
         }
         .wa { background: #25d366; }
+        .wa:hover { background: #1ebd56; }
         .fb { background: #1877f2; }
-        .tw { background: #000000; }
+        .fb:hover { background: #145dbf; }
+        .tw { background: #000000; border: 1px solid #444; }
+        .tw:hover { background: #222; }
         .li { background: #0a66c2; }
-        .th { background: #1f1f1f; border: 1px solid #444; }
-        .ig { background: #e1306c; }
-
-        .action-btn { background: #3b82f6; width: 100%; margin-top: 15px; padding: 12px; border: none; border-radius: 6px; color: white; font-weight: bold; cursor: pointer; }
-        .action-btn:hover { background: #2563eb; }
+        .li:hover { background: #084e96; }
     </style>
 </head>
 <body>
@@ -139,18 +263,27 @@
 
 <div class="container" id="game-card">
     <div class="header">
-        <a href="https://www.adrigizmo.com" class="brand-title" target="_blank">🌐 ADRIGIZMO TECH TECHNIC</a>
+        <a href="https://www.adrigizmo.com" class="brand-title" target="_blank">🌐 ADRIGIZMO TECH TECHNICS</a>
         <div style="display: flex; gap: 8px; align-items: center;">
             <a href="https://www.adrigizmo.com" class="back-web-btn" target="_blank">Back to Website</a>
-            <div class="stats">
+            <div class="stats hidden" id="stats-area">
                 <div class="lives" id="lives-display">❤️❤️❤️</div>
                 <div class="timer-badge" id="timer">Time: 05:00</div>
             </div>
         </div>
     </div>
 
+    <!-- Name Entry Screen -->
+    <div id="name-screen">
+        <p class="question-text" style="text-align: center; font-size: 16px; font-weight: bold;">Enter your full name to start the Skill Test Challenge:</p>
+        <div class="name-input-box">
+            <input type="text" id="user-name-input" placeholder="Enter your name here..." autocomplete="off">
+            <button class="action-btn" onclick="startNameProcess()">Proceed to Challenge</button>
+        </div>
+    </div>
+
     <!-- Field Selection Screen -->
-    <div id="selection-screen">
+    <div id="selection-screen" class="hidden">
         <p class="question-text" style="text-align: center;">Select your professional field to initialize the Challenge:</p>
         <div class="field-grid">
             <button class="field-btn" onclick="selectField('IT')">💻 IT & Programming</button>
@@ -177,6 +310,7 @@
 </div>
 
 <script>
+    let playerName = "";
     let currentField = '';
     let currentLevel = 0;
     let activeQuestions = [];
@@ -184,6 +318,8 @@
     let timeLeft = 300;
     let timerInterval;
     let startTime;
+    let timeTakenStr = "";
+    let heartsStr = "";
 
     const fieldBackgrounds = {
         IT: "https://i.pinimg.com/1200x/61/cf/19/61cf194ce3154d95fd694e192bbd2e50.jpg",
@@ -205,7 +341,27 @@
             { q: "What does CSS stand for?", options: ["Cascading Style Sheets", "Computer Style System", "Creative Sheet Style", "Colorful Style Sheet"], answer: 0 },
             { q: "Which company developed the React framework?", options: ["Google", "Meta (Facebook)", "Microsoft", "Apple"], answer: 1 },
             { q: "What port does standard HTTP traffic run on by default?", options: ["443", "80", "8080", "21"], answer: 1 },
-            { q: "What is the main function of an operating system?", options: ["Manage hardware & software", "Browse internet", "Design graphics", "Compile code"], answer: 0 }
+            { q: "What is the main function of an operating system?", options: ["Manage hardware & software", "Browse internet", "Design graphics", "Compile code"], answer: 0 },
+            { q: "Which of the following is a NoSQL database?", options: ["MySQL", "PostgreSQL", "MongoDB", "Oracle"], answer: 2 },
+            { q: "What does API stand for?", options: ["Application Programming Interface", "Advanced Program Integration", "Automated Process Interaction", "Application Process Integration"], answer: 0 },
+            { q: "Which HTML tag is used to define an internal style sheet?", options: ["<script>", "<css>", "<style>", "<design>"], answer: 2 },
+            { q: "What does JSON stand for?", options: ["JavaScript Object Notation", "Java Source Open Network", "Junction Script Online Node", "JavaScript Operation Name"], answer: 0 },
+            { q: "Which data structure operates on a Last In, First Out (LIFO) basis?", options: ["Queue", "Stack", "Array", "Tree"], answer: 1 },
+            { q: "Which tool is commonly used for containerization?", options: ["Docker", "Photoshop", "Notepad++", "VLC"], answer: 0 },
+            { q: "What is the extension of a Python source file?", options: [".pt", ".py", ".pi", ".pn"], answer: 1 },
+            { q: "Which symbol is used for single-line comments in JavaScript?", options: ["//", "/*", "<!--", "#"], answer: 0 },
+            { q: "What does CPU stand for?", options: ["Central Process Unit", "Central Processing Unit", "Computer Personal Unit", "Central Processor Utility"], answer: 1 },
+            { q: "Which of these is not a programming language?", options: ["Python", "HTML", "C++", "Java"], answer: 1 },
+            { q: "What is the main purpose of DNS?", options: ["Translate domain names to IP addresses", "Store website files", "Secure network traffic", "Design user interfaces"], answer: 0 },
+            { q: "Which company created the Java programming language?", options: ["Microsoft", "Sun Microsystems", "Apple", "IBM"], answer: 1 },
+            { q: "What is an infinite loop?", options: ["A loop that runs forever", "A loop that runs once", "An error in syntax", "A secure function"], answer: 0 },
+            { q: "Which of the following is an interpreted language?", options: ["C", "C++", "Python", "Assembly"], answer: 2 },
+            { q: "What does RAM stand for?", options: ["Read Access Memory", "Random Access Memory", "Rapid Active Module", "Run Action Main"], answer: 1 },
+            { q: "Which attribute is used to provide alternative text for an image in HTML?", options: ["title", "src", "alt", "href"], answer: 2 },
+            { q: "What is the output of 2 + 2 * 2 in most programming languages?", options: ["8", "6", "4", "Error"], answer: 1 },
+            { q: "Which protocol is used to send emails?", options: ["SMTP", "POP3", "IMAP", "HTTP"], answer: 0 },
+            { q: "What does IDE stand for?", options: ["Integrated Development Environment", "Internal Design Engine", "Interactive Data Execution", "Internet Direct Exchange"], answer: 0 },
+            { q: "Which of these is a version control system?", options: ["Git", "Node.js", "Apache", "Nginx"], answer: 0 }
         ],
         Marketing: [
             { q: "What does SEO stand for in digital marketing?", options: ["Site Execution", "Search Engine Optimization", "Social Operation", "Sales Output"], answer: 1 },
@@ -217,7 +373,27 @@
             { q: "What does CTA stand for in marketing campaigns?", options: ["Call to Action", "Cost to Acquire", "Click Through Analytics", "Campaign Target Audience"], answer: 0 },
             { q: "Which social platform is primarily used for B2B professional networking?", options: ["Instagram", "TikTok", "LinkedIn", "Snapchat"], answer: 2 },
             { q: "What is organic reach in social media?", options: ["Paid advertisements", "Free views/engagement without ads", "Bot traffic", "Sponsored posts"], answer: 1 },
-            { q: "What does ROI stand for in business and marketing?", options: ["Rate of Investment", "Return on Investment", "Revenue Over Income", "Risk on Innovation"], answer: 1 }
+            { q: "What does ROI stand for in business and marketing?", options: ["Rate of Investment", "Return on Investment", "Revenue Over Income", "Risk on Innovation"], answer: 1 },
+            { q: "What does B2C stand for?", options: ["Business to Consumer", "Brand to Company", "Business to Corporate", "Buyer to Creator"], answer: 0 },
+            { q: "Which tool is widely used for web analytics and tracking traffic?", options: ["Google Analytics", "Photoshop", "Visual Studio", "GitHub"], answer: 0 },
+            { q: "What is email marketing primarily used for?", options: ["Spamming users", "Nurturing leads and retention", "Hardware testing", "Coding websites"], answer: 1 },
+            { q: "What does USP stand for in marketing?", options: ["Unique Selling Proposition", "Universal Sales Plan", "User Service Program", "Unified Strategic Positioning"], answer: 0 },
+            { q: "What is inbound marketing focused on?", options: ["Interrupting customers", "Attracting customers through valuable content", "Cold calling", "Door-to-door sales"], answer: 1 },
+            { q: "What is affiliate marketing?", options: ["Selling company-owned stock only", "Earning a commission by promoting other products", "Direct employee sales", "Free product distribution"], answer: 1 },
+            { q: "What does CTR stand for in digital ads?", options: ["Click-Through Rate", "Cost Total Ratio", "Customer Time Response", "Campaign Target Reach"], answer: 0 },
+            { q: "Which of these is a paid social media metric?", options: ["CPC (Cost Per Click)", "Organic Reach", "Follower Count", "Direct Profile Visits"], answer: 0 },
+            { q: "What is brand awareness?", options: ["The degree to which consumers know a brand", "The total sales revenue", "The employee headcount", "The production cost"], answer: 0 },
+            { q: "What is a target audience?", options: ["A specific group of consumers aimed at by marketing", "All internet users globally", "Company board members", "Product developers"], answer: 0 },
+            { q: "What does KPI stand for?", options: ["Key Performance Indicator", "Key Process Input", "Known Product Index", "Key Public Interaction"], answer: 0 },
+            { q: "What is native advertising?", options: ["Ads that match the form and function of the platform", "Pop-up banners", "Loud video commercials", "Print newspaper flyers"], answer: 0 },
+            { q: "What is a landing page?", options: ["A standalone web page created for a marketing campaign", "The server root folder", "An error page", "The checkout confirmation portal"], answer: 0 },
+            { q: "What does PPC cost depend on?", options: ["Number of clicks", "Flat monthly fee", "Server capacity", "Company size"], answer: 0 },
+            { q: "What is remarketing/retargeting?", options: ["Targeting ads to users who previously visited your site", "Deleting old campaigns", "Refunding customers", "Resetting passwords"], answer: 0 },
+            { q: "Which strategy involves partnering with influential people?", options: ["Influencer Marketing", "Affiliate Network", "PPC Growth", "SEO Optimization"], answer: 0 },
+            { q: "What is content curation?", options: ["Gathering and sharing relevant content from other sources", "Writing original books", "Deleting blog posts", "Coding mobile apps"], answer: 0 },
+            { q: "What does A/B testing mean in marketing?", options: ["Comparing two versions of a webpage/ad to see which performs better", "Testing two products at once", "Alphabetical sorting", "Auditing finances"], answer: 0 },
+            { q: "What is lead generation?", options: ["The process of attracting and converting prospects into potential customers", "Manufacturing lead metals", "Hiring new staff", "Closing physical shops"], answer: 0 },
+            { q: "What is viral marketing?", options: ["Marketing designed to spread rapidly from person to person", "Infecting computers with viruses", "Medical product sales", "Door-to-door flyers"], answer: 0 }
         ],
         Safety: [
             { q: "What safety device protects against electrical shocks by breaking circuits?", options: ["MCB", "GFCI", "Transformer", "Inverter"], answer: 1 },
@@ -229,7 +405,27 @@
             { q: "What does MSDS stand for in industrial chemistry and safety?", options: ["Material Safety Data Sheet", "Mechanical System Design Standard", "Main Safety Directive System", "Manual Safety Deployment Step"], answer: 0 },
             { q: "Why is regular ear protection necessary in high-noise industrial zones?", options: ["To prevent hearing loss", "To hear better", "To look professional", "To block wind"], answer: 0 },
             { q: "What is the primary goal of a 5S workplace organization methodology?", options: ["Increase clutter", "Enhance safety, efficiency, and order", "Reduce employee count", "Increase machinery speed"], answer: 1 },
-            { q: "What does OSHA stand for internationally?", options: ["Occupational Safety and Health Administration", "Operational Security and Hazard Agency", "Office of Safety and Health Authority", "Overhead System Handling Association"], answer: 0 }
+            { q: "What does OSHA stand for internationally?", options: ["Occupational Safety and Health Administration", "Operational Security and Hazard Agency", "Office of Safety and Health Authority", "Overhead System Handling Association"], answer: 0 },
+            { q: "What does 'Near Miss' mean in workplace safety?", options: ["An unplanned event that did not result in injury, illness, or damage", "A successful project milestone", "A delayed shipment", "A minor scratch"], answer: 0 },
+            { q: "Which gas detector is standard in confined space entry safety?", options: ["Multi-gas detector", "Carbon filter", "Oxygen exhaust", "Nitrogen meter"], answer: 0 },
+            { q: "What is the main purpose of safety helmets?", options: ["Protecting the head from falling objects", "Keeping hair clean", "Blocking sunlight", "Identifying supervisors"], answer: 0 },
+            { q: "What does a green exit sign indicate?", options: ["Emergency escape route", "Danger zone", "Electrical panel", "Storage room"], answer: 0 },
+            { q: "When is a Hot Work Permit required?", options: ["Welding, cutting, or grinding operations", "Office computer work", "Water pipe inspection", "Painting walls"], answer: 0 },
+            { q: "What does fire triangle consist of?", options: ["Oxygen, Heat, Fuel", "Water, Air, Earth", "Gas, Metal, Wood", "Spark, Pressure, Smoke"], answer: 0 },
+            { q: "What is the safe angle for setting up a portable extension ladder?", options: ["75 degrees (4-to-1 ratio)", "45 degrees", "90 degrees", "30 degrees"], answer: 0 },
+            { q: "What does a safety harness protect workers against?", options: ["Falls from height", "Chemical splashes", "Electric shocks", "Loud noises"], answer: 0 },
+            { q: "What is ergonomic hazard in a workplace?", options: ["Awkward postures, repetitive movements, and heavy lifting", "Exposed live wires", "Toxic chemical fumes", "Slippery floors"], answer: 0 },
+            { q: "What does a eyewash station do?", options: ["Flushes chemical splashes from eyes in emergencies", "Cleans safety glasses", "Provides drinking water", "Washes hands"], answer: 0 },
+            { q: "What is the purpose of safety footwear (steel-toe boots)?", options: ["Protect feet from crushing and puncture hazards", "Provide running grip", "Keep feet warm", "Look uniform"], answer: 0 },
+            { q: "What does 'Hazard Identification' mean?", options: ["Recognizing things that may cause harm", "Fixing broken machines", "Firing careless workers", "Hiring safety officers"], answer: 0 },
+            { q: "What is the safest way to lift a heavy load?", options: ["Bend your knees and keep your back straight", "Bend your back and lift with arms", "Twist while lifting", "Lift quickly"], answer: 0 },
+            { q: "What does a yellow warning sign indicate?", options: ["Caution / Potential hazard", "Safe condition", "Mandatory action", "Prohibition"], answer: 0 },
+            { q: "What is the role of a safety committee?", options: ["Review safety policies and promote safe practices", "Manage company payroll", "Sell products", "Fix computer bugs"], answer: 0 },
+            { q: "What does SCBA stand for in safety gear?", options: ["Self-Contained Breathing Apparatus", "Safety Circuit Box Assembly", "Standard Chemical Body Armor", "Secure Control Base Area"], answer: 0 },
+            { q: "Why are machine guards installed on industrial equipment?", options: ["To prevent contact with moving parts", "To make machines look heavier", "To increase electricity speed", "To block noise completely"], answer: 0 },
+            { q: "What is the first step in risk management?", options: ["Identify hazards", "Ignore minor risks", "Insure the factory", "Close the plant"], answer: 0 },
+            { q: "What does a blue mandatory sign mean?", options: ["Specific behavior or action required (e.g. wear PPE)", "Danger warning", "Fire equipment location", "Safe condition"], answer: 0 },
+            { q: "What is a safety data sheet (SDS) used for?", options: ["Providing information on chemical properties and handling", "Logging daily attendance", "Tracking machine maintenance", "Recording sales targets"], answer: 0 }
         ],
         Mechanic: [
             { q: "What maintenance uses vibration analysis to predict machinery failures?", options: ["Reactive", "Predictive Maintenance", "Corrective", "Run-to-Failure"], answer: 1 },
@@ -241,7 +437,27 @@
             { q: "What is Cavitation in centrifugal pumps?", options: ["Bubble formation and collapse causing damage", "High speed rotation", "Normal cooling flow", "Electrical short"], answer: 0 },
             { q: "What tool is used to tighten bolts to a precise specified limit?", options: ["Hammer", "Torque Wrench", "Spanner", "Pliers"], answer: 1 },
             { q: "What does CMMS stand for in facility and asset management?", options: ["Computerized Maintenance Management System", "Central Mechanic Monitoring Standard", "Certified Material Management Service", "Core Mechanical Maintenance Software"], answer: 0 },
-            { q: "What is the main purpose of a coupling in power transmission?", options: ["To connect two shafts and transmit torque", "To stop rotation", "To generate power", "To cool the motor"], answer: 0 }
+            { q: "What is the main purpose of a coupling in power transmission?", options: ["To connect two shafts and transmit torque", "To stop rotation", "To generate power", "To cool the motor"], answer: 0 },
+            { q: "What is the purpose of a gasket in mechanical assemblies?", options: ["To seal joints and prevent fluid/gas leakage", "To fasten parts together loosely", "To increase friction", "To generate electricity"], answer: 0 },
+            { q: "What device is used to measure clearance between two parts?", options: ["Feeler Gauge", "Micrometer screw", "Plumb line", "Spirit level"], answer: 0 },
+            { q: "What is preventive maintenance?", options: ["Scheduled servicing to prevent unexpected breakdowns", "Fixing equipment after it breaks", "Replacing entire plants yearly", "Ignoring minor noises"], answer: 0 },
+            { q: "What does hydraulic oil primarily transmit in a system?", options: ["Power/Force", "Electrical current", "Compressed air", "Sound waves"], answer: 0 },
+            { q: "What causes a centrifugal pump to lose its prime?", options: ["Air trapped in the suction line/pump casing", "Over-lubrication", "High voltage", "Cold weather"], answer: 0 },
+            { q: "What is the function of a mechanical seal in a pump?", options: ["Prevent leakage along the rotating shaft", "Lock the impeller", "Filter incoming water", "Cool the motor housing"], answer: 0 },
+            { q: "Which tool is used to remove a tight bearing from a shaft safely?", options: ["Bearing Puller", "Hammer and chisel", "Welding torch", "Pliers"], answer: 0 },
+            { q: "What is backlash in gears?", options: ["Clearance or play between mating gear teeth", "Gear teeth breakage", "Reverse rotation speed", "Lubrication leak"], answer: 0 },
+            { q: "What does a pneumatic regulator do?", options: ["Controls and maintains air pressure", "Filters oil from air", "Increases air temperature", "Generates compressed air"], answer: 0 },
+            { q: "What is an O-ring used for?", options: ["Static and dynamic sealing", "Electrical insulation", "Nut fastening", "Belt tensioning"], answer: 0 },
+            { q: "What is the purpose of dynamic balancing in rotating machinery?", options: ["Eliminate vibration and unbalance forces", "Increase weight", "Paint the rotor", "Speed up cooling fans"], answer: 0 },
+            { q: "What type of gear is used to transmit motion between intersecting shafts?", options: ["Bevel Gear", "Spur Gear", "Helical Gear", "Worm Gear"], answer: 0 },
+            { q: "What does RTF stand for in maintenance strategies?", options: ["Run-to-Failure", "Repairing Total Faults", "Reliability Test Framework", "Rotational Tolerance Factor"], answer: 0 },
+            { q: "What is the function of a flywheel in an engine/machine?", options: ["Store rotational energy and smooth out power delivery", "Cool the exhaust gas", "Filter lubricating oil", "Ignite fuel"], answer: 0 },
+            { q: "What is shear stress?", options: ["Stress parallel to the surface plane", "Stress perpendicular to surface", "Thermal stress", "Compressive load"], answer: 0 },
+            { q: "What tool checks surface flatness accurately?", options: ["Surface Plate and feeler gauge", "Measuring tape", "Torque gauge", "Hacksaw"], answer: 0 },
+            { q: "What is the primary cause of hydraulic oil contamination?", options: ["Dirt, water, and particulate ingress", "Normal cooling", "High pressure flow", "Clean filtration"], answer: 0 },
+            { q: "What is a shackle used for in lifting operations?", options: ["Connecting rigging components safely", "Tightening wire ropes", "Measuring load weight", "Welding steel plates"], answer: 0 },
+            { q: "What does a tachometer measure?", options: ["Rotational speed (RPM)", "Temperature", "Pressure", "Flow rate"], answer: 0 },
+            { q: "What is destructive testing?", options: ["Testing materials until they break to determine limits", "Non-contact inspection", "Routine cleaning", "Visual check"], answer: 0 }
         ],
         Electronics: [
             { q: "According to Ohm's Law, Voltage equals Current multiplied by what?", options: ["Capacitance", "Resistance", "Inductance", "Frequency"], answer: 1 },
@@ -253,7 +469,27 @@
             { q: "What unit is used to measure electrical resistance?", options: ["Watt", "Ohm", "Ampere", "Joule"], answer: 1 },
             { q: "What is a multimeter used for?", options: ["Measuring voltage, current, and resistance", "Soldering wires", "Generating power", "Storing energy"], answer: 0 },
             { q: "What is the function of a fuse in an electrical circuit?", options: ["To protect against overcurrent by melting", "To increase voltage", "To store charge", "To amplify signals"], answer: 0 },
-            { q: "What material is most commonly used as an electrical conductor in household wiring?", options: ["Plastic", "Copper", "Wood", "Glass"], answer: 1 }
+            { q: "What material is most commonly used as an electrical conductor in household wiring?", options: ["Plastic", "Copper", "Wood", "Glass"], answer: 1 },
+            { q: "What does LED stand for?", options: ["Light Emitting Diode", "Light Energy Device", "Low Emission Diode", "Lighting Electric Display"], answer: 0 },
+            { q: "What is the function of a transistor?", options: ["Amplification and switching of electrical signals", "Storing static charges", "Resisting current flow", "Stepping up voltage"], answer: 0 },
+            { q: "What is alternating current (AC)?", options: ["Current that periodically reverses direction", "Current that flows in one direction only", "Static electricity", "Battery power output"], answer: 0 },
+            { q: "What is the unit of electrical frequency?", options: ["Hertz (Hz)", "Volt", "Watt", "Farad"], answer: 0 },
+            { q: "What does PCB stand for in electronics?", options: ["Printed Circuit Board", "Power Control Box", "Processor Core Bus", "Plastic Component Base"], answer: 0 },
+            { q: "What is direct current (DC)?", options: ["Current flowing in one constant direction", "Reversing current", "Wireless power", "Radio frequency wave"], answer: 0 },
+            { q: "What does an inductor do?", options: ["Stores energy in a magnetic field when current flows", "Blocks all electrical current", "Stores electrostatic charge", "Amplifies voltage"], answer: 0 },
+            { q: "What is a breadboard used for?", options: ["Prototyping electronic circuits without soldering", "Baking electronic components", "Testing heavy motors", "Measuring high voltage"], answer: 0 },
+            { q: "What is a relay?", options: ["An electrically operated switch", "A power generator", "A resistor network", "A cooling fan"], answer: 0 },
+            { q: "What color code band on a resistor represents tolerance of gold?", options: ["5%", "10%", "20%", "1%"], answer: 0 },
+            { q: "What is ESD protection used for?", options: ["Preventing electrostatic discharge damage to sensitive components", "Stopping water leaks", "Protecting against loud noise", "Fire suppression"], answer: 0 },
+            { q: "What is a microcontroller?", options: ["A compact integrated circuit designed to govern a specific operation in an embedded system", "A large mainframe computer", "A heavy power transformer", "A manual switch"], answer: 0 },
+            { q: "What is the purpose of a heatsink?", options: ["Dissipate heat away from electronic components", "Generate thermal power", "Insulate circuits", "Increase operating speed"], answer: 0 },
+            { q: "What does PWM stand for in electronics control?", options: ["Pulse Width Modulation", "Power Wave Mechanism", "Phase Wire Monitor", "Programmable Watt Meter"], answer: 0 },
+            { q: "What is a Zener diode used for?", options: ["Voltage regulation", "Audio amplification", "Energy storage", "Signal filtering"], answer: 0 },
+            { q: "What is the electrical symbol for current?", options: ["I", "V", "R", "P"], answer: 0 },
+            { q: "What is an oscilloscope used for?", options: ["Visualizing electronic signal waveforms", "Measuring resistance", "Soldering circuit boards", "Stepping down voltage"], answer: 0 },
+            { q: "What is a logic gate?", options: ["An idealized or physical device implementing a Boolean function", "A mechanical gate switch", "A power breaker", "A fuse holder"], answer: 0 },
+            { q: "What is solder made of typically?", options: ["Tin and Lead alloy", "Copper and Iron", "Aluminum and Zinc", "Plastic and Resin"], answer: 0 },
+            { q: "What does IC stand for?", options: ["Integrated Circuit", "Internal Conductor", "Isolated Current", "Inductive Coil"], answer: 0 }
         ],
         Management: [
             { q: "What management framework uses the DMAIC cycle for quality control?", options: ["Agile", "Lean Six Sigma", "Scrum", "Waterfall"], answer: 1 },
@@ -265,9 +501,41 @@
             { q: "What does KPI stand for in performance management?", options: ["Key Performance Indicator", "Key Project Investment", "Known Process Item", "Kernel Program Interface"], answer: 0 },
             { q: "What is the primary role of a project manager?", options: ["Planning, executing, and closing projects", "Writing all code alone", "Fixing physical machines", "Selling products directly"], answer: 0 },
             { q: "What does Root Cause Analysis (RCA) aim to achieve?", options: ["Find the underlying cause of a problem", "Blame employees", "Ignore minor faults", "Increase production speed"], answer: 0 },
-            { q: "What is Benchmarking in business strategy?", options: ["Comparing performance against industry best practices", "Sitting on a bench", "Fixing bench tools", "Writing manual logs"], answer: 0 }
+            { q: "What is Benchmarking in business strategy?", options: ["Comparing performance against industry best practices", "Sitting on a bench", "Fixing bench tools", "Writing manual logs"], answer: 0 },
+            { q: "What does Scrum master do in Agile teams?", options: ["Facilitates agile practices and removes impediments", "Manages the company budget", "Directs employee hiring", "Writes all software code"], answer: 0 },
+            { q: "What is change management?", options: ["Structured approach to transitioning individuals and organizations", "Changing office chairs", "Updating software version", "Modifying bank accounts"], answer: 0 },
+            { q: "What does ROI measure in business projects?", options: ["Financial return relative to investment cost", "Employee attendance rate", "Server uptime percentage", "Customer complaint count"], answer: 0 },
+            { q: "What is a stakeholder?", options: ["Anyone who can affect or be affected by a project's outcome", "A company shareholder only", "A project manager", "A database administrator"], answer: 0 },
+            { q: "What is total quality management (TQM)?", options: ["An organization-wide effort to instill permanent climate where employees continuously improve", "Inspecting final products only", "Cutting production staff", "Increasing machine speed"], answer: 0 },
+            { q: "What does ERP stand for in corporate software?", options: ["Enterprise Resource Planning", "External Relation Program", "Engine Repair Process", "Electronic Record Protocol"], answer: 0 },
+            { q: "What is risk mitigation?", options: ["Taking steps to reduce the likelihood or impact of risks", "Ignoring potential failures", "Accepting all losses", "Closing the business"], answer: 0 },
+            { q: "What is situational leadership?", options: ["Adapting leadership style to the task and maturity of followers", "Managing only during emergencies", "Working remotely from home", "Following strict rules"], answer: 0 },
+            { q: "What does 'Scope Creep' mean in project management?", options: ["Uncontrolled changes or continuous growth in a project's scope", "Slow project progress", "Reducing project tasks", "Stretching project deadlines"], answer: 0 },
+            { q: "What is conflict resolution?", options: ["The methods and processes involved in facilitating peaceful ending of conflict", "Ignoring arguments", "Firing conflicting workers", "Canceling meetings"], answer: 0 },
+            { q: "What is the Pareto Principle (80/20 rule)?", options: ["80% of consequences come from 20% of the causes", "80% work is done in 20 minutes", "80 employees to 20 managers", "80% profit margin"], answer: 0 },
+            { q: "What does SMART goals 'T' stand for?", options: ["Time-bound", "Targeted", "Technical", "Total"], answer: 0 },
+            { q: "What is organizational culture?", options: ["The shared values, beliefs, and practices of an organization", "The office interior design", "The company registration paper", "The legal compliance document"], answer: 0 },
+            { q: "What is crisis management?", options: ["The process by which an organization deals with a disruptive and unexpected event", "Routine daily planning", "Hiring new recruits", "Marketing new products"], answer: 0 },
+            { q: "What does Lean management focus on?", options: ["Maximizing customer value while minimizing waste", "Cutting employee wages", "Reducing office space", "Stopping product updates"], answer: 0 },
+            { q: "What is strategic planning?", options: ["Defining organization's direction and decision-making on allocating resources", "Daily task assignment", "Fixing network cables", "Writing software code"], answer: 0 },
+            { q: "What is team building?", options: ["Activities designed to improve social relations and collaborative team working", "Constructing physical office buildings", "Recruiting new managers", "Buying office furniture"], answer: 0 },
+            { q: "What does a balanced scorecard measure?", options: ["Performance from multiple perspectives (financial, customer, internal, learning)", "Financial profit only", "Employee working hours", "Server speed and storage"], answer: 0 },
+            { q: "What is bottleneck in operations management?", options: ["A point of congestion in a production system that impedes throughput", "A water storage bottle", "An empty workstation", "A fast shipping lane"], answer: 0 },
+            { q: "What is continuous improvement (Kaizen)?", options: ["Ongoing effort to improve products, services, or processes", "Changing company logo yearly", "Doing annual reviews", "Expanding office branches"], answer: 0 }
         ]
     };
+
+    function startNameProcess() {
+        const input = document.getElementById('user-name-input').value.trim();
+        if (!input) {
+            alert("Please enter your name to proceed!");
+            return;
+        }
+        playerName = input;
+        document.getElementById('name-screen').classList.add('hidden');
+        document.getElementById('selection-screen').classList.remove('hidden');
+        document.getElementById('stats-area').classList.remove('hidden');
+    }
 
     function selectField(field) {
         currentField = field;
@@ -297,7 +565,7 @@
             
             if (timeLeft <= 0) {
                 clearInterval(timerInterval);
-                gameOver("⏰ Time's Up! Security system locked down.");
+                gameOver("⏰ Time's Up! Test session locked down.");
             }
             timeLeft--;
         }, 1000);
@@ -309,23 +577,53 @@
             let totalSeconds = Math.floor((Date.now() - startTime) / 1000);
             let finalMins = Math.floor(totalSeconds / 60);
             let finalSecs = totalSeconds % 60;
-            let timeTakenStr = `${finalMins}m ${finalSecs}s`;
+            timeTakenStr = `${finalMins}m ${finalSecs}s`;
+            
+            heartsStr = "";
+            for(let i=0; i<lives; i++) heartsStr += "❤️";
 
             document.getElementById('game-card').innerHTML = `
-                <h1 style="color: #34d399; text-align: center; font-size: 24px;">🎉 Congratulations!</h1>
-                <p style="text-align: center; color: #d1d5db; margin-top: 15px; font-size: 15px;">
-                    You successfully escaped the facility in <strong>${currentField}</strong>!<br><br>
-                    ⏱️ <strong>Total Time Taken: ${timeTakenStr}</strong>
-                </p>
-                <div class="share-container">
-                    <button class="share-btn wa" onclick="shareSocial('whatsapp', '${timeTakenStr}')">WhatsApp</button>
-                    <button class="share-btn fb" onclick="shareSocial('facebook', '${timeTakenStr}')">Facebook</button>
-                    <button class="share-btn tw" onclick="shareSocial('twitter', '${timeTakenStr}')">X (Twitter)</button>
-                    <button class="share-btn li" onclick="shareSocial('linkedin', '${timeTakenStr}')">LinkedIn</button>
-                    <button class="share-btn th" onclick="shareSocial('threads', '${timeTakenStr}')">Threads</button>
-                    <button class="share-btn ig" onclick="shareSocial('instagram', '${timeTakenStr}')">Instagram</button>
+                <h1 style="color: #34d399; text-align: center; font-size: 20px; margin-bottom: 12px;">Congratulations ${playerName} you win the Adrigizmo skill test</h1>
+                
+                <!-- Professional Certificate Box matching template -->
+                <div id="certificate-preview">
+                    <div class="cert-top-banner">
+                        <div class="cert-title">ADRIGIZMO TECH TECHNICS</div>
+                        <div class="cert-subtitle">Skill Test</div>
+                    </div>
+                    
+                    <div class="cert-emblem">
+                        <img src="/favicon.png" alt="Emblem">
+                    </div>
+
+                    <div class="cert-presented">Proudly Presented To</div>
+                    <div class="cert-name">${playerName}</div>
+
+                    <div class="cert-desc">
+                        Successfully completed the Skill Test and 🏆 won <b>5🌟 out of 5</b> in <b>${currentField}</b> using <b>${heartsStr}</b> within <b>${timeTakenStr}</b>.
+                    </div>
+
+                    <div class="cert-footer-flex">
+                        <div class="cert-team">
+                            Presented by<br>Team ADRIGIZMO
+                        </div>
+                        <div class="cert-website-box">
+                            Share your friends and invite them for challenge:<br>
+                            <strong>www.adrigizmo.com</strong>
+                        </div>
+                    </div>
                 </div>
-                <button class="action-btn" onclick="location.reload()">Play Again</button>
+
+                <button class="action-btn" onclick="downloadCertificateImage()" style="background: #10b981;">📥 Download Certificate Image</button>
+                
+                <p style="text-align: center; font-size: 13px; color: #94a3b8; margin-top: 12px; font-weight: bold;">Share challenge with friends & invite them:</p>
+                <div class="share-container">
+                    <button class="share-btn wa" onclick="shareSocial('whatsapp')">WhatsApp</button>
+                    <button class="share-btn fb" onclick="shareSocial('facebook')">Facebook</button>
+                    <button class="share-btn tw" onclick="shareSocial('twitter')">X / Twitter</button>
+                    <button class="share-btn li" onclick="shareSocial('linkedin')">LinkedIn</button>
+                </div>
+                <button class="action-btn" onclick="location.reload()" style="background: #374151; margin-top: 8px;">Play Again</button>
             `;
             return;
         }
@@ -349,15 +647,15 @@
 
         if (selectedIndex === levelData.answer) {
             feedback.style.color = '#34d399';
-            feedback.textContent = "✅ Correct! Security gate unlocked.";
+            feedback.textContent = "✅ Correct!";
             currentLevel++;
-            setTimeout(loadLevel, 1000);
+            setTimeout(loadLevel, 800);
         } else {
             lives--;
             updateLivesDisplay();
             if (lives <= 0) {
                 clearInterval(timerInterval);
-                gameOver("❌ Out of Lives! Security lockdown activated.");
+                gameOver("❌ Out of Lives! Test failed.");
                 return;
             }
             feedback.style.color = '#ef4444';
@@ -373,34 +671,38 @@
 
     function gameOver(message) {
         document.getElementById('game-card').innerHTML = `
-            <h1 style="color: #ef4444; text-align: center; font-size: 22px;">🚨 Mission Failed</h1>
+            <h1 style="color: #ef4444; text-align: center; font-size: 22px;">❌ Test Failed</h1>
             <p style="text-align: center; color: #d1d5db; margin-top: 15px; font-size: 14px;">${message}</p>
             <div style="background: rgba(31, 41, 55, 0.8); padding: 15px; border-radius: 8px; margin-top: 15px; text-align: center; border: 1px solid #4b5563;">
-                <p style="color: #f3f4f6; margin-bottom: 10px; font-size: 14px;">Take a rest in our website and return back!</p>
+                <p style="color: #f3f4f6; margin-bottom: 10px; font-size: 14px;">Visit our website and try again!</p>
                 <a href="https://www.adrigizmo.com" target="_blank" style="display: inline-block; background: #2563eb; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 14px;">Visit ADRIGIZMO Website</a>
             </div>
             <button class="action-btn" onclick="location.reload()" style="margin-top: 15px;">Try Again</button>
         `;
     }
 
-    function shareSocial(platform, timeStr) {
-        let websiteName = "ADRIGIZMO TECH TECHNIC";
-        let mainWebsiteUrl = "https://www.adrigizmo.com";
+    function downloadCertificateImage() {
+        const certElement = document.getElementById("certificate-preview");
+        html2canvas(certElement, { scale: 2 }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = `${playerName}-Adrigizmo-Certificate.jpg`;
+            link.href = canvas.toDataURL('image/jpeg', 1.0);
+            link.click();
+        });
+    }
+
+    function shareSocial(platform) {
         let gameUrl = window.location.href;
-        
-        let message = `🏆 I successfully completed the 3D Escape Room Challenge in ${currentField} within ${timeStr} on ${websiteName}!\n\n🎮 Play here: ${gameUrl}\n🌐 Visit: ${mainWebsiteUrl}`;
+        let shareText = `🏆 I successfully completed the Adrigizmo Skill Test in ${currentField} with 5 stars using ${heartsStr} in ${timeTakenStr}!\n\nCan you beat my score? Take the challenge now:\n👉 https://www.adrigizmo.com`;
 
         if(platform === 'whatsapp') {
-            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`, '_blank');
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`, '_blank');
         } else if(platform === 'facebook') {
-            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(gameUrl)}`, '_blank');
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(gameUrl)}&quote=${encodeURIComponent(shareText)}`, '_blank');
         } else if(platform === 'twitter') {
-            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}`, '_blank');
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`, '_blank');
         } else if(platform === 'linkedin') {
             window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(gameUrl)}`, '_blank');
-        } else {
-            navigator.clipboard.writeText(message);
-            alert("Result copied to clipboard! You can share it on " + platform.toUpperCase() + ".");
         }
     }
 </script>
