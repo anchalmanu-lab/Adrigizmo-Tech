@@ -137,22 +137,22 @@
             font-size: 15px;
         }
 
-        /* Professional Certificate Layout using Reference Background Image */
+        /* Perfectly Proportionate Landscape Certificate Layout for Mobile & Desktop */
         #certificate-preview {
             width: 100%;
             max-width: 700px;
             aspect-ratio: 1.414 / 1;
-            background-image: url('https://i.pinimg.com/1200x/ce/f6/1d/cef61d9be4bef9cea43cf21d7534670b.jpg');
+            background-image: url('https://i.pinimg.com/736x/9b/d1/55/9bd1550254576c9a0dc3fc45cbb98175.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             color: #1f2937;
-            padding: 30px 40px;
+            padding: 25px 35px;
             box-sizing: border-box;
             text-align: center;
             margin: 0 auto 12px auto;
             border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
             position: relative;
             display: flex;
             flex-direction: column;
@@ -162,31 +162,32 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            padding-top: 10px;
+            padding-top: 2px;
         }
         .cert-brand-side {
             text-align: left;
         }
         .cert-title {
-            font-size: 18px;
-            font-weight: 800;
-            letter-spacing: 1px;
+            font-size: 19px;
+            font-weight: 900;
+            letter-spacing: 1.5px;
             color: #1e3a8a;
             text-transform: uppercase;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
         }
         .cert-subtitle {
             font-size: 11px;
-            letter-spacing: 2px;
-            color: #d97706;
+            letter-spacing: 2.5px;
+            color: #b45309;
             margin-top: 2px;
-            font-weight: bold;
+            font-weight: 800;
             text-transform: uppercase;
         }
         .cert-emblem {
-            width: 70px;
-            height: 70px;
+            width: 65px;
+            height: 65px;
             background: #ffffff;
-            border: 3px solid #d97706;
+            border: 3px solid #1e3a8a;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -194,59 +195,63 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.25);
         }
         .cert-emblem img {
-            width: 50px;
-            height: 50px;
+            width: 44px;
+            height: 44px;
             object-fit: contain;
             border-radius: 50%;
         }
         .cert-middle-area {
-            padding: 5px 0;
+            padding: 2px 0;
         }
         .cert-presented {
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             color: #4b5563;
-            font-weight: bold;
-            margin-bottom: 4px;
+            font-weight: 800;
+            margin-bottom: 2px;
         }
         .cert-name {
-            font-size: 26px;
+            font-size: 28px;
             font-family: 'Georgia', serif;
             font-style: italic;
             color: #1e3a8a;
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-weight: 900;
+            margin-bottom: 6px;
             border-bottom: 2px solid #1e3a8a;
             display: inline-block;
-            padding: 0 25px 3px 25px;
+            padding: 0 25px 2px 25px;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
         }
         .cert-desc {
-            font-size: 13px;
-            color: #374151;
-            line-height: 1.5;
+            font-size: 12px;
+            color: #1f2937;
+            line-height: 1.4;
             max-width: 540px;
             margin: 0 auto;
-            font-weight: 500;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
         }
         .cert-footer-flex {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            padding-bottom: 10px;
-            font-size: 11px;
+            padding-bottom: 2px;
+            font-size: 10px;
         }
         .cert-team {
             text-align: left;
-            font-weight: bold;
-            color: #111827;
+            font-weight: 900;
+            color: #1f2937;
             line-height: 1.3;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
         }
         .cert-website-box {
             text-align: right;
-            color: #374151;
+            color: #1f2937;
             line-height: 1.3;
-            font-weight: 500;
+            font-weight: 800;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
         }
 
         .share-container { display: flex; gap: 6px; justify-content: center; margin-top: 8px; flex-wrap: wrap; }
@@ -325,7 +330,7 @@
     let timerInterval;
     let startTime;
     let timeTakenStr = "";
-    let heartsStr = "";
+    let heartsDisplayStr = "";
 
     const fieldBackgrounds = {
         IT: "https://i.pinimg.com/1200x/61/cf/19/61cf194ce3154d95fd694e192bbd2e50.jpg",
@@ -339,195 +344,195 @@
     const masterGameData = {
         IT: [
             { q: "What HTTP status code represents 'Not Found'?", options: ["200 OK", "404 Not Found", "500 Server Error", "301 Moved"], answer: 1 },
-            { q: "Which command is used in Git to save changes locally?", options: ["git push", "git commit", "git pull", "git clone"], answer: 2 },
+            { q: "Which command is used in Git to save changes locally?", options: ["git push", "git commit", "git pull", "git clone"], answer: 1 },
             { q: "Which protocol provides secure encrypted web traffic?", options: ["HTTP", "FTP", "HTTPS", "SMTP"], answer: 2 },
-            { q: "What is the standard file extension for JavaScript files?", options: [".html", ".js", ".css", ".java"], answer: 1 },
-            { q: "What does SQL stand for in database management?", options: ["Simple Query", "Standard Logic", "Structured Query Language", "System Quality"], answer: 2 },
-            { q: "Which programming language is known as the backbone of web pages?", options: ["Python", "JavaScript", "C++", "Java"], answer: 1 },
-            { q: "What does CSS stand for?", options: ["Computer Style System", "Cascading Style Sheets", "Creative Sheet Style", "Colorful Style Sheet"], answer: 1 },
-            { q: "Which company developed the React framework?", options: ["Google", "Microsoft", "Meta (Facebook)", "Apple"], answer: 2 },
-            { q: "What port does standard HTTP traffic run on by default?", options: ["443", "8080", "80", "21"], answer: 2 },
-            { q: "What is the main function of an operating system?", options: ["Browse internet", "Manage hardware & software", "Design graphics", "Compile code"], answer: 1 },
-            { q: "Which of the following is a NoSQL database?", options: ["MySQL", "MongoDB", "PostgreSQL", "Oracle"], answer: 1 },
-            { q: "What does API stand for?", options: ["Advanced Program Integration", "Application Programming Interface", "Automated Process Interaction", "Application Process Integration"], answer: 1 },
-            { q: "Which HTML tag is used to define an internal style sheet?", options: ["<script>", "<style>", "<css>", "<design>"], answer: 1 },
-            { q: "What does JSON stand for?", options: ["Java Source Open Network", "JavaScript Object Notation", "Junction Script Online Node", "JavaScript Operation Name"], answer: 1 },
+            { q: "What is the standard file extension for JavaScript files?", options: [".html", ".css", ".js", ".java"], answer: 2 },
+            { q: "What does SQL stand for in database management?", options: ["Simple Query", "Structured Query Language", "Standard Logic", "System Quality"], answer: 1 },
+            { q: "Which programming language is known as the backbone of web pages?", options: ["Python", "C++", "JavaScript", "Java"], answer: 2 },
+            { q: "What does CSS stand for?", options: ["Cascading Style Sheets", "Computer Style System", "Creative Sheet Style", "Colorful Style Sheet"], answer: 0 },
+            { q: "Which company developed the React framework?", options: ["Google", "Meta (Facebook)", "Microsoft", "Apple"], answer: 1 },
+            { q: "What port does standard HTTP traffic run on by default?", options: ["443", "80", "8080", "21"], answer: 1 },
+            { q: "What is the main function of an operating system?", options: ["Manage hardware & software", "Browse internet", "Design graphics", "Compile code"], answer: 0 },
+            { q: "Which of the following is a NoSQL database?", options: ["MySQL", "PostgreSQL", "MongoDB", "Oracle"], answer: 2 },
+            { q: "What does API stand for?", options: ["Application Programming Interface", "Advanced Program Integration", "Automated Process Interaction", "Application Process Integration"], answer: 0 },
+            { q: "Which HTML tag is used to define an internal style sheet?", options: ["<script>", "<css>", "<style>", "<design>"], answer: 2 },
+            { q: "What does JSON stand for?", options: ["JavaScript Object Notation", "Java Source Open Network", "Junction Script Online Node", "JavaScript Operation Name"], answer: 0 },
             { q: "Which data structure operates on a Last In, First Out (LIFO) basis?", options: ["Queue", "Stack", "Array", "Tree"], answer: 1 },
-            { q: "Which tool is commonly used for containerization?", options: ["Photoshop", "Docker", "Notepad++", "VLC"], answer: 1 },
+            { q: "Which tool is commonly used for containerization?", options: ["Docker", "Photoshop", "Notepad++", "VLC"], answer: 0 },
             { q: "What is the extension of a Python source file?", options: [".pt", ".py", ".pi", ".pn"], answer: 1 },
-            { q: "Which symbol is used for single-line comments in JavaScript?", options: ["/*", "//", "<!--", "#"], answer: 1 },
-            { q: "What does CPU stand for?", options: ["Central Process Unit", "Computer Personal Unit", "Central Processing Unit", "Central Processor Utility"], answer: 2 },
-            { q: "Which of these is not a programming language?", options: ["Python", "C++", "HTML", "Java"], answer: 2 },
-            { q: "What is the main purpose of DNS?", options: ["Store website files", "Translate domain names to IP addresses", "Secure network traffic", "Design user interfaces"], answer: 1 },
-            { q: "Which company created the Java programming language?", options: ["Microsoft", "Apple", "Sun Microsystems", "IBM"], answer: 2 },
-            { q: "What is an infinite loop?", options: ["A loop that runs once", "A loop that runs forever", "An error in syntax", "A secure function"], answer: 1 },
-            { q: "Which of the following is an interpreted language?", options: ["C", "Python", "C++", "Assembly"], answer: 1 },
-            { q: "What does RAM stand for?", options: ["Read Access Memory", "Rapid Active Module", "Random Access Memory", "Run Action Main"], answer: 2 },
+            { q: "Which symbol is used for single-line comments in JavaScript?", options: ["//", "/*", "<!--", "#"], answer: 0 },
+            { q: "What does CPU stand for?", options: ["Central Process Unit", "Central Processing Unit", "Computer Personal Unit", "Central Processor Utility"], answer: 1 },
+            { q: "Which of these is not a programming language?", options: ["Python", "HTML", "C++", "Java"], answer: 1 },
+            { q: "What is the main purpose of DNS?", options: ["Translate domain names to IP addresses", "Store website files", "Secure network traffic", "Design user interfaces"], answer: 0 },
+            { q: "Which company created the Java programming language?", options: ["Microsoft", "Sun Microsystems", "Apple", "IBM"], answer: 1 },
+            { q: "What is an infinite loop?", options: ["A loop that runs forever", "A loop that runs once", "An error in syntax", "A secure function"], answer: 0 },
+            { q: "Which of the following is an interpreted language?", options: ["C", "C++", "Python", "Assembly"], answer: 2 },
+            { q: "What does RAM stand for?", options: ["Read Access Memory", "Random Access Memory", "Rapid Active Module", "Run Action Main"], answer: 1 },
             { q: "Which attribute is used to provide alternative text for an image in HTML?", options: ["title", "src", "alt", "href"], answer: 2 },
-            { q: "What is the output of 2 + 2 * 2 in most programming languages?", options: ["8", "4", "6", "Error"], answer: 2 },
-            { q: "Which protocol is used to send emails?", options: ["POP3", "IMAP", "SMTP", "HTTP"], answer: 2 },
+            { q: "What is the output of 2 + 2 * 2 in most programming languages?", options: ["8", "6", "4", "Error"], answer: 1 },
+            { q: "Which protocol is used to send emails?", options: ["SMTP", "POP3", "IMAP", "HTTP"], answer: 0 },
             { q: "What does IDE stand for?", options: ["Integrated Development Environment", "Internal Design Engine", "Interactive Data Execution", "Internet Direct Exchange"], answer: 0 },
-            { q: "Which of these is a version control system?", options: ["Node.js", "Git", "Apache", "Nginx"], answer: 1 }
+            { q: "Which of these is a version control system?", options: ["Git", "Node.js", "Apache", "Nginx"], answer: 0 }
         ],
         Marketing: [
-            { q: "What does SEO stand for in digital marketing?", options: ["Site Execution", "Social Operation", "Search Engine Optimization", "Sales Output"], answer: 2 },
-            { q: "What metric tracks visitors leaving a site without action?", options: ["Conversion Rate", "Bounce Rate", "Click-Through", "Impressions"], answer: 1 },
-            { q: "PPC advertising stands for Pay Per...", options: ["Customer", "Conversion", "Click", "Campaign"], answer: 2 },
-            { q: "Creating and distributing valuable content is known as...", options: ["PPC Marketing", "Affiliate", "Content Marketing", "Direct"], answer: 2 },
-            { q: "What framework consists of Product, Price, Place, Promotion?", options: ["4Cs", "4Ps Marketing Mix", "SWOT", "STP"], answer: 1 },
-            { q: "What is CRM primarily used for?", options: ["Cost Revenue Monitor", "Customer Relationship Management", "Campaign Risk Model", "Content Reach Metric"], answer: 1 },
-            { q: "What does CTA stand for in marketing campaigns?", options: ["Cost to Acquire", "Call to Action", "Click Through Analytics", "Campaign Target Audience"], answer: 1 },
-            { q: "Which social platform is primarily used for B2B professional networking?", options: ["Instagram", "TikTok", "Snapchat", "LinkedIn"], answer: 3 },
-            { q: "What is organic reach in social media?", options: ["Paid advertisements", "Bot traffic", "Free views/engagement without ads", "Sponsored posts"], answer: 2 },
-            { q: "What does ROI stand for in business and marketing?", options: ["Rate of Investment", "Revenue Over Income", "Return on Investment", "Risk on Innovation"], answer: 2 },
-            { q: "What does B2C stand for?", options: ["Brand to Company", "Business to Consumer", "Business to Corporate", "Buyer to Creator"], answer: 1 },
-            { q: "Which tool is widely used for web analytics and tracking traffic?", options: ["Photoshop", "Visual Studio", "Google Analytics", "GitHub"], answer: 2 },
-            { q: "What is email marketing primarily used for?", options: ["Spamming users", "Hardware testing", "Nurturing leads and retention", "Coding websites"], answer: 2 },
-            { q: "What does USP stand for in marketing?", options: ["Universal Sales Plan", "Unique Selling Proposition", "User Service Program", "Unified Strategic Positioning"], answer: 1 },
-            { q: "What is inbound marketing focused on?", options: ["Interrupting customers", "Cold calling", "Door-to-door sales", "Attracting customers through valuable content"], answer: 3 },
-            { q: "What is affiliate marketing?", options: ["Selling company-owned stock only", "Direct employee sales", "Earning a commission by promoting other products", "Free product distribution"], answer: 2 },
-            { q: "What does CTR stand for in digital ads?", options: ["Cost Total Ratio", "Customer Time Response", "Click-Through Rate", "Campaign Target Reach"], answer: 2 },
-            { q: "Which of these is a paid social media metric?", options: ["Organic Reach", "CPC (Cost Per Click)", "Follower Count", "Direct Profile Visits"], answer: 1 },
-            { q: "What is brand awareness?", options: ["The total sales revenue", "The degree to which consumers know a brand", "The employee headcount", "The production cost"], answer: 1 },
-            { q: "What is a target audience?", options: ["All internet users globally", "Company board members", "A specific group of consumers aimed at by marketing", "Product developers"], answer: 2 },
-            { q: "What does KPI stand for?", options: ["Key Process Input", "Known Product Index", "Key Performance Indicator", "Key Public Interaction"], answer: 2 },
-            { q: "What is native advertising?", options: ["Pop-up banners", "Ads that match the form and function of the platform", "Loud video commercials", "Print newspaper flyers"], answer: 1 },
-            { q: "What is a landing page?", options: ["The server root folder", "An error page", "A standalone web page created for a marketing campaign", "The checkout confirmation portal"], answer: 2 },
-            { q: "What does PPC cost depend on?", options: ["Flat monthly fee", "Number of clicks", "Server capacity", "Company size"], answer: 1 },
-            { q: "What is remarketing/retargeting?", options: ["Deleting old campaigns", "Refunding customers", "Targeting ads to users who previously visited your site", "Resetting passwords"], answer: 2 },
-            { q: "Which strategy involves partnering with influential people?", options: ["Affiliate Network", "PPC Growth", "SEO Optimization", "Influencer Marketing"], answer: 3 },
-            { q: "What is content curation?", options: ["Writing original books", "Deleting blog posts", "Gathering and sharing relevant content from other sources", "Coding mobile apps"], answer: 2 },
-            { q: "What does A/B testing mean in marketing?", options: ["Testing two products at once", "Alphabetical sorting", "Comparing two versions of a webpage/ad to see which performs better", "Auditing finances"], answer: 2 },
-            { q: "What is lead generation?", options: ["Manufacturing lead metals", "Hiring new staff", "The process of attracting and converting prospects into potential customers", "Closing physical shops"], answer: 2 },
+            { q: "What does SEO stand for in digital marketing?", options: ["Site Execution", "Search Engine Optimization", "Social Operation", "Sales Output"], answer: 1 },
+            { q: "What metric tracks visitors leaving a site without action?", options: ["Bounce Rate", "Conversion Rate", "Click-Through", "Impressions"], answer: 0 },
+            { q: "PPC advertising stands for Pay Per...", options: ["Customer", "Click", "Conversion", "Campaign"], answer: 1 },
+            { q: "Creating and distributing valuable content is known as...", options: ["PPC Marketing", "Content Marketing", "Affiliate", "Direct"], answer: 1 },
+            { q: "What framework consists of Product, Price, Place, Promotion?", options: ["4Cs", "SWOT", "4Ps Marketing Mix", "STP"], answer: 2 },
+            { q: "What is CRM primarily used for?", options: ["Customer Relationship Management", "Cost Revenue Monitor", "Campaign Risk Model", "Content Reach Metric"], answer: 0 },
+            { q: "What does CTA stand for in marketing campaigns?", options: ["Call to Action", "Cost to Acquire", "Click Through Analytics", "Campaign Target Audience"], answer: 0 },
+            { q: "Which social platform is primarily used for B2B professional networking?", options: ["Instagram", "TikTok", "LinkedIn", "Snapchat"], answer: 2 },
+            { q: "What is organic reach in social media?", options: ["Paid advertisements", "Free views/engagement without ads", "Bot traffic", "Sponsored posts"], answer: 1 },
+            { q: "What does ROI stand for in business and marketing?", options: ["Rate of Investment", "Return on Investment", "Revenue Over Income", "Risk on Innovation"], answer: 1 },
+            { q: "What does B2C stand for?", options: ["Business to Consumer", "Brand to Company", "Business to Corporate", "Buyer to Creator"], answer: 0 },
+            { q: "Which tool is widely used for web analytics and tracking traffic?", options: ["Google Analytics", "Photoshop", "Visual Studio", "GitHub"], answer: 0 },
+            { q: "What is email marketing primarily used for?", options: ["Spamming users", "Nurturing leads and retention", "Hardware testing", "Coding websites"], answer: 1 },
+            { q: "What does USP stand for in marketing?", options: ["Unique Selling Proposition", "Universal Sales Plan", "User Service Program", "Unified Strategic Positioning"], answer: 0 },
+            { q: "What is inbound marketing focused on?", options: ["Interrupting customers", "Attracting customers through valuable content", "Cold calling", "Door-to-door sales"], answer: 1 },
+            { q: "What is affiliate marketing?", options: ["Selling company-owned stock only", "Earning a commission by promoting other products", "Direct employee sales", "Free product distribution"], answer: 1 },
+            { q: "What does CTR stand for in digital ads?", options: ["Click-Through Rate", "Cost Total Ratio", "Customer Time Response", "Campaign Target Reach"], answer: 0 },
+            { q: "Which of these is a paid social media metric?", options: ["CPC (Cost Per Click)", "Organic Reach", "Follower Count", "Direct Profile Visits"], answer: 0 },
+            { q: "What is brand awareness?", options: ["The degree to which consumers know a brand", "The total sales revenue", "The employee headcount", "The production cost"], answer: 0 },
+            { q: "What is a target audience?", options: ["A specific group of consumers aimed at by marketing", "All internet users globally", "Company board members", "Product developers"], answer: 0 },
+            { q: "What does KPI stand for?", options: ["Key Performance Indicator", "Key Process Input", "Known Product Index", "Key Public Interaction"], answer: 0 },
+            { q: "What is native advertising?", options: ["Ads that match the form and function of the platform", "Pop-up banners", "Loud video commercials", "Print newspaper flyers"], answer: 0 },
+            { q: "What is a landing page?", options: ["A standalone web page created for a marketing campaign", "The server root folder", "An error page", "The checkout confirmation portal"], answer: 0 },
+            { q: "What does PPC cost depend on?", options: ["Number of clicks", "Flat monthly fee", "Server capacity", "Company size"], answer: 0 },
+            { q: "What is remarketing/retargeting?", options: ["Targeting ads to users who previously visited your site", "Deleting old campaigns", "Refunding customers", "Resetting passwords"], answer: 0 },
+            { q: "Which strategy involves partnering with influential people?", options: ["Influencer Marketing", "Affiliate Network", "PPC Growth", "SEO Optimization"], answer: 0 },
+            { q: "What is content curation?", options: ["Gathering and sharing relevant content from other sources", "Writing original books", "Deleting blog posts", "Coding mobile apps"], answer: 0 },
+            { q: "What does A/B testing mean in marketing?", options: ["Comparing two versions of a webpage/ad to see which performs better", "Testing two products at once", "Alphabetical sorting", "Auditing finances"], answer: 0 },
+            { q: "What is lead generation?", options: ["The process of attracting and converting prospects into potential customers", "Manufacturing lead metals", "Hiring new staff", "Closing physical shops"], answer: 0 },
             { q: "What is viral marketing?", options: ["Marketing designed to spread rapidly from person to person", "Infecting computers with viruses", "Medical product sales", "Door-to-door flyers"], answer: 0 }
         ],
         Safety: [
-            { q: "What safety device protects against electrical shocks by breaking circuits?", options: ["MCB", "Transformer", "GFCI", "Inverter"], answer: 2 },
-            { q: "What does PPE stand for?", options: ["Primary Plant Engine", "Public Process", "Personal Protective Equipment", "Proactive Entity"], answer: 2 },
-            { q: "What permit is mandatory before entering a confined vessel?", options: ["Hot Work Permit", "Height Permit", "Confined Space Entry Permit", "Electrical Permit"], answer: 2 },
-            { q: "What color is universally used for emergency stops?", options: ["Green", "Yellow", "Blue", "Red"], answer: 3 },
-            { q: "LOTO procedures are used to control hazardous what?", options: ["Thermal Energy", "Chemical Pressure", "Electrical & Mechanical Energy", "Noise"], answer: 2 },
-            { q: "What class of fire extinguisher is used for electrical fires?", options: ["Class A", "Class B", "Class D", "Class C"], answer: 3 },
-            { q: "What does MSDS stand for in industrial chemistry and safety?", options: ["Mechanical System Design Standard", "Material Safety Data Sheet", "Main Safety Directive System", "Manual Safety Deployment Step"], answer: 1 },
-            { q: "Why is regular ear protection necessary in high-noise industrial zones?", options: ["To hear better", "To look professional", "To block wind", "To prevent hearing loss"], answer: 3 },
-            { q: "What is the primary goal of a 5S workplace organization methodology?", options: ["Increase clutter", "Reduce employee count", "Enhance safety, efficiency, and order", "Increase machinery speed"], answer: 2 },
-            { q: "What does OSHA stand for internationally?", options: ["Occupational Safety and Health Administration", "Office of Safety and Health Authority", "Operational Security and Hazard Agency", "Overhead System Handling Association"], answer: 0 },
-            { q: "What does 'Near Miss' mean in workplace safety?", options: ["A successful project milestone", "An unplanned event that did not result in injury, illness, or damage", "A delayed shipment", "A minor scratch"], answer: 1 },
-            { q: "Which gas detector is standard in confined space entry safety?", options: ["Carbon filter", "Oxygen exhaust", "Nitrogen meter", "Multi-gas detector"], answer: 3 },
-            { q: "What is the main purpose of safety helmets?", options: ["Keeping hair clean", "Blocking sunlight", "Identifying supervisors", "Protecting the head from falling objects"], answer: 3 },
-            { q: "What does a green exit sign indicate?", options: ["Danger zone", "Emergency escape route", "Electrical panel", "Storage room"], answer: 1 },
-            { q: "When is a Hot Work Permit required?", options: ["Office computer work", "Welding, cutting, or grinding operations", "Water pipe inspection", "Painting walls"], answer: 1 },
-            { q: "What does fire triangle consist of?", options: ["Water, Air, Earth", "Gas, Metal, Wood", "Oxygen, Heat, Fuel", "Spark, Pressure, Smoke"], answer: 2 },
-            { q: "What is the safe angle for setting up a portable extension ladder?", options: ["45 degrees", "90 degrees", "75 degrees (4-to-1 ratio)", "30 degrees"], answer: 2 },
-            { q: "What does a safety harness protect workers against?", options: ["Chemical splashes", "Electric shocks", "Loud noises", "Falls from height"], answer: 3 },
-            { q: "What is ergonomic hazard in a workplace?", options: ["Exposed live wires", "Toxic chemical fumes", "Awkward postures, repetitive movements, and heavy lifting", "Slippery floors"], answer: 2 },
-            { q: "What does a eyewash station do?", options: ["Cleans safety glasses", "Flushes chemical splashes from eyes in emergencies", "Provides drinking water", "Washes hands"], answer: 1 },
-            { q: "What is the purpose of safety footwear (steel-toe boots)?", options: ["Provide running grip", "Keep feet warm", "Look uniform", "Protect feet from crushing and puncture hazards"], answer: 3 },
-            { q: "What does 'Hazard Identification' mean?", options: ["Fixing broken machines", "Recognizing things that may cause harm", "Firing careless workers", "Hiring safety officers"], answer: 1 },
-            { q: "What is the safest way to lift a heavy load?", options: ["Bend your back and lift with arms", "Bend your knees and keep your back straight", "Twist while lifting", "Lift quickly"], answer: 1 },
-            { q: "What does a yellow warning sign indicate?", options: ["Safe condition", "Caution / Potential hazard", "Mandatory action", "Prohibition"], answer: 1 },
-            { q: "What is the role of a safety committee?", options: ["Manage company payroll", "Review safety policies and promote safe practices", "Sell products", "Fix computer bugs"], answer: 1 },
-            { q: "What does SCBA stand for in safety gear?", options: ["Safety Circuit Box Assembly", "Self-Contained Breathing Apparatus", "Standard Chemical Body Armor", "Secure Control Base Area"], answer: 1 },
-            { q: "Why are machine guards installed on industrial equipment?", options: ["To make machines look heavier", "To prevent contact with moving parts", "To increase electricity speed", "To block noise completely"], answer: 1 },
-            { q: "What is the first step in risk management?", options: ["Ignore minor risks", "Insure the factory", "Identify hazards", "Close the plant"], answer: 2 },
-            { q: "What does a blue mandatory sign mean?", options: ["Danger warning", "Fire equipment location", "Safe condition", "Specific behavior or action required (e.g. wear PPE)"], answer: 3 },
-            { q: "What is a safety data sheet (SDS) used for?", options: ["Logging daily attendance", "Tracking machine maintenance", "Providing information on chemical properties and handling", "Recording sales targets"], answer: 2 }
+            { q: "What safety device protects against electrical shocks by breaking circuits?", options: ["MCB", "GFCI", "Transformer", "Inverter"], answer: 1 },
+            { q: "What does PPE stand for?", options: ["Personal Protective Equipment", "Primary Plant Engine", "Public Process", "Proactive Entity"], answer: 0 },
+            { q: "What permit is mandatory before entering a confined vessel?", options: ["Hot Work Permit", "Confined Space Entry Permit", "Height Permit", "Electrical Permit"], answer: 1 },
+            { q: "What color is universally used for emergency stops?", options: ["Green", "Blue", "Yellow", "Red"], answer: 3 },
+            { q: "LOTO procedures are used to control hazardous what?", options: ["Thermal Energy", "Electrical & Mechanical Energy", "Chemical Pressure", "Noise"], answer: 1 },
+            { q: "What class of fire extinguisher is used for electrical fires?", options: ["Class A", "Class B", "Class C", "Class D"], answer: 2 },
+            { q: "What does MSDS stand for in industrial chemistry and safety?", options: ["Material Safety Data Sheet", "Mechanical System Design Standard", "Main Safety Directive System", "Manual Safety Deployment Step"], answer: 0 },
+            { q: "Why is regular ear protection necessary in high-noise industrial zones?", options: ["To prevent hearing loss", "To hear better", "To look professional", "To block wind"], answer: 0 },
+            { q: "What is the primary goal of a 5S workplace organization methodology?", options: ["Increase clutter", "Enhance safety, efficiency, and order", "Reduce employee count", "Increase machinery speed"], answer: 1 },
+            { q: "What does OSHA stand for internationally?", options: ["Occupational Safety and Health Administration", "Operational Security and Hazard Agency", "Office of Safety and Health Authority", "Overhead System Handling Association"], answer: 0 },
+            { q: "What does 'Near Miss' mean in workplace safety?", options: ["An unplanned event that did not result in injury, illness, or damage", "A successful project milestone", "A delayed shipment", "A minor scratch"], answer: 0 },
+            { q: "Which gas detector is standard in confined space entry safety?", options: ["Multi-gas detector", "Carbon filter", "Oxygen exhaust", "Nitrogen meter"], answer: 0 },
+            { q: "What is the main purpose of safety helmets?", options: ["Protecting the head from falling objects", "Keeping hair clean", "Blocking sunlight", "Identifying supervisors"], answer: 0 },
+            { q: "What does a green exit sign indicate?", options: ["Emergency escape route", "Danger zone", "Electrical panel", "Storage room"], answer: 0 },
+            { q: "When is a Hot Work Permit required?", options: ["Welding, cutting, or grinding operations", "Office computer work", "Water pipe inspection", "Painting walls"], answer: 0 },
+            { q: "What does fire triangle consist of?", options: ["Oxygen, Heat, Fuel", "Water, Air, Earth", "Gas, Metal, Wood", "Spark, Pressure, Smoke"], answer: 0 },
+            { q: "What is the safe angle for setting up a portable extension ladder?", options: ["75 degrees (4-to-1 ratio)", "45 degrees", "90 degrees", "30 degrees"], answer: 0 },
+            { q: "What does a safety harness protect workers against?", options: ["Falls from height", "Chemical splashes", "Electric shocks", "Loud noises"], answer: 0 },
+            { q: "What is ergonomic hazard in a workplace?", options: ["Awkward postures, repetitive movements, and heavy lifting", "Exposed live wires", "Toxic chemical fumes", "Slippery floors"], answer: 0 },
+            { q: "What does a eyewash station do?", options: ["Flushes chemical splashes from eyes in emergencies", "Cleans safety glasses", "Provides drinking water", "Washes hands"], answer: 0 },
+            { q: "What is the purpose of safety footwear (steel-toe boots)?", options: ["Protect feet from crushing and puncture hazards", "Provide running grip", "Keep feet warm", "Look uniform"], answer: 0 },
+            { q: "What does 'Hazard Identification' mean?", options: ["Recognizing things that may cause harm", "Fixing broken machines", "Firing careless workers", "Hiring safety officers"], answer: 0 },
+            { q: "What is the safest way to lift a heavy load?", options: ["Bend your knees and keep your back straight", "Bend your back and lift with arms", "Twist while lifting", "Lift quickly"], answer: 0 },
+            { q: "What does a yellow warning sign indicate?", options: ["Caution / Potential hazard", "Safe condition", "Mandatory action", "Prohibition"], answer: 0 },
+            { q: "What is the role of a safety committee?", options: ["Review safety policies and promote safe practices", "Manage company payroll", "Sell products", "Fix computer bugs"], answer: 0 },
+            { q: "What does SCBA stand for in safety gear?", options: ["Self-Contained Breathing Apparatus", "Safety Circuit Box Assembly", "Standard Chemical Body Armor", "Secure Control Base Area"], answer: 0 },
+            { q: "Why are machine guards installed on industrial equipment?", options: ["To prevent contact with moving parts", "To make machines look heavier", "To increase electricity speed", "To block noise completely"], answer: 0 },
+            { q: "What is the first step in risk management?", options: ["Identify hazards", "Ignore minor risks", "Insure the factory", "Close the plant"], answer: 0 },
+            { q: "What does a blue mandatory sign mean?", options: ["Specific behavior or action required (e.g. wear PPE)", "Danger warning", "Fire equipment location", "Safe condition"], answer: 0 },
+            { q: "What is a safety data sheet (SDS) used for?", options: ["Providing information on chemical properties and handling", "Logging daily attendance", "Tracking machine maintenance", "Recording sales targets"], answer: 0 }
         ],
         Mechanic: [
-            { q: "What maintenance uses vibration analysis to predict machinery failures?", options: ["Reactive", "Corrective", "Predictive Maintenance", "Run-to-Failure"], answer: 2 },
-            { q: "Misalignment in rotating shafts causes extreme wear on which component?", options: ["Bolt", "Bearing", "Gasket", "Housing"], answer: 1 },
-            { q: "Fluid power systems utilizing compressed air are called...", options: ["Hydraulic", "Thermal", "Pneumatic", "Magnetic"], answer: 2 },
-            { q: "In maintenance reliability, what does 'MTBF' stand for?", options: ["Maximum Time", "Mean Time Between Failures", "Minimum Tool", "Maintenance Formula"], answer: 1 },
-            { q: "What precision instrument measures internal diameters down to microns?", options: ["Tape Measure", "Torque Wrench", "Vernier Caliper", "Feeler Gauge"], answer: 2 },
-            { q: "What type of lubrication is commonly used in high-load gearboxes?", options: ["Water", "Diesel", "Air", "Heavy Industrial Oil/Grease"], answer: 3 },
-            { q: "What is Cavitation in centrifugal pumps?", options: ["High speed rotation", "Normal cooling flow", "Electrical short", "Bubble formation and collapse causing damage"], answer: 3 },
-            { q: "What tool is used to tighten bolts to a precise specified limit?", options: ["Hammer", "Spanner", "Torque Wrench", "Pliers"], answer: 2 },
-            { q: "What does CMMS stand for in facility and asset management?", options: ["Central Mechanic Monitoring Standard", "Computerized Maintenance Management System", "Certified Material Management Service", "Core Mechanical Maintenance Software"], answer: 1 },
-            { q: "What is the main purpose of a coupling in power transmission?", options: ["To stop rotation", "To generate power", "To connect two shafts and transmit torque", "To cool the motor"], answer: 2 },
-            { q: "What is the purpose of a gasket in mechanical assemblies?", options: ["To fasten parts together loosely", "To increase friction", "To seal joints and prevent fluid/gas leakage", "To generate electricity"], answer: 2 },
-            { q: "What device is used to measure clearance between two parts?", options: ["Micrometer screw", "Plumb line", "Feeler Gauge", "Spirit level"], answer: 2 },
-            { q: "What is preventive maintenance?", options: ["Fixing equipment after it breaks", "Replacing entire plants yearly", "Scheduled servicing to prevent unexpected breakdowns", "Ignoring minor noises"], answer: 2 },
-            { q: "What does hydraulic oil primarily transmit in a system?", options: ["Electrical current", "Compressed air", "Sound waves", "Power/Force"], answer: 3 },
-            { q: "What causes a centrifugal pump to lose its prime?", options: ["Over-lubrication", "Air trapped in the suction line/pump casing", "High voltage", "Cold weather"], answer: 1 },
-            { q: "What is the function of a mechanical seal in a pump?", options: ["Lock the impeller", "Filter incoming water", "Cool the motor housing", "Prevent leakage along the rotating shaft"], answer: 3 },
-            { q: "Which tool is used to remove a tight bearing from a shaft safely?", options: ["Hammer and chisel", "Welding torch", "Pliers", "Bearing Puller"], answer: 3 },
-            { q: "What is backlash in gears?", options: ["Gear teeth breakage", "Clearance or play between mating gear teeth", "Reverse rotation speed", "Lubrication leak"], answer: 1 },
-            { q: "What does a pneumatic regulator do?", options: ["Filters oil from air", "Increases air temperature", "Controls and maintains air pressure", "Generates compressed air"], answer: 2 },
-            { q: "What is an O-ring used for?", options: ["Electrical insulation", "Nut fastening", "Belt tensioning", "Static and dynamic sealing"], answer: 3 },
-            { q: "What is the purpose of dynamic balancing in rotating machinery?", options: ["Increase weight", "Eliminate vibration and unbalance forces", "Paint the rotor", "Speed up cooling fans"], answer: 1 },
-            { q: "What type of gear is used to transmit motion between intersecting shafts?", options: ["Spur Gear", "Helical Gear", "Worm Gear", "Bevel Gear"], answer: 3 },
-            { q: "What does RTF stand for in maintenance strategies?", options: ["Repairing Total Faults", "Reliability Test Framework", "Run-to-Failure", "Rotational Tolerance Factor"], answer: 2 },
-            { q: "What is the function of a flywheel in an engine/machine?", options: ["Cool the exhaust gas", "Store rotational energy and smooth out power delivery", "Filter lubricating oil", "Ignite fuel"], answer: 1 },
-            { q: "What is shear stress?", options: ["Stress perpendicular to surface", "Thermal stress", "Compressive load", "Stress parallel to the surface plane"], answer: 3 },
-            { q: "What tool checks surface flatness accurately?", options: ["Measuring tape", "Torque gauge", "Hacksaw", "Surface Plate and feeler gauge"], answer: 3 },
-            { q: "What is the primary cause of hydraulic oil contamination?", options: ["Normal cooling", "High pressure flow", "Clean filtration", "Dirt, water, and particulate ingress"], answer: 3 },
-            { q: "What is a shackle used for in lifting operations?", options: ["Tightening wire ropes", "Measuring load weight", "Welding steel plates", "Connecting rigging components safely"], answer: 3 },
-            { q: "What does a tachometer measure?", options: ["Temperature", "Pressure", "Flow rate", "Rotational speed (RPM)"], answer: 3 },
-            { q: "What is destructive testing?", options: ["Non-contact inspection", "Routine cleaning", "Visual check", "Testing materials until they break to determine limits"], answer: 3 }
+            { q: "What maintenance uses vibration analysis to predict machinery failures?", options: ["Reactive", "Predictive Maintenance", "Corrective", "Run-to-Failure"], answer: 1 },
+            { q: "Misalignment in rotating shafts causes extreme wear on which component?", options: ["Bearing", "Bolt", "Gasket", "Housing"], answer: 0 },
+            { q: "Fluid power systems utilizing compressed air are called...", options: ["Hydraulic", "Pneumatic", "Thermal", "Magnetic"], answer: 1 },
+            { q: "In maintenance reliability, what does 'MTBF' stand for?", options: ["Mean Time Between Failures", "Maximum Time", "Minimum Tool", "Maintenance Formula"], answer: 0 },
+            { q: "What precision instrument measures internal diameters down to microns?", options: ["Tape Measure", "Vernier Caliper", "Torque Wrench", "Feeler Gauge"], answer: 1 },
+            { q: "What type of lubrication is commonly used in high-load gearboxes?", options: ["Water", "Heavy Industrial Oil/Grease", "Diesel", "Air"], answer: 1 },
+            { q: "What is Cavitation in centrifugal pumps?", options: ["Bubble formation and collapse causing damage", "High speed rotation", "Normal cooling flow", "Electrical short"], answer: 0 },
+            { q: "What tool is used to tighten bolts to a precise specified limit?", options: ["Hammer", "Torque Wrench", "Spanner", "Pliers"], answer: 1 },
+            { q: "What does CMMS stand for in facility and asset management?", options: ["Computerized Maintenance Management System", "Central Mechanic Monitoring Standard", "Certified Material Management Service", "Core Mechanical Maintenance Software"], answer: 0 },
+            { q: "What is the main purpose of a coupling in power transmission?", options: ["To connect two shafts and transmit torque", "To stop rotation", "To generate power", "To cool the motor"], answer: 0 },
+            { q: "What is the purpose of a gasket in mechanical assemblies?", options: ["To seal joints and prevent fluid/gas leakage", "To fasten parts together loosely", "To increase friction", "To generate electricity"], answer: 0 },
+            { q: "What device is used to measure clearance between two parts?", options: ["Feeler Gauge", "Micrometer screw", "Plumb line", "Spirit level"], answer: 0 },
+            { q: "What is preventive maintenance?", options: ["Scheduled servicing to prevent unexpected breakdowns", "Fixing equipment after it breaks", "Replacing entire plants yearly", "Ignoring minor noises"], answer: 0 },
+            { q: "What does hydraulic oil primarily transmit in a system?", options: ["Power/Force", "Electrical current", "Compressed air", "Sound waves"], answer: 0 },
+            { q: "What causes a centrifugal pump to lose its prime?", options: ["Air trapped in the suction line/pump casing", "Over-lubrication", "High voltage", "Cold weather"], answer: 0 },
+            { q: "What is the function of a mechanical seal in a pump?", options: ["Prevent leakage along the rotating shaft", "Lock the impeller", "Filter incoming water", "Cool the motor housing"], answer: 0 },
+            { q: "Which tool is used to remove a tight bearing from a shaft safely?", options: ["Bearing Puller", "Hammer and chisel", "Welding torch", "Pliers"], answer: 0 },
+            { q: "What is backlash in gears?", options: ["Clearance or play between mating gear teeth", "Gear teeth breakage", "Reverse rotation speed", "Lubrication leak"], answer: 0 },
+            { q: "What does a pneumatic regulator do?", options: ["Controls and maintains air pressure", "Filters oil from air", "Increases air temperature", "Generates compressed air"], answer: 0 },
+            { q: "What is an O-ring used for?", options: ["Static and dynamic sealing", "Electrical insulation", "Nut fastening", "Belt tensioning"], answer: 0 },
+            { q: "What is the purpose of dynamic balancing in rotating machinery?", options: ["Eliminate vibration and unbalance forces", "Increase weight", "Paint the rotor", "Speed up cooling fans"], answer: 0 },
+            { q: "What type of gear is used to transmit motion between intersecting shafts?", options: ["Bevel Gear", "Spur Gear", "Helical Gear", "Worm Gear"], answer: 0 },
+            { q: "What does RTF stand for in maintenance strategies?", options: ["Run-to-Failure", "Repairing Total Faults", "Reliability Test Framework", "Rotational Tolerance Factor"], answer: 0 },
+            { q: "What is the function of a flywheel in an engine/machine?", options: ["Store rotational energy and smooth out power delivery", "Cool the exhaust gas", "Filter lubricating oil", "Ignite fuel"], answer: 0 },
+            { q: "What is shear stress?", options: ["Stress parallel to the surface plane", "Stress perpendicular to surface", "Thermal stress", "Compressive load"], answer: 0 },
+            { q: "What tool checks surface flatness accurately?", options: ["Surface Plate and feeler gauge", "Measuring tape", "Torque gauge", "Hacksaw"], answer: 0 },
+            { q: "What is the primary cause of hydraulic oil contamination?", options: ["Dirt, water, and particulate ingress", "Normal cooling", "High pressure flow", "Clean filtration"], answer: 0 },
+            { q: "What is a shackle used for in lifting operations?", options: ["Connecting rigging components safely", "Tightening wire ropes", "Measuring load weight", "Welding steel plates"], answer: 0 },
+            { q: "What does a tachometer measure?", options: ["Rotational speed (RPM)", "Temperature", "Pressure", "Flow rate"], answer: 0 },
+            { q: "What is destructive testing?", options: ["Testing materials until they break to determine limits", "Non-contact inspection", "Routine cleaning", "Visual check"], answer: 0 }
         ],
         Electronics: [
-            { q: "According to Ohm's Law, Voltage equals Current multiplied by what?", options: ["Capacitance", "Inductance", "Resistance", "Frequency"], answer: 2 },
-            { q: "What component stores electrical energy in an electrostatic field?", options: ["Diode", "Resistor", "Transistor", "Capacitor"], answer: 3 },
-            { q: "What semiconductor device permits current flow in only one direction?", options: ["Transformer", "Diode", "Relay", "Inductor"], answer: 1 },
-            { q: "What is the standard SI unit of electrical capacitance?", options: ["Volt", "Ohm", "Ampere", "Farad"], answer: 3 },
-            { q: "A circuit with an interruption where current cannot flow is a(n)...", options: ["Short Circuit", "Closed Circuit", "Parallel", "Open Circuit"], answer: 3 },
-            { q: "What device steps up or steps down AC voltage?", options: ["Capacitor", "Diode", "Resistor", "Transformer"], answer: 3 },
-            { q: "What unit is used to measure electrical resistance?", options: ["Watt", "Ampere", "Ohm", "Joule"], answer: 2 },
-            { q: "What is a multimeter used for?", options: ["Soldering wires", "Generating power", "Storing energy", "Measuring voltage, current, and resistance"], answer: 3 },
-            { q: "What is the function of a fuse in an electrical circuit?", options: ["To increase voltage", "To store charge", "To amplify signals", "To protect against overcurrent by melting"], answer: 3 },
-            { q: "What material is most commonly used as an electrical conductor in household wiring?", options: ["Plastic", "Wood", "Glass", "Copper"], answer: 3 },
-            { q: "What does LED stand for?", options: ["Light Energy Device", "Light Emitting Diode", "Low Emission Diode", "Lighting Electric Display"], answer: 1 },
-            { q: "What is the function of a transistor?", options: ["Storing static charges", "Resisting current flow", "Stepping up voltage", "Amplification and switching of electrical signals"], answer: 3 },
-            { q: "What is alternating current (AC)?", options: ["Current that flows in one direction only", "Static electricity", "Battery power output", "Current that periodically reverses direction"], answer: 3 },
-            { q: "What is the unit of electrical frequency?", options: ["Volt", "Watt", "Farad", "Hertz (Hz)"], answer: 3 },
-            { q: "What does PCB stand for in electronics?", options: ["Power Control Box", "Processor Core Bus", "Plastic Component Base", "Printed Circuit Board"], answer: 3 },
-            { q: "What is direct current (DC)?", options: ["Reversing current", "Wireless power", "Radio frequency wave", "Current flowing in one constant direction"], answer: 3 },
-            { q: "What does an inductor do?", options: ["Blocks all electrical current", "Stores electrostatic charge", "Amplifies voltage", "Stores energy in a magnetic field when current flows"], answer: 3 },
-            { q: "What is a breadboard used for?", options: ["Baking electronic components", "Testing heavy motors", "Measuring high voltage", "Prototyping electronic circuits without soldering"], answer: 3 },
-            { q: "What is a relay?", options: ["A power generator", "A resistor network", "A cooling fan", "An electrically operated switch"], answer: 3 },
-            { q: "What color code band on a resistor represents tolerance of gold?", options: ["10%", "20%", "1%", "5%"], answer: 3 },
-            { q: "What is ESD protection used for?", options: ["Stopping water leaks", "Protecting against loud noise", "Fire suppression", "Preventing electrostatic discharge damage to sensitive components"], answer: 3 },
-            { q: "What is a microcontroller?", options: ["A large mainframe computer", "A heavy power transformer", "A manual switch", "A compact integrated circuit designed to govern a specific operation in an embedded system"], answer: 3 },
-            { q: "What is the purpose of a heatsink?", options: ["Generate thermal power", "Insulate circuits", "Increase operating speed", "Dissipate heat away from electronic components"], answer: 3 },
-            { q: "What does PWM stand for in electronics control?", options: ["Power Wave Mechanism", "Phase Wire Monitor", "Programmable Watt Meter", "Pulse Width Modulation"], answer: 3 },
-            { q: "What is a Zener diode used for?", options: ["Audio amplification", "Energy storage", "Signal filtering", "Voltage regulation"], answer: 3 },
-            { q: "What is the electrical symbol for current?", options: ["V", "R", "P", "I"], answer: 3 },
-            { q: "What is an oscilloscope used for?", options: ["Measuring resistance", "Soldering circuit boards", "Stepping down voltage", "Visualizing electronic signal waveforms"], answer: 3 },
-            { q: "What is a logic gate?", options: ["A mechanical gate switch", "A power breaker", "A fuse holder", "An idealized or physical device implementing a Boolean function"], answer: 3 },
-            { q: "What is solder made of typically?", options: ["Copper and Iron", "Aluminum and Zinc", "Plastic and Resin", "Tin and Lead alloy"], answer: 3 },
-            { q: "What does IC stand for?", options: ["Internal Conductor", "Isolated Current", "Inductive Coil", "Integrated Circuit"], answer: 3 }
+            { q: "According to Ohm's Law, Voltage equals Current multiplied by what?", options: ["Capacitance", "Resistance", "Inductance", "Frequency"], answer: 1 },
+            { q: "What component stores electrical energy in an electrostatic field?", options: ["Resistor", "Diode", "Capacitor", "Transistor"], answer: 2 },
+            { q: "What semiconductor device permits current flow in only one direction?", options: ["Diode", "Transformer", "Relay", "Inductor"], answer: 0 },
+            { q: "What is the standard SI unit of electrical capacitance?", options: ["Ohm", "Volt", "Farad", "Ampere"], answer: 2 },
+            { q: "A circuit with an interruption where current cannot flow is a(n)...", options: ["Closed Circuit", "Short Circuit", "Open Circuit", "Parallel"], answer: 2 },
+            { q: "What device steps up or steps down AC voltage?", options: ["Transformer", "Capacitor", "Diode", "Resistor"], answer: 0 },
+            { q: "What unit is used to measure electrical resistance?", options: ["Watt", "Ohm", "Ampere", "Joule"], answer: 1 },
+            { q: "What is a multimeter used for?", options: ["Measuring voltage, current, and resistance", "Soldering wires", "Generating power", "Storing energy"], answer: 0 },
+            { q: "What is the function of a fuse in an electrical circuit?", options: ["To protect against overcurrent by melting", "To increase voltage", "To store charge", "To amplify signals"], answer: 0 },
+            { q: "What material is most commonly used as an electrical conductor in household wiring?", options: ["Plastic", "Copper", "Wood", "Glass"], answer: 1 },
+            { q: "What does LED stand for?", options: ["Light Emitting Diode", "Light Energy Device", "Low Emission Diode", "Lighting Electric Display"], answer: 0 },
+            { q: "What is the function of a transistor?", options: ["Amplification and switching of electrical signals", "Storing static charges", "Resisting current flow", "Stepping up voltage"], answer: 0 },
+            { q: "What is alternating current (AC)?", options: ["Current that periodically reverses direction", "Current that flows in one direction only", "Static electricity", "Battery power output"], answer: 0 },
+            { q: "What is the unit of electrical frequency?", options: ["Hertz (Hz)", "Volt", "Watt", "Farad"], answer: 0 },
+            { q: "What does PCB stand for in electronics?", options: ["Printed Circuit Board", "Power Control Box", "Processor Core Bus", "Plastic Component Base"], answer: 0 },
+            { q: "What is direct current (DC)?", options: ["Current flowing in one constant direction", "Reversing current", "Wireless power", "Radio frequency wave"], answer: 0 },
+            { q: "What does an inductor do?", options: ["Stores energy in a magnetic field when current flows", "Blocks all electrical current", "Stores electrostatic charge", "Amplifies voltage"], answer: 0 },
+            { q: "What is a breadboard used for?", options: ["Prototyping electronic circuits without soldering", "Baking electronic components", "Testing heavy motors", "Measuring high voltage"], answer: 0 },
+            { q: "What is a relay?", options: ["An electrically operated switch", "A power generator", "A resistor network", "A cooling fan"], answer: 0 },
+            { q: "What color code band on a resistor represents tolerance of gold?", options: ["5%", "10%", "20%", "1%"], answer: 0 },
+            { q: "What is ESD protection used for?", options: ["Preventing electrostatic discharge damage to sensitive components", "Stopping water leaks", "Protecting against loud noise", "Fire suppression"], answer: 0 },
+            { q: "What is a microcontroller?", options: ["A compact integrated circuit designed to govern a specific operation in an embedded system", "A large mainframe computer", "A heavy power transformer", "A manual switch"], answer: 0 },
+            { q: "What is the purpose of a heatsink?", options: ["Dissipate heat away from electronic components", "Generate thermal power", "Insulate circuits", "Increase operating speed"], answer: 0 },
+            { q: "What does PWM stand for in electronics control?", options: ["Pulse Width Modulation", "Power Wave Mechanism", "Phase Wire Monitor", "Programmable Watt Meter"], answer: 0 },
+            { q: "What is a Zener diode used for?", options: ["Voltage regulation", "Audio amplification", "Energy storage", "Signal filtering"], answer: 0 },
+            { q: "What is the electrical symbol for current?", options: ["I", "V", "R", "P"], answer: 0 },
+            { q: "What is an oscilloscope used for?", options: ["Visualizing electronic signal waveforms", "Measuring resistance", "Soldering circuit boards", "Stepping down voltage"], answer: 0 },
+            { q: "What is a logic gate?", options: ["An idealized or physical device implementing a Boolean function", "A mechanical gate switch", "A power breaker", "A fuse holder"], answer: 0 },
+            { q: "What is solder made of typically?", options: ["Tin and Lead alloy", "Copper and Iron", "Aluminum and Zinc", "Plastic and Resin"], answer: 0 },
+            { q: "What does IC stand for?", options: ["Integrated Circuit", "Internal Conductor", "Isolated Current", "Inductive Coil"], answer: 0 }
         ],
         Management: [
-            { q: "What management framework uses the DMAIC cycle for quality control?", options: ["Agile", "Scrum", "Lean Six Sigma", "Waterfall"], answer: 2 },
-            { q: "SWOT analysis evaluates Strengths, Weaknesses, Opportunities, and...", options: ["Targets", "Trends", "Tasks", "Threats"], answer: 3 },
-            { q: "In project management, what does 'CPM' stand for?", options: ["Cost Matrix", "Control Process", "Core Milestone", "Critical Path Method"], answer: 3 },
-            { q: "Setting clear, measurable objectives is commonly known by which acronym?", options: ["FAST", "AGILE", "LEAN", "SMART"], answer: 3 },
-            { q: "Allocating tasks and authority to team members is called...", options: ["Leadership", "Supervision", "Negotiation", "Delegation"], answer: 3 },
-            { q: "What is Agile project management best known for?", options: ["Rigid long plans", "Single person control", "Zero documentation", "Iterative flexibility and teamwork"], answer: 3 },
-            { q: "What does KPI stand for in performance management?", options: ["Key Project Investment", "Known Process Item", "Kernel Program Interface", "Key Performance Indicator"], answer: 3 },
-            { q: "What is the primary role of a project manager?", options: ["Writing all code alone", "Fixing physical machines", "Selling products directly", "Planning, executing, and closing projects"], answer: 3 },
-            { q: "What does Root Cause Analysis (RCA) aim to achieve?", options: ["Blame employees", "Ignore minor faults", "Increase production speed", "Find the underlying cause of a problem"], answer: 3 },
-            { q: "What is Benchmarking in business strategy?", options: ["Sitting on a bench", "Fixing bench tools", "Writing manual logs", "Comparing performance against industry best practices"], answer: 3 },
-            { q: "What does Scrum master do in Agile teams?", options: ["Manages the company budget", "Directs employee hiring", "Writes all software code", "Facilitates agile practices and removes impediments"], answer: 3 },
-            { q: "What is change management?", options: ["Changing office chairs", "Updating software version", "Modifying bank accounts", "Structured approach to transitioning individuals and organizations"], answer: 3 },
-            { q: "What does ROI measure in business projects?", options: ["Employee attendance rate", "Server uptime percentage", "Customer complaint count", "Financial return relative to investment cost"], answer: 3 },
-            { q: "What is a stakeholder?", options: ["A company shareholder only", "A project manager", "A database administrator", "Anyone who can affect or be affected by a project's outcome"], answer: 3 },
-            { q: "What is total quality management (TQM)?", options: ["Inspecting final products only", "Cutting production staff", "Increasing machine speed", "An organization-wide effort to instill permanent climate where employees continuously improve"], answer: 3 },
-            { q: "What does ERP stand for in corporate software?", options: ["External Relation Program", "Engine Repair Process", "Electronic Record Protocol", "Enterprise Resource Planning"], answer: 3 },
-            { q: "What is risk mitigation?", options: ["Ignoring potential failures", "Accepting all losses", "Closing the business", "Taking steps to reduce the likelihood or impact of risks"], answer: 3 },
-            { q: "What is situational leadership?", options: ["Managing only during emergencies", "Working remotely from home", "Following strict rules", "Adapting leadership style to the task and maturity of followers"], answer: 3 },
-            { q: "What does 'Scope Creep' mean in project management?", options: ["Slow project progress", "Reducing project tasks", "Stretching project deadlines", "Uncontrolled changes or continuous growth in a project's scope"], answer: 3 },
-            { q: "What is conflict resolution?", options: ["Ignoring arguments", "Firing conflicting workers", "Canceling meetings", "The methods and processes involved in facilitating peaceful ending of conflict"], answer: 3 },
-            { q: "What is the Pareto Principle (80/20 rule)?", options: ["80% work is done in 20 minutes", "80 employees to 20 managers", "80% profit margin", "80% of consequences come from 20% of the causes"], answer: 3 },
-            { q: "What does SMART goals 'T' stand for?", options: ["Targeted", "Technical", "Total", "Time-bound"], answer: 3 },
-            { q: "What is organizational culture?", options: ["The office interior design", "The company registration paper", "The legal compliance document", "The shared values, beliefs, and practices of an organization"], answer: 3 },
-            { q: "What is crisis management?", options: ["Routine daily planning", "Hiring new recruits", "Marketing new products", "The process by which an organization deals with a disruptive and unexpected event"], answer: 3 },
-            { q: "What does Lean management focus on?", options: ["Cutting employee wages", "Reducing office space", "Stopping product updates", "Maximizing customer value while minimizing waste"], answer: 3 },
-            { q: "What is strategic planning?", options: ["Daily task assignment", "Fixing network cables", "Writing software code", "Defining organization's direction and decision-making on allocating resources"], answer: 3 },
-            { q: "What is team building?", options: ["Constructing physical office buildings", "Recruiting new managers", "Buying office furniture", "Activities designed to improve social relations and collaborative team working"], answer: 3 },
-            { q: "What does a balanced scorecard measure?", options: ["Financial profit only", "Employee working hours", "Server speed and storage", "Performance from multiple perspectives (financial, customer, internal, learning)"], answer: 3 },
-            { q: "What is bottleneck in operations management?", options: ["A water storage bottle", "An empty workstation", "A fast shipping lane", "A point of congestion in a production system that impedes throughput"], answer: 3 },
-            { q: "What is continuous improvement (Kaizen)?", options: ["Changing company logo yearly", "Doing annual reviews", "Expanding office branches", "Ongoing effort to improve products, services, or processes"], answer: 3 }
+            { q: "What management framework uses the DMAIC cycle for quality control?", options: ["Agile", "Lean Six Sigma", "Scrum", "Waterfall"], answer: 1 },
+            { q: "SWOT analysis evaluates Strengths, Weaknesses, Opportunities, and...", options: ["Targets", "Threats", "Trends", "Tasks"], answer: 1 },
+            { q: "In project management, what does 'CPM' stand for?", options: ["Critical Path Method", "Cost Matrix", "Control Process", "Core Milestone"], answer: 0 },
+            { q: "Setting clear, measurable objectives is commonly known by which acronym?", options: ["SMART", "FAST", "AGILE", "LEAN"], answer: 0 },
+            { q: "Allocating tasks and authority to team members is called...", options: ["Leadership", "Delegation", "Supervision", "Negotiation"], answer: 1 },
+            { q: "What is Agile project management best known for?", options: ["Rigid long plans", "Iterative flexibility and teamwork", "Single person control", "Zero documentation"], answer: 1 },
+            { q: "What does KPI stand for in performance management?", options: ["Key Performance Indicator", "Key Project Investment", "Known Process Item", "Kernel Program Interface"], answer: 0 },
+            { q: "What is the primary role of a project manager?", options: ["Planning, executing, and closing projects", "Writing all code alone", "Fixing physical machines", "Selling products directly"], answer: 0 },
+            { q: "What does Root Cause Analysis (RCA) aim to achieve?", options: ["Find the underlying cause of a problem", "Blame employees", "Ignore minor faults", "Increase production speed"], answer: 0 },
+            { q: "What is Benchmarking in business strategy?", options: ["Comparing performance against industry best practices", "Sitting on a bench", "Fixing bench tools", "Writing manual logs"], answer: 0 },
+            { q: "What does Scrum master do in Agile teams?", options: ["Facilitates agile practices and removes impediments", "Manages the company budget", "Directs employee hiring", "Writes all software code"], answer: 0 },
+            { q: "What is change management?", options: ["Structured approach to transitioning individuals and organizations", "Changing office chairs", "Updating software version", "Modifying bank accounts"], answer: 0 },
+            { q: "What does ROI measure in business projects?", options: ["Financial return relative to investment cost", "Employee attendance rate", "Server uptime percentage", "Customer complaint count"], answer: 0 },
+            { q: "What is a stakeholder?", options: ["Anyone who can affect or be affected by a project's outcome", "A company shareholder only", "A project manager", "A database administrator"], answer: 0 },
+            { q: "What is total quality management (TQM)?", options: ["An organization-wide effort to instill permanent climate where employees continuously improve", "Inspecting final products only", "Cutting production staff", "Increasing machine speed"], answer: 0 },
+            { q: "What does ERP stand for in corporate software?", options: ["Enterprise Resource Planning", "External Relation Program", "Engine Repair Process", "Electronic Record Protocol"], answer: 0 },
+            { q: "What is risk mitigation?", options: ["Taking steps to reduce the likelihood or impact of risks", "Ignoring potential failures", "Accepting all losses", "Closing the business"], answer: 0 },
+            { q: "What is situational leadership?", options: ["Adapting leadership style to the task and maturity of followers", "Managing only during emergencies", "Working remotely from home", "Following strict rules"], answer: 0 },
+            { q: "What does 'Scope Creep' mean in project management?", options: ["Uncontrolled changes or continuous growth in a project's scope", "Slow project progress", "Reducing project tasks", "Stretching project deadlines"], answer: 0 },
+            { q: "What is conflict resolution?", options: ["The methods and processes involved in facilitating peaceful ending of conflict", "Ignoring arguments", "Firing conflicting workers", "Canceling meetings"], answer: 0 },
+            { q: "What is the Pareto Principle (80/20 rule)?", options: ["80% of consequences come from 20% of the causes", "80% work is done in 20 minutes", "80 employees to 20 managers", "80% profit margin"], answer: 0 },
+            { q: "What does SMART goals 'T' stand for?", options: ["Time-bound", "Targeted", "Technical", "Total"], answer: 0 },
+            { q: "What is organizational culture?", options: ["The shared values, beliefs, and practices of an organization", "The office interior design", "The company registration paper", "The legal compliance document"], answer: 0 },
+            { q: "What is crisis management?", options: ["The process by which an organization deals with a disruptive and unexpected event", "Routine daily planning", "Hiring new recruits", "Marketing new products"], answer: 0 },
+            { q: "What does Lean management focus on?", options: ["Maximizing customer value while minimizing waste", "Cutting employee wages", "Reducing office space", "Stopping product updates"], answer: 0 },
+            { q: "What is strategic planning?", options: ["Defining organization's direction and decision-making on allocating resources", "Daily task assignment", "Fixing network cables", "Writing software code"], answer: 0 },
+            { q: "What is team building?", options: ["Activities designed to improve social relations and collaborative team working", "Constructing physical office buildings", "Recruiting new managers", "Buying office furniture"], answer: 0 },
+            { q: "What does a balanced scorecard measure?", options: ["Performance from multiple perspectives (financial, customer, internal, learning)", "Financial profit only", "Employee working hours", "Server speed and storage"], answer: 0 },
+            { q: "What is bottleneck in operations management?", options: ["A point of congestion in a production system that impedes throughput", "A water storage bottle", "An empty workstation", "A fast shipping lane"], answer: 0 },
+            { q: "What is continuous improvement (Kaizen)?", options: ["Ongoing effort to improve products, services, or processes", "Changing company logo yearly", "Doing annual reviews", "Expanding office branches"], answer: 0 }
         ]
     };
 
@@ -585,17 +590,21 @@
             let finalSecs = totalSeconds % 60;
             timeTakenStr = `${finalMins}m ${finalSecs}s`;
             
-            heartsStr = "";
-            for(let i=0; i<lives; i++) heartsStr += "❤️";
+            if (lives <= 0) {
+                heartsDisplayStr = "Zero Life";
+            } else {
+                heartsDisplayStr = "";
+                for(let i=0; i<lives; i++) heartsDisplayStr += "❤️";
+            }
 
             document.getElementById('game-card').innerHTML = `
                 <h1 style="color: #34d399; text-align: center; font-size: 18px; margin-bottom: 10px;">Congratulations ${playerName} you win the Adrigizmo skill test</h1>
                 
-                <!-- Colorful Background Certificate Box with Large Logo -->
+                <!-- Fixed Landscape Certificate Box -->
                 <div id="certificate-preview">
                     <div class="cert-top-area">
                         <div class="cert-brand-side">
-                            <div class="cert-title">ADRIGIZMO TECH TECHNICS</div>
+                            <div class="cert-title">ADRIGIZMO</div>
                             <div class="cert-subtitle">SKILL TEST</div>
                         </div>
                         <div class="cert-emblem">
@@ -607,7 +616,7 @@
                         <div class="cert-presented">PROUDLY PRESENTED TO</div>
                         <div class="cert-name">${playerName}</div>
                         <div class="cert-desc">
-                            Successfully completed the Skill Test and 🏆 won <b>5🌟 out of 5</b> in <b>${currentField}</b> using <b>${heartsStr}</b> within <b>${timeTakenStr}</b>.
+                            Successfully completed the Skill Test and 🏆 won <b>5🌟 out of 5</b> in <b>${currentField}</b> using <b>${heartsDisplayStr}</b> within <b>${timeTakenStr}</b>.
                         </div>
                     </div>
 
@@ -640,20 +649,24 @@
         document.getElementById('lvl-title').textContent = `Level ${currentLevel + 1} of 5 - ${currentField}`;
         document.getElementById('lvl-desc').textContent = levelData.q;
         
+        let optionsWithIndex = levelData.options.map((opt, idx) => ({ text: opt, originalIndex: idx }));
+        optionsWithIndex.sort(() => Math.random() - 0.5);
+
         let optionsHtml = '';
-        levelData.options.forEach((opt, index) => {
-            optionsHtml += `<button class="option-btn" onclick="checkAnswer(${index})">${String.fromCharCode(65 + index)}. ${opt}</button>`;
+        optionsWithIndex.forEach((item, index) => {
+            let isCorrect = (item.originalIndex === levelData.answer) ? 1 : 0;
+            optionsHtml += `<button class="option-btn" onclick="checkAnswer(${isCorrect})">${String.fromCharCode(65 + index)}. ${item.text}</button>`;
         });
+
         document.getElementById('options-container').innerHTML = optionsHtml;
         document.getElementById('feedback').textContent = '';
         document.getElementById('progress').style.width = ((currentLevel + 1) * 20) + '%';
     }
 
-    function checkAnswer(selectedIndex) {
-        let levelData = activeQuestions[currentLevel];
+    function checkAnswer(isCorrect) {
         let feedback = document.getElementById('feedback');
 
-        if (selectedIndex === levelData.answer) {
+        if (isCorrect === 1) {
             feedback.style.color = '#34d399';
             feedback.textContent = "✅ Correct!";
             currentLevel++;
@@ -663,6 +676,7 @@
             updateLivesDisplay();
             if (lives <= 0) {
                 clearInterval(timerInterval);
+                heartsDisplayStr = "Zero Life";
                 gameOver("❌ Out of Lives! Test failed.");
                 return;
             }
@@ -673,7 +687,11 @@
 
     function updateLivesDisplay() {
         let hearts = "";
-        for(let i=0; i<lives; i++) hearts += "❤️";
+        if(lives <= 0) {
+            hearts = "Zero Life";
+        } else {
+            for(let i=0; i<lives; i++) hearts += "❤️";
+        }
         document.getElementById('lives-display').textContent = hearts;
     }
 
@@ -701,12 +719,12 @@
 
     function shareSocial(platform) {
         let gameUrl = window.location.href;
-        let shareText = `🏆 I successfully completed the Adrigizmo Skill Test in ${currentField} with 5 stars using ${heartsStr} in ${timeTakenStr}!\n\nCan you beat my score? Take the challenge now:\n👉 https://www.adrigizmo.com`;
+        let shareText = `🏆 I successfully completed the Adrigizmo Skill Test in ${currentField} with 5 stars using ${heartsDisplayStr} in ${timeTakenStr}!\n\nCan you beat my score? Take the challenge now:\n👉 https://www.adrigizmo.com`;
 
         if(platform === 'whatsapp') {
             window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`, '_blank');
         } else if(platform === 'facebook') {
-            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(gameUrl)}&quote=${encodeURIComponent(shareText)}`, '_blank');
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(gameUrl)}&quote=${encodeURIComponent(shareTest)}`, '_blank');
         } else if(platform === 'twitter') {
             window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`, '_blank');
         } else if(platform === 'linkedin') {
