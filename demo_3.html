@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elon Musk | Visionary Entrepreneur & Technologist</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brandBlue: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0284c7',
+              600: '#0284c7',
+              900: '#0f172a',
+            },
+            slateLight: {
+              100: '#f8fafc',
+              200: '#f1f5f9',
+              800: '#1e293b'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      background-color: #f8fafc;
+      color: #0f172a;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-jakarta {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .light-glass {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    }
+    .light-glass:hover {
+      border-color: rgba(2, 132, 199, 0.3);
+      box-shadow: 0 20px 40px -10px rgba(2, 132, 199, 0.1);
+    }
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-slide {
+      animation: fadeInSlide 0.8s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="selection:bg-brandBlue-500 selection:text-white">
+
+  <!-- NAVIGATION -->
+  <nav class="fixed top-0 left-0 right-0 z-50 light-glass border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="#" class="flex items-center gap-3 font-jakarta text-xl font-bold tracking-tight text-brandBlue-600">
+          <div class="w-10 h-10 rounded-xl bg-brandBlue-50 border border-brandBlue-100 flex items-center justify-center text-brandBlue-600 shadow-sm">
+            <i data-lucide="compass" class="w-5 h-5"></i>
+          </div>
+          <span>ELON<span class="text-gray-900">.MUSK</span></span>
+        </a>
+        <div class="hidden lg:flex items-center space-x-8 text-sm font-semibold">
+          <a href="#about" class="text-gray-600 hover:text-brandBlue-600 transition-colors">Biography</a>
+          <a href="#innovations" class="text-gray-600 hover:text-brandBlue-600 transition-colors">Ventures</a>
+          <a href="#showcase" class="text-gray-600 hover:text-brandBlue-600 transition-colors">Showcase</a>
+          <a href="#timeline" class="text-gray-600 hover:text-brandBlue-600 transition-colors">Journey</a>
+          <a href="#contact" class="px-5 py-2.5 rounded-xl bg-brandBlue-600 hover:bg-brandBlue-500 text-white font-bold transition-all shadow-md shadow-brandBlue-500/20">
+            Connect Vision
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION (Images Swapped/Rearranged Side) -->
+  <header class="relative pt-36 pb-20 md:pt-48 md:pb-32 bg-gradient-to-b from-brandBlue-50/50 to-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Cover Image Card Moved to Left -->
+        <div class="lg:col-span-5 relative order-2 lg:order-1 animate-fade-slide">
+          <div class="relative mx-auto max-w-md">
+            <div class="absolute -inset-2 bg-gradient-to-r from-brandBlue-500 to-sky-400 rounded-3xl blur-xl opacity-20"></div>
+            <div class="relative rounded-2xl overflow-hidden light-glass p-3">
+              <img 
+                src="https://i.pinimg.com/736x/1b/45/b8/1b45b84c92c7798ae7d5743e40eda699.jpg" 
+                alt="Elon Musk - World Leader" 
+                class="w-full h-[420px] object-cover rounded-xl shadow-lg"
+              />
+              <div class="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/90 backdrop-blur-md border border-gray-100 shadow-md">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h3 class="font-bold text-gray-900 text-base">Elon Musk</h3>
+                    <p class="text-xs text-brandBlue-600 font-mono">Austin, Texas • Founder & CEO</p>
+                  </div>
+                  <span class="px-2.5 py-1 text-[10px] font-bold bg-brandBlue-50 text-brandBlue-600 border border-brandBlue-200 rounded-full">
+                    #1 WEALTH
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text Content Moved to Right -->
+        <div class="lg:col-span-7 space-y-6 order-1 lg:order-2">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brandBlue-50 border border-brandBlue-100 text-brandBlue-600 text-xs font-bold uppercase tracking-wider">
+            <i data-lucide="zap" class="w-4 h-4"></i>
+            Chief Engineer of SpaceX & CEO of Tesla
+          </div>
+
+          <h1 class="text-4xl sm:text-6xl font-black text-gray-900 tracking-tight leading-none font-jakarta">
+            GLOBAL INDUSTRIAL <br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandBlue-600 via-sky-500 to-indigo-600">
+              VISIONARY
+            </span>
+          </h1>
+
+          <p class="text-gray-600 text-base sm:text-lg max-w-2xl leading-relaxed">
+            Pioneering the future of humanity through sustainable electric transport, interplanetary space colonization, and breakthrough artificial intelligence systems.
+          </p>
+
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a href="#timeline" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-brandBlue-600 hover:bg-brandBlue-500 text-white font-extrabold transition-all shadow-md shadow-brandBlue-600/20 transform hover:-translate-y-0.5">
+              <i data-lucide="git-branch" class="w-5 h-5"></i>
+              View Trajectory
+            </a>
+            <a href="#innovations" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl light-glass text-gray-800 hover:bg-gray-50 font-semibold transition-all">
+              <i data-lucide="layers" class="w-5 h-5"></i>
+              Explore Ventures
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- METRICS BAR -->
+  <section class="py-12 bg-white border-y border-gray-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="space-y-1">
+          <div class="text-4xl sm:text-5xl font-black text-brandBlue-600 font-jakarta">#1</div>
+          <div class="text-xs uppercase tracking-wider text-gray-500 font-bold">World's Richest Person</div>
+        </div>
+        <div class="space-y-1">
+          <div class="text-4xl sm:text-5xl font-black text-sky-500 font-jakarta">7,600+</div>
+          <div class="text-xs uppercase tracking-wider text-gray-500 font-bold">Starlink Satellites</div>
+        </div>
+        <div class="space-y-1">
+          <div class="text-4xl sm:text-5xl font-black text-indigo-600 font-jakarta">1st</div>
+          <div class="text-xs uppercase tracking-wider text-gray-500 font-bold">Trillionaire Milestone</div>
+        </div>
+        <div class="space-y-1">
+          <div class="text-4xl sm:text-5xl font-black text-emerald-600 font-jakarta">100%</div>
+          <div class="text-xs uppercase tracking-wider text-gray-500 font-bold">Reusable Rockets</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIOGRAPHY SECTION -->
+  <section id="about" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="light-glass rounded-3xl p-8 sm:p-12 border border-gray-200">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <div class="lg:col-span-6 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-600 text-xs font-bold uppercase tracking-wider border border-amber-200">
+              <i data-lucide="user" class="w-3.5 h-3.5"></i>
+              Roots & First-Principles Physics
+            </div>
+
+            <h2 class="text-3xl font-black text-gray-900 font-jakarta leading-tight">
+              From Pretoria Prodigy to Multi-Planetary Architect
+            </h2>
+
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Born on <strong>June 28, 1971</strong>, in Pretoria, South Africa. At age 12, he self-taught programming and built the video game <em>Blastar</em>. Later graduating from the <em>University of Pennsylvania</em> with dual degrees in Physics and Economics.
+            </p>
+          </div>
+
+          <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+            <div class="light-glass p-5 rounded-2xl space-y-2 border border-gray-200">
+              <i data-lucide="graduation-cap" class="w-6 h-6 text-brandBlue-600"></i>
+              <h4 class="text-sm font-bold text-gray-900">Academic Degrees</h4>
+              <p class="text-xs text-gray-500">Penn Physics (BA) & Wharton Economics (BS).</p>
+            </div>
+            <div class="light-glass p-5 rounded-2xl space-y-2 border border-gray-200">
+              <i data-lucide="rocket" class="w-6 h-6 text-sky-500"></i>
+              <h4 class="text-sm font-bold text-gray-900">Interplanetary Goal</h4>
+              <p class="text-xs text-gray-500">Building Starship to establish a city on Mars.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENTURES SHOWCASE (Rearranged Image Grid Layout) -->
+  <section id="innovations" class="py-24 relative bg-white border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <h2 class="text-xs uppercase tracking-widest text-brandBlue-600 font-bold">Industrial Ecosystem</h2>
+        <p class="text-3xl sm:text-4xl font-black text-gray-900 font-jakarta">Flagship Enterprises & Innovations</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Tesla Card with Image Swapped to Top -->
+        <div class="light-glass rounded-2xl overflow-hidden group transition-all duration-300 hover:-translate-y-2 border border-gray-200">
+          <div class="h-48 overflow-hidden relative">
+            <img 
+              src="https://i.pinimg.com/1200x/5b/4e/9d/5b4e9da04e6480dacedf810d7e12a66d.jpg" 
+              alt="Tesla Electric Vehicle" 
+              class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 bg-brandBlue-600 text-white text-xs font-bold rounded-md">TESLA</span>
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+              <i data-lucide="zap" class="w-5 h-5 text-brandBlue-600"></i>
+              Electric Mobility & Energy
+            </h3>
+            <p class="text-gray-600 text-xs leading-relaxed">
+              Accelerating global transition to sustainable electric transport with Model line, Cybertruck, and grid Megapacks.
+            </p>
+          </div>
+        </div>
+
+        <!-- X (Twitter) Card -->
+        <div class="light-glass rounded-2xl overflow-hidden group transition-all duration-300 hover:-translate-y-2 border border-gray-200">
+          <div class="h-48 overflow-hidden relative">
+            <img 
+              src="https://i.pinimg.com/736x/22/3e/03/223e03150b04a79fed86dc869a88f2c7.jpg" 
+              alt="X Town Square" 
+              class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 bg-sky-500 text-white text-xs font-bold rounded-md">X (TWITTER)</span>
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+              <i data-lucide="message-square" class="w-5 h-5 text-sky-500"></i>
+              The Global Town Square
+            </h3>
+            <p class="text-gray-600 text-xs leading-relaxed">
+              Preserving freedom of speech and building an integrated communications and creator platform.
+            </p>
+          </div>
+        </div>
+
+        <!-- SpaceX Card -->
+        <div class="light-glass rounded-2xl overflow-hidden group transition-all duration-300 hover:-translate-y-2 border border-gray-200">
+          <div class="h-48 overflow-hidden relative">
+            <img 
+              src="https://i.pinimg.com/736x/c2/07/86/c20786ec6563e2886eabe08e18d64c4d.jpg" 
+              alt="SpaceX Starship" 
+              class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 bg-indigo-600 text-white text-xs font-bold rounded-md">SPACEX</span>
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+              <i data-lucide="rocket" class="w-5 h-5 text-indigo-600"></i>
+              Starship & Starlink Fleet
+            </h3>
+            <p class="text-gray-600 text-xs leading-relaxed">
+              Developing fully reusable rockets for deep space transport and high-speed global satellite internet.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ADDITIONAL PHOTO SHOWCASE SECTION (Rearranged layout) -->
+  <section id="showcase" class="py-20 bg-gray-50 border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="light-glass rounded-3xl p-8 sm:p-12 border border-gray-200">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-6 space-y-4">
+            <span class="text-xs font-mono text-brandBlue-600 font-bold uppercase tracking-wider">Visionary Leadership</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-gray-900 font-jakarta">
+              Driving Radical Technological Progress
+            </h2>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Applying first-principles engineering across multiple high-tech domains to solve civilizational challenges and ensure a multi-planetary future for humankind[cite: 1].
+            </p>
+            <div class="pt-2 flex items-center gap-3">
+              <span class="px-3 py-1 bg-brandBlue-50 text-brandBlue-600 text-xs font-bold rounded-full">Austin, Texas HQ</span>
+              <span class="px-3 py-1 bg-sky-50 text-sky-600 text-xs font-bold rounded-full">Starbase Boca Chica</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+            <img 
+              src="https://res.cloudinary.com/jerrick/image/upload/d_642250b563292b35f27461a7.png,f_jpg,fl_progressive,q_auto,w_1024/6909cc0e661269001e73c6a1.webp" 
+              alt="Elon Musk Portrait" 
+              class="w-full h-48 object-cover rounded-xl shadow-md border border-gray-200"
+            />
+            <img 
+              src="https://i.pinimg.com/1200x/db/e3/f1/dbe3f1eaabe11bad192428dfb20724ae.jpg" 
+              alt="Innovation Showcase" 
+              class="w-full h-48 object-cover rounded-xl shadow-md border border-gray-200"
+            />
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREER TIMELINE -->
+  <section id="timeline" class="py-24 bg-white border-t border-gray-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <h2 class="text-xs uppercase tracking-widest text-brandBlue-600 font-bold">Chronological Growth</h2>
+        <p class="text-3xl sm:text-4xl font-black text-gray-900 font-jakarta">Trajectory of Innovation (1995 – 2026)</p>
+      </div>
+
+      <div class="space-y-8 border-l-2 border-brandBlue-200 pl-6 ml-4">
+        
+        <div class="relative space-y-2">
+          <span class="text-xs font-mono text-brandBlue-600 bg-brandBlue-50 px-2.5 py-1 rounded border border-brandBlue-100 font-bold">2026</span>
+          <h3 class="text-lg font-bold text-gray-900">First Trillionaire & xAI Expansion</h3>
+          <p class="text-xs text-gray-600">SpaceX valuation milestone, Starlink surpassing 7,600 satellites, and advanced Grok AI models integrated globally[cite: 1].</p>
+        </div>
+
+        <div class="relative space-y-2">
+          <span class="text-xs font-mono text-sky-600 bg-sky-50 px-2.5 py-1 rounded border border-sky-100 font-bold">2022 – 2023</span>
+          <h3 class="text-lg font-bold text-gray-900">Acquisition of Twitter & Rebrand to X</h3>
+          <p class="text-xs text-gray-600">Acquired Twitter for $44 billion to protect free speech and transform the platform into an all-in-one town square[cite: 1].</p>
+        </div>
+
+        <div class="relative space-y-2">
+          <span class="text-xs font-mono text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded border border-indigo-100 font-bold">2002 – 2008</span>
+          <h3 class="text-lg font-bold text-gray-900">SpaceX Founding & Tesla Leadership</h3>
+          <p class="text-xs text-gray-600">Established SpaceX with $100M and joined Tesla as CEO, achieving orbital flight with Falcon 1[cite: 1].</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact" class="py-12 bg-gray-900 text-gray-400 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-brandBlue-500/20 border border-brandBlue-500/30 flex items-center justify-center text-brandBlue-400">
+          <i data-lucide="compass" class="w-4 h-4"></i>
+        </div>
+        <span class="font-jakarta text-sm font-bold text-white tracking-wider">ELON REEVE MUSK</span>
+      </div>
+      <div class="text-xs text-gray-500">
+        © 2026 Light Advanced Portfolio Edition. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
