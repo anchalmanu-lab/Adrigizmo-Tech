@@ -789,99 +789,89 @@
                 </div>
             </div>
         </section>
-<!-- Portfolio Service Banner Section with Popup Modal Trigger -->
+<!-- Floating Sticky Bottom Banner Section with Full Banner Click Trigger -->
 <section style="
-    max-width: 1200px;
-    margin: 40px auto;
-    background: url('https://i.pinimg.com/1200x/c8/6e/25/c86e25983e201206c9cea14b2fddd2bf.jpg') no-repeat center center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9998;
+    width: 100%;
+    margin: 0;
+    background: url('https://i.pinimg.com/1200x/2c/e0/40/2ce04051421c1639773e0a04863ad5f2.jpg') no-repeat center center;
     background-size: cover;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 14px;
-    padding: 60px 40px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    border-top: 2px solid rgba(56, 189, 248, 0.4);
+    border-radius: 16px 16px 0 0;
+    padding: 15px 25px;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.7);
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
     color: #ffffff;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.8)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.6)';">
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+" onclick="openDemoModal()">
     
-    <!-- Punchline / Subheading -->
-    <span style="
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: #38bdf8;
-        font-weight: 700;
-        margin-bottom: 12px;
-        background: rgba(0, 0, 0, 0.7);
-        padding: 6px 14px;
-        border-radius: 20px;
-        border: 1px solid rgba(56, 189, 248, 0.4);
-    ">
-        Forget Paper • Go Digital
-    </span>
+    <!-- Left Side: Texts & Offer -->
+    <div style="flex: 1; min-width: 250px; text-align: left;">
+        <span style="
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #38bdf8;
+            font-weight: 700;
+            background: rgba(0, 0, 0, 0.75);
+            padding: 3px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            display: inline-block;
+            margin-bottom: 6px;
+        ">
+            ⚡ 1000 Rs Off for First 10
+        </span>
 
-    <!-- Main Title -->
-    <h2 style="
-        font-size: 2.2rem;
-        line-height: 1.2;
-        margin-bottom: 15px;
-        color: #ffffff;
-        text-shadow: 0 2px 6px rgba(0,0,0,0.9);
-    ">
-        Future Innovation Starts Here
-    </h2>
+        <h2 style="
+            font-size: 1.25rem;
+            line-height: 1.2;
+            margin-bottom: 4px;
+            color: #ffffff;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.9);
+        ">
+            Professional One-Page Portfolio at <span style="color: #facc15;">2,000 RS</span>
+        </h2>
 
-    <!-- Description (Single Line Offer) -->
-    <p style="
-        color: #f1f5f9;
-        font-size: 1.05rem;
-        line-height: 1.6;
-        margin-bottom: 30px;
-        text-shadow: 0 1px 4px rgba(0,0,0,0.9);
-        white-space: nowrap;
-    ">
-        Get your professional one-page portfolio at <strong style="color: #ffffff;">2,000 RS</strong> + Domain Fee &bull; <strong style="color: #38bdf8; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px; border: 1px dashed #38bdf8;">First 3 updates absolutely free!</strong>
-    </p>
+        <p style="
+            color: #f1f5f9;
+            font-size: 0.8rem;
+            margin: 0;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+        ">
+            + Domain Fee &bull; <strong style="color: #38bdf8;">First 3 updates absolutely free!</strong>
+        </p>
+    </div>
 
-    <!-- Action Buttons -->
-    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+    <!-- Right Side: Action Button (WhatsApp alone, fully mobile responsive) -->
+    <div style="display: flex; align-items: center;" onclick="event.stopPropagation();">
         <!-- WhatsApp Button -->
         <a href="https://wa.me/919744922765" target="_blank" style="
             background: #0b6623;
             color: #ffffff;
-            padding: 12px 26px;
+            padding: 10px 20px;
             border-radius: 8px;
+            font-size: 0.85rem;
             font-weight: 600;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             border: 2px solid #25d366;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             transition: all 0.3s ease;
-        " onmouseover="this.style.background='#25d366'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 16px rgba(37,211,102,0.5)';" onmouseout="this.style.background='#0b6623'; this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.4)';">
-            💬 WhatsApp Enquiry
+        " onmouseover="this.style.background='#25d366'; this.style.transform='scale(1.03)';" onmouseout="this.style.background='#0b6623'; this.style.transform='scale(1)';">
+            💬 WhatsApp
         </a>
-
-        <!-- Visit Demo Button (Triggers Popup) -->
-        <button onclick="openDemoModal()" style="
-            background: rgba(0, 0, 0, 0.75);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            padding: 12px 26px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: transform 0.2s ease, background 0.2s ease;
-        " onmouseover="this.style.transform='scale(1.05)'; this.style.background='rgba(0, 0, 0, 0.9)';" onmouseout="this.style.transform='scale(1)'; this.style.background='rgba(0, 0, 0, 0.75)';">
-            🌐 Visit Demo
-        </button>
     </div>
 </section>
 
@@ -895,7 +885,7 @@
     height: 100vh;
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(8px);
-    z-index: 9999;
+    z-index: 10000;
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -911,7 +901,7 @@
         text-align: center;
         position: relative;
         animation: modalPop 0.3s ease-out;
-    ">
+    " onclick="event.stopPropagation();">
         <!-- Close Button -->
         <button onclick="closeDemoModal()" style="
             position: absolute;
@@ -941,15 +931,15 @@
             border: 3px solid #0284c7;
             box-shadow: 0 10px 20px rgba(2, 132, 199, 0.3);
         ">
-            <img src="https://res.cloudinary.com/jerrick/image/upload/d_642250b563292b35f27461a7.png,f_jpg,fl_progressive,q_auto,w_1024/6909cc0e661269001e73c6a1.webp" alt="Elon Musk" style="width: 100%; height: 100%; object-cover;" />
+            <img src="https://res.cloudinary.com/jerrick/image/upload/d_642250b563292b35f27461a7.png,f_jpg,fl_progressive,q_auto,w_1024/6909cc0e661269001e73c6a1.webp" alt="Elon Musk" style="width: 100%; height: 100%; object-fit: cover;" />
         </div>
 
         <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; color: #0f172a;">Select Portfolio Demo</h3>
         <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 25px;">Choose your preferred style below:</p>
 
-        <!-- Four Demo Buttons with updated names -->
+        <!-- Four Demo Buttons -->
         <div style="display: flex; flex-direction: column; gap: 12px;">
-            <a href="demo_3.html" target="_blank" style="
+            <a href="light-demo_3.html" target="_blank" style="
                 background: #f0f9ff;
                 color: #0284c7;
                 border: 1px solid #bae6fd;
@@ -1000,7 +990,7 @@
                 💎 Emerald
             </a>
 
-            <a href="demo.html" target="_blank" style="
+            <a href="showcase-demo.html" target="_blank" style="
                 background: #fffbeb;
                 color: #d97706;
                 border: 1px solid #fde68a;
@@ -1770,7 +1760,7 @@
 
 <!-- script.js ഫയൽ ഇതിലേക്ക് കണക്ട് ചെയ്യുന്നു -->
 <script src="script.js"></script>
-  <section style="
+ <section style="
     position: fixed;
     bottom: 0;
     left: 0;
@@ -1791,7 +1781,8 @@
     gap: 15px;
     color: #ffffff;
     backdrop-filter: blur(10px);
-">
+    cursor: pointer;
+" onclick="openDemoModal()">
     
     <div style="flex: 1; min-width: 280px; text-align: left;">
         <span style="
@@ -1830,7 +1821,7 @@
         </p>
     </div>
 
-    <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+    <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-right: 120px;" onclick="event.stopPropagation();">
         <a href="https://wa.me/919744922765" target="_blank" style="
             background: #0b6623;
             color: #ffffff;
@@ -1848,23 +1839,6 @@
         " onmouseover="this.style.background='#25d366'; this.style.transform='scale(1.03)';" onmouseout="this.style.background='#0b6623'; this.style.transform='scale(1)';">
             💬 WhatsApp
         </a>
-
-        <button onclick="openDemoModal()" style="
-            background: rgba(0, 0, 0, 0.85);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            padding: 8px 18px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: transform 0.2s ease, background 0.2s ease;
-        " onmouseover="this.style.transform='scale(1.03)'; this.style.background='rgba(0, 0, 0, 0.95)';" onmouseout="this.style.transform='scale(1)'; this.style.background='rgba(0, 0, 0, 0.85)';">
-            🌐 Visit Demo
-        </button>
     </div>
 </section>
 
@@ -1893,7 +1867,7 @@
         text-align: center;
         position: relative;
         animation: modalPop 0.3s ease-out;
-    ">
+    " onclick="event.stopPropagation();">
         <button onclick="closeDemoModal()" style="
             position: absolute;
             top: 15px;
